@@ -41,11 +41,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 
 #include "mainwindow.h"
 #include "settingsdialog.h"
-#include "updatedialog.h"
+//#include "updatedialog.h"
 #include "def/defines.h"
 #include "def/errordefines.h"
 #include "errormessage.h"
-#include "checkversion.h"
+//#include "checkversion.h"
 
 MainWindow::MainWindow() {
 	trainingStarted = false;
@@ -219,10 +219,10 @@ void MainWindow::showSettings() {
 }
 
 void MainWindow::showUpdate() {
-	UpdateDialog updateDialog(this);
-	updateDialog.exec();
-	// Fill lesson list after online update
-	startWidget->fillLessonList(false);
+//	UpdateDialog updateDialog(this);
+//	updateDialog.exec();
+//	// Fill lesson list after online update
+//	startWidget->fillLessonList(false);
 }
 
 void MainWindow::showHelp()
@@ -490,21 +490,21 @@ void MainWindow::readSettings() {
 	#endif
 	settings.endGroup();
 
-    settings.beginGroup("general");
-    if (settings.value("check_new_version", true).toBool()) {
+//    settings.beginGroup("general");
+//    if (settings.value("check_new_version", true).toBool()) {
 
-        QDate lastVersionCheck = settings.value("last_version_check").toDate();
-        QDate today = QDate::currentDate();
+//        QDate lastVersionCheck = settings.value("last_version_check").toDate();
+//        QDate today = QDate::currentDate();
 
-        if (!lastVersionCheck.isValid() ||
-            lastVersionCheck.addDays(7) < today) {
-            CheckVersion *checkVersion = new CheckVersion();
-            connect(checkVersion, SIGNAL(newVersionAvailable()), this, SLOT(newVersionAvailable()));
-            checkVersion->checkVersion();
-        }
-        settings.setValue("last_version_check", today);
-    }
-    settings.endGroup();
+//        if (!lastVersionCheck.isValid() ||
+//            lastVersionCheck.addDays(7) < today) {
+//            CheckVersion *checkVersion = new CheckVersion();
+//            connect(checkVersion, SIGNAL(newVersionAvailable()), this, SLOT(newVersionAvailable()));
+//            checkVersion->checkVersion();
+//        }
+//        settings.setValue("last_version_check", today);
+//    }
+//    settings.endGroup();
 }
 
 void MainWindow::writeSettings() {

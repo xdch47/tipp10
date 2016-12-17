@@ -43,12 +43,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 
 #include "startwidget.h"
 #include "sql/startsql.h"
-#include "updatedialog.h"
+//#include "updatedialog.h"
 #include "def/defines.h"
 #include "def/errordefines.h"
 #include "errormessage.h"
 #include "lessondialog.h"
-#include "downloaddialog.h"
+//#include "downloaddialog.h"
 #include "illustrationdialog.h"
 #include "txtmessagedialog.h"
 
@@ -1049,40 +1049,40 @@ void StartWidget::clickExportLesson() {
 
 void StartWidget::clickDownloadLesson() {
 
-	QStringList lessonData;
+//	QStringList lessonData;
 
-	DownloadDialog downloadDialog(&lessonData, this);
-	if (downloadDialog.exec() != 0) {
+//	DownloadDialog downloadDialog(&lessonData, this);
+//	if (downloadDialog.exec() != 0) {
 
-		LessonDialog lessonDialog("-2", &lessonData, this);
-		if (lessonDialog.exec() != 0) {
+//		LessonDialog lessonDialog("-2", &lessonData, this);
+//		if (lessonDialog.exec() != 0) {
 
-			// Fill lesson list after changing lessons
-			StartSql *lessonSql = new StartSql();
-			// Own lesson list
-			// ---------------
-			if (lessonSql->fillOwnList(listOwn, &arrayOwn) == -1) {
-				// Error message
-				ErrorMessage *errorMessage = new ErrorMessage(this);
-				errorMessage->showMessage(ERR_LESSONS_EXIST, TYPE_CRITICAL,
-					CANCEL_OPERATION);
-				return;
-			}
-			// Preselection
-			listOwn->setCurrentRow(0);
-			if (listOwn->count() == 0) {
-				buttonTraining->setEnabled(false);
-                lessonEdit->setEnabled(false);
-                lessonDel->setEnabled(false);
-                lessonExport->setEnabled(false);
-			} else {
-				buttonTraining->setEnabled(true);
-                lessonEdit->setEnabled(true);
-                lessonDel->setEnabled(true);
-                lessonExport->setEnabled(true);
-			}
-		}
-	}
+//			// Fill lesson list after changing lessons
+//			StartSql *lessonSql = new StartSql();
+//			// Own lesson list
+//			// ---------------
+//			if (lessonSql->fillOwnList(listOwn, &arrayOwn) == -1) {
+//				// Error message
+//				ErrorMessage *errorMessage = new ErrorMessage(this);
+//				errorMessage->showMessage(ERR_LESSONS_EXIST, TYPE_CRITICAL,
+//					CANCEL_OPERATION);
+//				return;
+//			}
+//			// Preselection
+//			listOwn->setCurrentRow(0);
+//			if (listOwn->count() == 0) {
+//				buttonTraining->setEnabled(false);
+//                lessonEdit->setEnabled(false);
+//                lessonDel->setEnabled(false);
+//                lessonExport->setEnabled(false);
+//			} else {
+//				buttonTraining->setEnabled(true);
+//                lessonEdit->setEnabled(true);
+//                lessonDel->setEnabled(true);
+//                lessonExport->setEnabled(true);
+//			}
+//		}
+//	}
 }
 
 void StartWidget::clickEditLesson() {

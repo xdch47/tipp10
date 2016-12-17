@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 #include "trainingwidget.h"
 #include "evaluationwidget.h"
 #include "illustrationdialog.h"
-#include "licensedialog.h"
+//#include "licensedialog.h"
 #include "games/abcrainwidget.h"
 #include "helpbrowser.h"
 
