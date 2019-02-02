@@ -47,6 +47,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 #define APP_URL 					"http://www.tipp10.com"
 #define APP_DB 						"tipp10v2.template"
 #define APP_USER_DB					"tipp10v2.db"
+#define APP_VERSION					"3.0.0"
 
 // Update constants
 #define UPDATE_URL_SQL 				"/update/sql.tipp10v210.utf"

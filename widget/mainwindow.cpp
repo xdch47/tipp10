@@ -203,7 +203,7 @@ void MainWindow::about()
 
 	QSqlQuery query;
 	QString dbVersion = "?";
-	QString softwareVersion = "?";
+	QString softwareVersion = APP_VERSION;
 	QString versionText = "";
 
 
@@ -217,7 +217,6 @@ void MainWindow::about()
         if (query.first()) {
             // One number represents the DB version
             dbVersion = query.value(0).toString();
-            softwareVersion = query.value(1).toString();
         }
     }
     //Show about window with image
