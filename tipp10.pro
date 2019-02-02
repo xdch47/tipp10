@@ -39,16 +39,12 @@ HEADERS         += 	def/defines.h \
                     widget/settingspages.h \
                     widget/lessondialog.h \
                     widget/regexpdialog.h \
-#                    widget/downloaddialog.h \
                     widget/lessonprintdialog.h \
                     widget/lessonresult.h \
-#                    widget/updatedialog.h \
                     widget/helpbrowser.h \
                     widget/companylogo.h \
                     widget/errormessage.h \
-#                    widget/licensedialog.h \
                     widget/txtmessagedialog.h \
-#                    widget/checkversion.h \
                     sql/connection.h \
                     sql/lessontablesql.h \
                     sql/chartablesql.h \
@@ -74,16 +70,12 @@ SOURCES         += 	main.cpp \
                     widget/settingspages.cpp \
                     widget/lessondialog.cpp \
                     widget/regexpdialog.cpp \
-#                    widget/downloaddialog.cpp \
                     widget/lessonprintdialog.cpp \
                     widget/lessonresult.cpp \
-#                    widget/updatedialog.cpp \
                     widget/helpbrowser.cpp \
                     widget/companylogo.cpp \
                     widget/errormessage.cpp \
-#                    widget/licensedialog.cpp \
                     widget/txtmessagedialog.cpp \
-#                    widget/checkversion.cpp \
                     sql/lessontablesql.cpp \
                     sql/chartablesql.cpp \
                     sql/trainingsql.cpp \

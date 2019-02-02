@@ -49,10 +49,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 #define APP_USER_DB					"tipp10v2.db"
 
 // Update constants
-#define UPDATE_URL 					"www.tipp10.com"
-#define UPDATE_URL_VERSION 			"/update/version.tipp10v210"
 #define UPDATE_URL_SQL 				"/update/sql.tipp10v210.utf"
-#define LESSON_DOWNLOAD_URL			"http://www.tipp10.de/beispiel.txt"
 #define COMPILED_UPDATE_VERSION		33
 #define COMPILED_UPDATE_FILENAME	"tipp10v2.template"
 

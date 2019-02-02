@@ -39,7 +39,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 #include "trainingwidget.h"
 #include "evaluationwidget.h"
 #include "illustrationdialog.h"
-//#include "licensedialog.h"
 #include "games/abcrainwidget.h"
 #include "helpbrowser.h"
 
@@ -151,18 +150,6 @@ class MainWindow : public QMainWindow {
 		*/
 		void toggleStartToAbcrain();
 
-		//! Slot, shows the online update dialog.
-		/*!
-			This slot shows the online update dialog. It creates an object of
-			the UpdateDialog class.
-
-			@attention It updates the lesson list after the dialog was closed
-			@see UpdateDialog, fillLessonList()
-		*/
-		void showUpdate();
-
-        void newVersionAvailable();
-
 	private slots:
 
 		//! Slot, shows the settings dialog.
@@ -218,16 +205,14 @@ class MainWindow : public QMainWindow {
 
     private:
 
-		bool checkLicenseKey(QString licenseKey);
-
 		//! Creates all necessary actions for the menu bar.
 		/*!
 			This function creates all menu bar actions and connects them
 			to different slots.
 
-			@see settingsAction, updateAction, exitAction, evalAction,
+			@see settingsAction, exitAction, evalAction,
 				helpAction, aboutAction, about(), close(), showSettings(),
-				showUpdate(), toggleStartToEvaluation()
+				toggleStartToEvaluation()
 		*/
 		void createActions();
 
@@ -348,9 +333,6 @@ class MainWindow : public QMainWindow {
 
 		//! Menu item for settings.
 		QAction *settingsAction;
-
-		//! Menu item for online update.
-		QAction *updateAction;
 
 		//! Menu item for user admin.
 		QAction *usersAction;

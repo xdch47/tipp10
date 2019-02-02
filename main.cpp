@@ -32,7 +32,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 #include "def/defines.h"
 #include "sql/connection.h"
 #include "widget/mainwindow.h"
-//#include "widget/licensedialog.h"
 #include "widget/illustrationdialog.h"
 
 int main(int argc, char *argv[]) {
@@ -100,7 +99,6 @@ int main(int argc, char *argv[]) {
 	QString languageLesson = settings.value("language_lesson",
 		"").toString();
 
-	QString licenseKey = settings.value("licensekey", "").toString();
 	bool showIllustration = settings.value("check_illustration", true).toBool();
 	bool useNativeStyle = settings.value("check_native_style", false).toBool();
 	settings.endGroup();

@@ -41,11 +41,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 
 #include "mainwindow.h"
 #include "settingsdialog.h"
-//#include "updatedialog.h"
 #include "def/defines.h"
 #include "def/errordefines.h"
 #include "errormessage.h"
-//#include "checkversion.h"
 
 MainWindow::MainWindow() {
 	trainingStarted = false;
@@ -71,30 +69,6 @@ MainWindow::~MainWindow() {
 	writeSettings();
 }
 
-void MainWindow::newVersionAvailable() {
-
-    if (QMessageBox::information(this, APP_NAME,
-        QString(tr("Ihre Version der Software ist "
-        "veraltet.\nDie "
-        "neue Version erhalten Sie im Internet unter %1\n\n"
-        "Moechten Sie die neue Version jetzt herunterladen?"
-        )).arg(APP_URL), QMessageBox::Yes | QMessageBox::No) ==
-        QMessageBox::Yes) {
-
-        QDesktopServices::openUrl(QString(APP_URL) + "/download/");
-    }
-    #if APP_PORTABLE
-    QSettings settings(QCoreApplication::applicationDirPath() +
-        "/portable/settings.ini", QSettings::IniFormat);
-    #else
-    QSettings settings;
-    #endif
-    settings.beginGroup("general");
-    QDate today = QDate::currentDate();
-    settings.setValue("last_version_check", today.addDays(-8));
-    settings.endGroup();
-}
-
 void MainWindow::closeEvent(QCloseEvent *event) {
 
 	if (trainingStarted) {
@@ -116,11 +90,6 @@ void MainWindow::closeEvent(QCloseEvent *event) {
 	}
 }
 
-bool MainWindow::checkLicenseKey(QString licenseKey) {
-
-    return false;
-}
-
 void MainWindow::createMenu() {
 	//Mac-Version:
 	//-----------
@@ -129,7 +98,6 @@ void MainWindow::createMenu() {
 	evaluationMenu->addAction(exitAction);
 	evaluationMenu->addAction(settingsAction);
     evaluationMenu->addAction(aboutAction);
-    //evaluationMenu->addAction(updateAction);
     evaluationMenu->addAction(evalAction);
     evaluationMenu->addAction(gameAction);
 	helpMenu = menuBar()->addMenu(tr("&Hilfe"));
@@ -147,7 +115,6 @@ void MainWindow::createMenu() {
     fileMenu = menuBar()->addMenu(tr("&Datei"));
     #endif
     fileMenu->addAction(settingsAction);
-    //fileMenu->addAction(updateAction);
 	fileMenu->addSeparator();
 	fileMenu->addAction(exitAction);
 	evaluationMenu = menuBar()->addMenu(tr("&Gehe zu"));
@@ -176,8 +143,6 @@ void MainWindow::createActions() {
 	settingsAction = new QAction(QIcon(":/img/menu_settings.png"),
         tr("&Grundeinstellungen"), this);
 	#endif
-    updateAction = new QAction(QIcon(":/img/menu_update.png"),
-        tr("Aktualisierung"), this);
     exitAction = new QAction(tr("&Beenden"), this);
     evalAction = new QAction(QIcon(":/img/menu_evaluation.png"),
         tr("&Lernstatistik"), this);
@@ -202,7 +167,6 @@ void MainWindow::createActions() {
 	connect(aboutAction, SIGNAL(triggered()), this, SLOT(about()));
 	connect(exitAction, SIGNAL(triggered()), this, SLOT(close()));
 	connect(settingsAction, SIGNAL(triggered()), this, SLOT(showSettings()));
-	connect(updateAction, SIGNAL(triggered()), this, SLOT(showUpdate()));
 	connect(evalAction, SIGNAL(triggered()), this,
         SLOT(toggleStartToEvaluation()));
     connect(websiteAction, SIGNAL(triggered()), this, SLOT(openWebsite()));
@@ -216,13 +180,6 @@ void MainWindow::showSettings() {
 	// Fill lesson list after changing program settings
 	startWidget->fillLessonList(false);
 	startWidget->readSettings();
-}
-
-void MainWindow::showUpdate() {
-//	UpdateDialog updateDialog(this);
-//	updateDialog.exec();
-//	// Fill lesson list after online update
-//	startWidget->fillLessonList(false);
 }
 
 void MainWindow::showHelp()
@@ -489,22 +446,6 @@ void MainWindow::readSettings() {
 	move(settings.value("pos", QPoint(100, 100)).toPoint());
 	#endif
 	settings.endGroup();
-
-//    settings.beginGroup("general");
-//    if (settings.value("check_new_version", true).toBool()) {
-
-//        QDate lastVersionCheck = settings.value("last_version_check").toDate();
-//        QDate today = QDate::currentDate();
-
-//        if (!lastVersionCheck.isValid() ||
-//            lastVersionCheck.addDays(7) < today) {
-//            CheckVersion *checkVersion = new CheckVersion();
-//            connect(checkVersion, SIGNAL(newVersionAvailable()), this, SLOT(newVersionAvailable()));
-//            checkVersion->checkVersion();
-//        }
-//        settings.setValue("last_version_check", today);
-//    }
-//    settings.endGroup();
 }
 
 void MainWindow::writeSettings() {

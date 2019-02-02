@@ -152,8 +152,6 @@ class StartWidget : public QWidget {
 
 		void clickExportLesson();
 
-		void clickDownloadLesson();
-
 		void clickDeleteLesson();
 
 		void doubleClickLesson(QListWidgetItem *item);
@@ -246,9 +244,6 @@ class StartWidget : public QWidget {
 
 		//! Menu item for lesson export menu.
 		QAction *lessonExport;
-
-		//! Menu item for lesson download menu.
-		QAction *lessonDownload;
 
 		//! Menu item for lesson edit menu.
 		//QAction *lessonPublish;
