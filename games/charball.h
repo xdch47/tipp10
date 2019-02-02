@@ -14,6 +14,7 @@
 class CharBall : public QObject, public QGraphicsItem
 {
     Q_OBJECT
+    Q_INTERFACES(QGraphicsItem)
 
 public:
     CharBall(int size, int position, int speed, QChar character);
