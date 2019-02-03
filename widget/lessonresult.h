@@ -50,17 +50,14 @@ class LessonResult : public QWidget {
 
     private slots:
         void createPrintOutput();
-        void publishFacebook();
 
 	private:
 		void createOutput();
 		QPushButton *buttonPrintLesson;
-        QPushButton *buttonPublishFacebook;
 		QList<QChar> charList;
 		QList<int> mistakeList;
 		int lessonRow;
 		QString language;
-        QString facebookComment;
         QString languageGui;
 
 };

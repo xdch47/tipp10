@@ -75,18 +75,8 @@ LessonResult::LessonResult(int row, int type, QList<QChar> charlist,
 	// Create print push button
 	buttonPrintLesson = new QPushButton(tr("Drucken"));
     buttonPrintLesson->setFixedHeight(20);
-    buttonPublishFacebook = new QPushButton(tr("Teilen auf Facebook"));
-    buttonPublishFacebook->setFixedHeight(20);
 
     createOutput();
-}
-
-void LessonResult::publishFacebook() {
-    QDesktopServices::openUrl(QString("http://www.facebook.com/sharer.php"
-                                      "?u="
-                                      "http://www.tipp10.com/" + languageGui + "/facebook/" +
-                                      QUrl::toPercentEncoding(
-                                              facebookComment)));
 }
 
 void LessonResult::createOutput() {
@@ -307,15 +297,6 @@ void LessonResult::createOutput() {
 		(lessonErrorNum == "1" ? tr(" Tippfehler") :  tr(" Tippfehlern")) +
 		tr("."), h2);
 
-    facebookComment = lessonGradeSimple + "-" + lessonCpm + "-" + lessonErrorNum;
-                      /*tr("Ich habe ") + lessonGrade +
-                      tr(" erreicht, bei einer Schreibgeschwindigkeit von ") +
-                      lessonCpm + tr(" A/min und ") + lessonErrorNum +
-                      (lessonErrorNum == "1" ? tr(" Tippfehler") :  tr(" Tippfehlern")) +
-                      tr(".") + " * * * * " +
-                      tr("Mit TIPP10 kostenlos das Zehnfingersystem lernen: ") +
-                      QString(APP_URL);*/
-
 	cursor.setPosition(topFrame->lastPosition());
 
 	QTextFrameFormat referenceFrameFormat;
@@ -432,7 +413,6 @@ void LessonResult::createOutput() {
 
 	QHBoxLayout *filterLayout = new QHBoxLayout;
     filterLayout->addStretch(1);
-    filterLayout->addWidget(buttonPublishFacebook);
     filterLayout->addWidget(buttonPrintLesson);
     QVBoxLayout *mainLayout = new QVBoxLayout;
 	mainLayout->addLayout(filterLayout);
@@ -441,8 +421,6 @@ void LessonResult::createOutput() {
 	this->setLayout(mainLayout);
 
     connect(buttonPrintLesson, SIGNAL(clicked()), this, SLOT(createPrintOutput()));
-    connect(buttonPublishFacebook, SIGNAL(clicked()), this, SLOT(publishFacebook()));
-
 }
 
 void LessonResult::createPrintOutput() {
