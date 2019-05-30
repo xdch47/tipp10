@@ -487,8 +487,8 @@ void DatabasePage::deleteUserLessonList()
         if (!userSql->deleteUserLessonList()) {
             // Error message
             ErrorMessage* errorMessage = new ErrorMessage(this);
-            errorMessage->showMessage(
-                ERR_USER_LESSONS_FLUSH, ErrorMessage::Type::Warning, CANCEL_OPERATION);
+            errorMessage->showMessage(ERR_USER_LESSONS_FLUSH,
+                ErrorMessage::Type::Warning, ErrorMessage::Cancel::Operation);
             return;
         }
         QMessageBox::information(this, APP_NAME,
@@ -514,8 +514,8 @@ void DatabasePage::deleteUserChars()
         if (!userSql->deleteUserChars()) {
             // Error message
             ErrorMessage* errorMessage = new ErrorMessage(this);
-            errorMessage->showMessage(
-                ERR_USER_ERRORS_FLUSH, ErrorMessage::Type::Warning, CANCEL_OPERATION);
+            errorMessage->showMessage(ERR_USER_ERRORS_FLUSH,
+                ErrorMessage::Type::Warning, ErrorMessage::Cancel::Operation);
             return;
         }
         QMessageBox::information(this, APP_NAME,

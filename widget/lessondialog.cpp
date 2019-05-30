@@ -109,7 +109,7 @@ void LessonDialog::updateContent()
                 // -> error message
                 ErrorMessage* errorMessage = new ErrorMessage(this);
                 errorMessage->showMessage(ERR_USER_LESSON_GET,
-                    ErrorMessage::Type::Info, CANCEL_OPERATION);
+                    ErrorMessage::Type::Info, ErrorMessage::Cancel::Operation);
                 return;
             }
         }
@@ -312,8 +312,8 @@ void LessonDialog::clickSave()
         // No selected lesson found in combo box
         // -> error message
         ErrorMessage* errorMessage = new ErrorMessage(this);
-        errorMessage->showMessage(
-            ERR_USER_LESSON_ADD, ErrorMessage::Type::Info, CANCEL_OPERATION);
+        errorMessage->showMessage(ERR_USER_LESSON_ADD, ErrorMessage::Type::Info,
+            ErrorMessage::Cancel::Operation);
         return;
     }
     if (!startSql->analyzeOwnLessons()) {
@@ -321,7 +321,7 @@ void LessonDialog::clickSave()
         // -> error message
         ErrorMessage* errorMessage = new ErrorMessage(this);
         errorMessage->showMessage(ERR_USER_LESSON_ANALYZE,
-            ErrorMessage::Type::Info, CANCEL_OPERATION);
+            ErrorMessage::Type::Info, ErrorMessage::Cancel::Operation);
         return;
     }
     this->accept();

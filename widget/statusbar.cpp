@@ -47,8 +47,8 @@ StatusBar::StatusBar(QWidget* parent)
     if (!background.load(":/img/statusbg.png")) {
         // Error message
         ErrorMessage* errorMessage = new ErrorMessage(this);
-        errorMessage->showMessage(
-            ERR_STATUS_PIC, ErrorMessage::Type::Warning, CANCEL_OPERATION);
+        errorMessage->showMessage(ERR_STATUS_PIC, ErrorMessage::Type::Warning,
+            ErrorMessage::Cancel::Operation);
     }
 
     setFixedSize(610, 30);

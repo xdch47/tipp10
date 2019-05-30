@@ -131,7 +131,7 @@ static bool createConnection()
                     // Error message
                     ErrorMessage* errorMessage = new ErrorMessage();
                     errorMessage->showMessage(ERR_SQL_CONNECTION,
-                        ErrorMessage::Type::Warning, CANCEL_NO);
+                        ErrorMessage::Type::Warning, ErrorMessage::Cancel::No);
                 } else {
                     QSqlQuery query;
                     // Lessons done by the user
@@ -188,8 +188,8 @@ static bool createConnection()
             // -> error message
             /*ErrorMessage *errorMessage = new ErrorMessage();
             errorMessage->showMessage(ERR_SQL_DB_USER_EXIST,
-            ErrorMessage::Type::Info, CANCEL_NO, "Betroffener Pfad:\n" +
-            dbPath);*/
+            ErrorMessage::Type::Info, ErrorMessage::Cancel::No, "Betroffener
+            Pfad:\n" + dbPath);*/
             // Try to create new databae in user path
             // Exist a database in the program dir?
             if (QFile::exists(QCoreApplication::applicationDirPath() + "/"
@@ -207,14 +207,14 @@ static bool createConnection()
                 } else {
                     ErrorMessage* errorMessage = new ErrorMessage();
                     errorMessage->showMessage(ERR_SQL_DB_USER_COPY,
-                        ErrorMessage::Type::Warning, CANCEL_NO,
+                        ErrorMessage::Type::Warning, ErrorMessage::Cancel::No,
                         QObject::tr("Betroffener Kopierpfad:\n") + dbPath);
                 }
             } else {
                 // No database found in program dir
                 ErrorMessage* errorMessage = new ErrorMessage();
                 errorMessage->showMessage(ERR_SQL_DB_APP_EXIST,
-                    ErrorMessage::Type::Critical, CANCEL_PROGRAM,
+                    ErrorMessage::Type::Critical, ErrorMessage::Cancel::Program,
                     QObject::tr("Betroffener Pfad:\n") + dbPath);
                 return false;
             }
@@ -270,14 +270,14 @@ static bool createConnection()
                 } else {
                     ErrorMessage* errorMessage = new ErrorMessage();
                     errorMessage->showMessage(ERR_SQL_DB_APP_COPY,
-                        ErrorMessage::Type::Critical, CANCEL_NO,
+                        ErrorMessage::Type::Critical, ErrorMessage::Cancel::No,
                         QObject::tr("Betroffener Kopierpfad:\n") + dbPath);
                 }
             } else {
                 // No database found in program dir
                 ErrorMessage* errorMessage = new ErrorMessage();
                 errorMessage->showMessage(ERR_SQL_DB_APP_EXIST,
-                    ErrorMessage::Type::Critical, CANCEL_PROGRAM,
+                    ErrorMessage::Type::Critical, ErrorMessage::Cancel::Program,
                     QObject::tr("Betroffener Pfad:\n") + dbPath);
                 return false;
             }
@@ -290,7 +290,8 @@ static bool createConnection()
                 // Error message
                 ErrorMessage *errorMessage = new ErrorMessage();
                 errorMessage->showMessage(ERR_SQL_DB,
-       ErrorMessage::Type::Critical, CANCEL_PROGRAM); return false;
+       ErrorMessage::Type::Critical, ErrorMessage::Cancel::Program); return
+       false;
         }*/
     if (QSqlDatabase::contains()) {
         db = QSqlDatabase::database();
@@ -306,7 +307,7 @@ static bool createConnection()
         // Error message
         ErrorMessage* errorMessage = new ErrorMessage();
         errorMessage->showMessage(ERR_SQL_CONNECTION,
-            ErrorMessage::Type::Critical, CANCEL_PROGRAM,
+            ErrorMessage::Type::Critical, ErrorMessage::Cancel::Program,
             QObject::tr("Betroffener Pfad:\n") + dbPath);
         return false;
     }
@@ -357,13 +358,13 @@ static bool createConnection()
         // Error message
         ErrorMessage* errorMessage = new ErrorMessage();
         errorMessage->showMessage(ERR_DB_VERSION_READABLE,
-            ErrorMessage::Type::Critical, CANCEL_UPDATE);
+            ErrorMessage::Type::Critical, ErrorMessage::Cancel::Update);
     } else {
         if (!queryUpdate.first()) {
             // Error message
             ErrorMessage* errorMessage = new ErrorMessage();
             errorMessage->showMessage(ERR_DB_VERSION_READABLE,
-                ErrorMessage::Type::Critical, CANCEL_UPDATE);
+                ErrorMessage::Type::Critical, ErrorMessage::Cancel::Update);
         } else {
             // Server DB version is 0
             // -> software is too old to update
@@ -378,7 +379,8 @@ static bool createConnection()
                     // Error message
                     ErrorMessage* errorMessage = new ErrorMessage();
                     errorMessage->showMessage(ERR_TEMP_FILE_CREATION,
-                        ErrorMessage::Type::Critical, CANCEL_UPDATE);
+                        ErrorMessage::Type::Critical,
+                        ErrorMessage::Cancel::Update);
                 }
 
                 // Go to the beginning of the version file
@@ -404,8 +406,8 @@ static bool createConnection()
                             // Error message + failed sql string
                             ErrorMessage* errorMessage = new ErrorMessage();
                             errorMessage->showMessage(ERR_UPDATE_SQL_EXECUTION,
-                                ErrorMessage::Type::Critical, CANCEL_UPDATE,
-                                line);
+                                ErrorMessage::Type::Critical,
+                                ErrorMessage::Cancel::Update, line);
                             break;
                         }
                     }
@@ -414,17 +416,20 @@ static bool createConnection()
                 if (!lessonSql->analyzeLessons("lesson")) {
                     ErrorMessage* errorMessage = new ErrorMessage();
                     errorMessage->showMessage(ERR_ANALYZE_TABLE_FILL,
-                        ErrorMessage::Type::Critical, CANCEL_UPDATE, line);
+                        ErrorMessage::Type::Critical,
+                        ErrorMessage::Cancel::Update, line);
                 }
                 if (!lessonSql->analyzeLessons("open")) {
                     ErrorMessage* errorMessage = new ErrorMessage();
                     errorMessage->showMessage(ERR_ANALYZE_TABLE_FILL,
-                        ErrorMessage::Type::Critical, CANCEL_UPDATE, line);
+                        ErrorMessage::Type::Critical,
+                        ErrorMessage::Cancel::Update, line);
                 }
                 if (!lessonSql->analyzeLessons("own")) {
                     ErrorMessage* errorMessage = new ErrorMessage();
                     errorMessage->showMessage(ERR_ANALYZE_TABLE_FILL,
-                        ErrorMessage::Type::Critical, CANCEL_UPDATE, line);
+                        ErrorMessage::Type::Critical,
+                        ErrorMessage::Cancel::Update, line);
                 }
             }
         }

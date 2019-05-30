@@ -546,8 +546,8 @@ void StartWidget::fillLessonList(bool themeChanged = false)
         == -1) {
         // Error message
         ErrorMessage* errorMessage = new ErrorMessage(this);
-        errorMessage->showMessage(
-            ERR_LESSONS_EXIST, ErrorMessage::Type::Critical, CANCEL_OPERATION);
+        errorMessage->showMessage(ERR_LESSONS_EXIST,
+            ErrorMessage::Type::Critical, ErrorMessage::Cancel::Operation);
         return;
     }
     // Preselection
@@ -567,8 +567,8 @@ void StartWidget::fillLessonList(bool themeChanged = false)
         == -1) {
         // Error message
         ErrorMessage* errorMessage = new ErrorMessage(this);
-        errorMessage->showMessage(
-            ERR_LESSONS_EXIST, ErrorMessage::Type::Critical, CANCEL_OPERATION);
+        errorMessage->showMessage(ERR_LESSONS_EXIST,
+            ErrorMessage::Type::Critical, ErrorMessage::Cancel::Operation);
         return;
     }
     // Preselection
@@ -596,8 +596,8 @@ void StartWidget::fillLessonList(bool themeChanged = false)
         == -1) {
         // Error message
         ErrorMessage* errorMessage = new ErrorMessage(this);
-        errorMessage->showMessage(
-            ERR_LESSONS_EXIST, ErrorMessage::Type::Critical, CANCEL_OPERATION);
+        errorMessage->showMessage(ERR_LESSONS_EXIST,
+            ErrorMessage::Type::Critical, ErrorMessage::Cancel::Operation);
         return;
     }
     // Preselection
@@ -615,8 +615,8 @@ void StartWidget::fillLessonList(bool themeChanged = false)
     if ((ownNum = lessonSql->fillOwnList(listOwn, &arrayOwn)) == -1) {
         // Error message
         ErrorMessage* errorMessage = new ErrorMessage(this);
-        errorMessage->showMessage(
-            ERR_LESSONS_EXIST, ErrorMessage::Type::Critical, CANCEL_OPERATION);
+        errorMessage->showMessage(ERR_LESSONS_EXIST,
+            ErrorMessage::Type::Critical, ErrorMessage::Cancel::Operation);
         return;
     }
     // Preselection
@@ -748,8 +748,8 @@ void StartWidget::toggleThemes(int index)
         == -1) {
         // Error message
         ErrorMessage* errorMessage = new ErrorMessage(this);
-        errorMessage->showMessage(
-            ERR_LESSONS_EXIST, ErrorMessage::Type::Critical, CANCEL_OPERATION);
+        errorMessage->showMessage(ERR_LESSONS_EXIST,
+            ErrorMessage::Type::Critical, ErrorMessage::Cancel::Operation);
         return;
     }
     // Preselection
@@ -891,8 +891,8 @@ void StartWidget::clickTraining()
         // No selected lesson found in combo box
         // -> error message
         ErrorMessage* errorMessage = new ErrorMessage(this);
-        errorMessage->showMessage(
-            ERR_LESSONS_SELECTED, ErrorMessage::Type::Info, CANCEL_OPERATION);
+        errorMessage->showMessage(ERR_LESSONS_SELECTED,
+            ErrorMessage::Type::Info, ErrorMessage::Cancel::Operation);
         return;
     }
     // -> emit the signal that mainwindow knows user wants to start training
@@ -915,7 +915,7 @@ void StartWidget::clickNewLesson()
             // Error message
             ErrorMessage* errorMessage = new ErrorMessage(this);
             errorMessage->showMessage(ERR_LESSONS_EXIST,
-                ErrorMessage::Type::Critical, CANCEL_OPERATION);
+                ErrorMessage::Type::Critical, ErrorMessage::Cancel::Operation);
             return;
         }
         // Preselection
@@ -957,8 +957,8 @@ void StartWidget::clickImportLesson()
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         // Error message
         ErrorMessage* errorMessage = new ErrorMessage(this);
-        errorMessage->showMessage(
-            ERR_USER_IMPORT_READ, ErrorMessage::Type::Info, CANCEL_OPERATION);
+        errorMessage->showMessage(ERR_USER_IMPORT_READ,
+            ErrorMessage::Type::Info, ErrorMessage::Cancel::Operation);
         return;
     }
 
@@ -978,8 +978,8 @@ void StartWidget::clickImportLesson()
     if (lessonData->size() < 2) {
         // Error message
         ErrorMessage* errorMessage = new ErrorMessage(this);
-        errorMessage->showMessage(
-            ERR_USER_IMPORT_EMPTY, ErrorMessage::Type::Info, CANCEL_OPERATION);
+        errorMessage->showMessage(ERR_USER_IMPORT_EMPTY,
+            ErrorMessage::Type::Info, ErrorMessage::Cancel::Operation);
         return;
     }
 
@@ -994,7 +994,7 @@ void StartWidget::clickImportLesson()
             // Error message
             ErrorMessage* errorMessage = new ErrorMessage(this);
             errorMessage->showMessage(ERR_LESSONS_EXIST,
-                ErrorMessage::Type::Critical, CANCEL_OPERATION);
+                ErrorMessage::Type::Critical, ErrorMessage::Cancel::Operation);
             return;
         }
         // Preselection
@@ -1081,8 +1081,8 @@ void StartWidget::clickExportLesson()
     if (!file.open(QFile::WriteOnly | QIODevice::Text)) {
         // Error message
         ErrorMessage* errorMessage = new ErrorMessage(this);
-        errorMessage->showMessage(
-            ERR_USER_EXPORT_WRITE, ErrorMessage::Type::Info, CANCEL_OPERATION);
+        errorMessage->showMessage(ERR_USER_EXPORT_WRITE,
+            ErrorMessage::Type::Info, ErrorMessage::Cancel::Operation);
         return;
     }
 
@@ -1106,7 +1106,7 @@ void StartWidget::clickEditLesson()
             // Error message
             ErrorMessage* errorMessage = new ErrorMessage(this);
             errorMessage->showMessage(ERR_LESSONS_EXIST,
-                ErrorMessage::Type::Critical, CANCEL_OPERATION);
+                ErrorMessage::Type::Critical, ErrorMessage::Cancel::Operation);
             return;
         }
         // Preselection
@@ -1128,7 +1128,7 @@ void StartWidget::clickDeleteLesson()
             // Error message
             ErrorMessage* errorMessage = new ErrorMessage(this);
             errorMessage->showMessage(ERR_LESSONS_EXIST,
-                ErrorMessage::Type::Critical, CANCEL_OPERATION);
+                ErrorMessage::Type::Critical, ErrorMessage::Cancel::Operation);
             return;
         }
         if (!lessonSql->analyzeOwnLessons()) {
@@ -1136,7 +1136,7 @@ void StartWidget::clickDeleteLesson()
             // -> error message
             ErrorMessage* errorMessage = new ErrorMessage(this);
             errorMessage->showMessage(ERR_USER_LESSON_ANALYZE,
-                ErrorMessage::Type::Info, CANCEL_OPERATION);
+                ErrorMessage::Type::Info, ErrorMessage::Cancel::Operation);
             return;
         }
         // Fill lesson list after changing lessons
@@ -1144,7 +1144,7 @@ void StartWidget::clickDeleteLesson()
             // Error message
             ErrorMessage* errorMessage = new ErrorMessage(this);
             errorMessage->showMessage(ERR_LESSONS_EXIST,
-                ErrorMessage::Type::Critical, CANCEL_OPERATION);
+                ErrorMessage::Type::Critical, ErrorMessage::Cancel::Operation);
             return;
         }
         // Preselection

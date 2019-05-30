@@ -182,7 +182,8 @@ bool KeyBoard::loadImage(QPixmap& img, QString filename)
     if (!img.load(filename)) {
         // Error message
         ErrorMessage* errorMessage = new ErrorMessage(this);
-        errorMessage->showMessage(ERR_KEY_PIC, ErrorMessage::Type::Warning, CANCEL_OPERATION);
+        errorMessage->showMessage(ERR_KEY_PIC, ErrorMessage::Type::Warning,
+            ErrorMessage::Cancel::Operation);
         return false;
     }
     return true;

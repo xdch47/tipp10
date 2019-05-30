@@ -45,6 +45,8 @@ class ErrorMessage : public QWidget {
 public:
     // Error message type numbers
     enum class Type { Info, Warning, Critical };
+    // Error message cancel numbers
+    enum class Cancel { No, Operation, Update, Program };
 
     //! Empty constructor.
     /*!
@@ -60,20 +62,20 @@ public:
 
             @param errorNo Number of the error
             @param errorType Message type
-            @param cancelProcedure Number of an additional cancel text
+            @param cancelProcedure Type of an additional cancel text
             @param addon Free text to apend it on the message text
             @see getCancelText(), getErrorText()
     */
-    void showMessage(
-        int errorNo, Type errorType, int cancelProcedure, QString addon = "");
+    void showMessage(int errorNo, Type errorType, Cancel cancelProcedure,
+        QString addon = "");
 
 private:
     //! Selects the corresponding cancel text of the cancel text number
     /*!
-            @param number Number of the cancel text
+            @param type Type of the cancel text
             @return Corresponding cancel text
     */
-    QString getCancelText(int number);
+    QString getCancelText(Cancel type);
 
     //! Selects the corresponding error text of the error text number
     /*!

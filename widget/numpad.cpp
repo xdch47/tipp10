@@ -154,8 +154,8 @@ bool NumPad::loadImage(QPixmap& img, QString filename)
     if (!img.load(filename)) {
         // Error message
         ErrorMessage* errorMessage = new ErrorMessage(this);
-        errorMessage->showMessage(
-            ERR_KEY_PIC, ErrorMessage::Type::Warning, CANCEL_OPERATION, filename);
+        errorMessage->showMessage(ERR_KEY_PIC, ErrorMessage::Type::Warning,
+            ErrorMessage::Cancel::Operation, filename);
         return false;
     }
     return true;

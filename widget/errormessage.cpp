@@ -36,7 +36,7 @@ ErrorMessage::ErrorMessage(QWidget* parent)
 }
 
 void ErrorMessage::showMessage(
-    int errorNo, Type errorType, int cancelProcedure, QString addon)
+    int errorNo, Type errorType, Cancel cancelProcedure, QString addon)
 {
     QString message;
     // First generate the error text
@@ -45,7 +45,7 @@ void ErrorMessage::showMessage(
     if (addon != "") {
         message.append("\n" + addon);
     }
-    /*if (cancelProcedure != CANCEL_NO) {
+    /*if (cancelProcedure != ErrorMessage::Cancel::No) {
             // Append fix text
             message.append(tr("\n\nBitte melden Sie den Fehler "
                     "(Fehlernummer) und die Umstaende unter denen er aufgetreten
@@ -71,21 +71,20 @@ void ErrorMessage::showMessage(
     }
 }
 
-QString ErrorMessage::getCancelText(int number)
+QString ErrorMessage::getCancelText(Cancel type)
 {
     QString cancelText = "";
-    switch (number) {
-    case CANCEL_NO:
+    switch (type) {
+    case Cancel::No:
         cancelText = "";
         break;
-    case CANCEL_OPERATION:
+    case Cancel::Operation:
         cancelText = tr("Der Vorgang wird abgebrochen.");
         break;
-    case CANCEL_UPDATE:
+    case Cancel::Update:
         cancelText = tr("Das Update wird abgebrochen.");
         break;
-    case CANCEL_PROGRAM:
-    default:
+    case Cancel::Program:
         cancelText = tr("Die Anwendung wird beendet.");
         break;
     }

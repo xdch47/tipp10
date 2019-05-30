@@ -72,13 +72,4 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 #define ERR_ANALYZE_INDEX_CREATION 		409
 #define ERR_ANALYZE_TABLE_FILL 			410
 
-// Error message addons
-//**********************
-// Error message cancel numbers
-#define CANCEL_NO 						911
-#define CANCEL_OPERATION 				912
-#define CANCEL_UPDATE 					913
-#define CANCEL_PROGRAM 					914
-
 #endif // ERRORDEFINES_H
-
