@@ -100,10 +100,6 @@ class StartSql {
 		bool analyzeOwnLessons();
 
 		bool analyzeLessons(QString lessonType);
-
-	private:
-
-		QString trim(QString s);
 };
 
 #endif // STARTSQL_H
