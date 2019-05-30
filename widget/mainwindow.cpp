@@ -210,7 +210,7 @@ void MainWindow::about()
     if (!query.exec("SELECT * FROM db_version ORDER BY version DESC;")) {
         ErrorMessage* errorMessage = new ErrorMessage(this);
         errorMessage->showMessage(
-            ERR_DB_VERSION_READABLE, TYPE_WARNING, CANCEL_NO);
+            ERR_DB_VERSION_READABLE, ErrorMessage::Type::Warning, CANCEL_NO);
         // return is not necessary here - "about message" anyway
     } else {
         if (query.first()) {

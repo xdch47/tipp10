@@ -74,10 +74,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 
 // Error message addons
 //**********************
-// Error message type numbers
-#define TYPE_INFO 						901
-#define TYPE_WARNING 					902
-#define TYPE_CRITICAL 					903
 // Error message cancel numbers
 #define CANCEL_NO 						911
 #define CANCEL_OPERATION 				912

@@ -301,8 +301,8 @@ void TrainingWidget::createLesson()
         // No lesson created
         // -> error message
         ErrorMessage* errorMessage = new ErrorMessage(this);
-        errorMessage->showMessage(
-            ERR_LESSONS_CREATION, TYPE_CRITICAL, CANCEL_OPERATION);
+        errorMessage->showMessage(ERR_LESSONS_CREATION,
+            ErrorMessage::Type::Critical, CANCEL_OPERATION);
         return;
     }
     switch (currentType) {
@@ -350,7 +350,7 @@ void TrainingWidget::updateLesson()
         // -> error message
         ErrorMessage* errorMessage = new ErrorMessage(this);
         errorMessage->showMessage(
-            ERR_LESSONS_UPDATE, TYPE_CRITICAL, CANCEL_OPERATION);
+            ERR_LESSONS_UPDATE, ErrorMessage::Type::Critical, CANCEL_OPERATION);
         return;
     }
     counterToNewLine += lessonString.length();
@@ -384,8 +384,8 @@ void TrainingWidget::setChar(QChar newchar)
     }
     if (!trainingSql->updateUsertable(currentChar, "user_char_occur_num")) {
         ErrorMessage* errorMessage = new ErrorMessage(this);
-        errorMessage->showMessage(
-            ERR_USER_ERRORS_REFRESH, TYPE_CRITICAL, CANCEL_OPERATION);
+        errorMessage->showMessage(ERR_USER_ERRORS_REFRESH,
+            ErrorMessage::Type::Critical, CANCEL_OPERATION);
     }
 }
 
@@ -452,14 +452,14 @@ void TrainingWidget::setKey(QChar key)
                         // Error message
                         ErrorMessage* errorMessage = new ErrorMessage(this);
                         errorMessage->showMessage(ERR_USER_ERRORS_REFRESH,
-                            TYPE_CRITICAL, CANCEL_OPERATION);
+                            ErrorMessage::Type::Critical, CANCEL_OPERATION);
                     }
                     if (!trainingSql->updateUsertable(
                             key, "user_char_mistake_errornum")) {
                         // Error message
                         ErrorMessage* errorMessage = new ErrorMessage(this);
                         errorMessage->showMessage(ERR_USER_ERRORS_REFRESH,
-                            TYPE_CRITICAL, CANCEL_OPERATION);
+                            ErrorMessage::Type::Critical, CANCEL_OPERATION);
                     }
                     oneErrorFlag = true;
                 }
@@ -579,8 +579,8 @@ void TrainingWidget::exitTraining()
         // No lesson created
         // -> error message
         ErrorMessage* errorMessage = new ErrorMessage(this);
-        errorMessage->showMessage(
-            ERR_USER_LESSONS_REFRESH, TYPE_CRITICAL, CANCEL_OPERATION);
+        errorMessage->showMessage(ERR_USER_LESSONS_REFRESH,
+            ErrorMessage::Type::Critical, CANCEL_OPERATION);
         lastRowId = 0;
     }
     emit lessonReady(lastRowId.toInt(), currentType, charList, mistakeList);

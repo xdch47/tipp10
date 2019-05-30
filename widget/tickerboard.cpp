@@ -61,7 +61,7 @@ TickerBoard::TickerBoard(QWidget* parent)
         // Error message
         ErrorMessage* errorMessage = new ErrorMessage(this);
         errorMessage->showMessage(
-            ERR_TICKER_PIC, TYPE_WARNING, CANCEL_OPERATION);
+            ERR_TICKER_PIC, ErrorMessage::Type::Warning, CANCEL_OPERATION);
     }
 
     readSettings();

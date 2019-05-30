@@ -36,7 +36,7 @@ ErrorMessage::ErrorMessage(QWidget* parent)
 }
 
 void ErrorMessage::showMessage(
-    int errorNo, int errorType, int cancelProcedure, QString addon)
+    int errorNo, Type errorType, int cancelProcedure, QString addon)
 {
     QString message;
     // First generate the error text
@@ -59,14 +59,13 @@ void ErrorMessage::showMessage(
 
     // Choose a message style
     switch (errorType) {
-    case TYPE_INFO:
+    case Type::Info:
         QMessageBox::information(0, APP_NAME, message);
         break;
-    case TYPE_WARNING:
+    case Type::Warning:
         QMessageBox::warning(0, APP_NAME, message);
         break;
-    case TYPE_CRITICAL:
-    default:
+    case Type::Critical:
         QMessageBox::critical(0, APP_NAME, message);
         break;
     }

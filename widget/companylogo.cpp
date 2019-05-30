@@ -61,6 +61,7 @@ void CompanyLogo::loadLogo(bool white)
     if (!logo.load(":/img/logo_" + logoColor + ".png")) {
         // Error message
         ErrorMessage* errorMessage = new ErrorMessage(this);
-        errorMessage->showMessage(ERR_LOGO_PIC, TYPE_WARNING, CANCEL_OPERATION);
+        errorMessage->showMessage(
+            ERR_LOGO_PIC, ErrorMessage::Type::Warning, CANCEL_OPERATION);
     }
 }

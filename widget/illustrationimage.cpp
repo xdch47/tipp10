@@ -41,7 +41,8 @@ IllustrationImage::IllustrationImage(
     if (!loadImage(filename)) {
         // Error message
         ErrorMessage* errorMessage = new ErrorMessage(this);
-        errorMessage->showMessage(ERR_LOGO_PIC, TYPE_WARNING, CANCEL_OPERATION);
+        errorMessage->showMessage(
+            ERR_LOGO_PIC, ErrorMessage::Type::Warning, CANCEL_OPERATION);
     }
     // Set widget size to image size (fixed)
     setFixedSize(image.width(), image.height());

@@ -252,8 +252,8 @@ void CharTableSql::deleteUserChars()
         if (!userSql->deleteUserChars()) {
             // Error message
             ErrorMessage* errorMessage = new ErrorMessage(this);
-            errorMessage->showMessage(
-                ERR_USER_ERRORS_FLUSH, TYPE_WARNING, CANCEL_OPERATION);
+            errorMessage->showMessage(ERR_USER_ERRORS_FLUSH,
+                ErrorMessage::Type::Warning, CANCEL_OPERATION);
             return;
         }
         setQueryOrder("", 0);
