@@ -26,50 +26,54 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 
 #include <QPainter>
 
-#include "illustrationimage.h"
 #include "def/defines.h"
 #include "def/errordefines.h"
 #include "errormessage.h"
+#include "illustrationimage.h"
 
-IllustrationImage::IllustrationImage(QString filename, QString version, QWidget *parent) : QWidget(parent) {
-	imageName = filename;
-	versionLabel = version;
-	// Load the company logo
-	if (!loadImage(filename)) {
-		// Error message
-		ErrorMessage *errorMessage = new ErrorMessage(this);
-		errorMessage->showMessage(ERR_LOGO_PIC, TYPE_WARNING,
-			CANCEL_OPERATION);
-	}
-	// Set widget size to image size (fixed)
+IllustrationImage::IllustrationImage(
+    QString filename, QString version, QWidget* parent)
+    : QWidget(parent)
+{
+    imageName = filename;
+    versionLabel = version;
+    // Load the company logo
+    if (!loadImage(filename)) {
+        // Error message
+        ErrorMessage* errorMessage = new ErrorMessage(this);
+        errorMessage->showMessage(ERR_LOGO_PIC, TYPE_WARNING, CANCEL_OPERATION);
+    }
+    // Set widget size to image size (fixed)
     setFixedSize(image.width(), image.height());
     setMinimumSize(image.width(), image.height());
 }
 
-void IllustrationImage::paintEvent(QPaintEvent *revent) {
-	QPainter painter(this);
-	// Draw the image in the left top corner of the widget
-	painter.drawImage(0, 0, image);
-	if (imageName.left(5) == "about" && versionLabel != "") {
-		#if APP_WIN
-		painter.drawText(360, 10, 150, 100, Qt::AlignLeft | Qt::AlignTop | Qt::TextWordWrap,
-			versionLabel);
-		#endif
-		#if APP_MAC
-		painter.drawText(340, 10, 150, 100, Qt::AlignLeft | Qt::AlignTop | Qt::TextWordWrap,
-			versionLabel);
-		#endif
-		#if APP_X11
-		painter.drawText(300, 10, 170, 100, Qt::AlignLeft | Qt::AlignTop | Qt::TextWordWrap,
-			versionLabel);
-		#endif
-	}
+void IllustrationImage::paintEvent(QPaintEvent* revent)
+{
+    QPainter painter(this);
+    // Draw the image in the left top corner of the widget
+    painter.drawImage(0, 0, image);
+    if (imageName.left(5) == "about" && versionLabel != "") {
+#if APP_WIN
+        painter.drawText(360, 10, 150, 100,
+            Qt::AlignLeft | Qt::AlignTop | Qt::TextWordWrap, versionLabel);
+#endif
+#if APP_MAC
+        painter.drawText(340, 10, 150, 100,
+            Qt::AlignLeft | Qt::AlignTop | Qt::TextWordWrap, versionLabel);
+#endif
+#if APP_X11
+        painter.drawText(300, 10, 170, 100,
+            Qt::AlignLeft | Qt::AlignTop | Qt::TextWordWrap, versionLabel);
+#endif
+    }
 }
 
-bool IllustrationImage::loadImage(QString filename) {
-	// Load the image
-	if (!image.load(":/img/" + filename)) {
-		return false;
-	}
-	return true;
+bool IllustrationImage::loadImage(QString filename)
+{
+    // Load the image
+    if (!image.load(":/img/" + filename)) {
+        return false;
+    }
+    return true;
 }

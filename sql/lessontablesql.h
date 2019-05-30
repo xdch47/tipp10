@@ -24,86 +24,82 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 **
 ****************************************************************/
 
-
-#include <QWidget>
-#include <QSqlQueryModel>
+#include <QChar>
+#include <QComboBox>
 #include <QHeaderView>
+#include <QLabel>
+#include <QList>
+#include <QModelIndex>
+#include <QPushButton>
+#include <QSqlQuery>
+#include <QSqlQueryModel>
 #include <QTableView>
 #include <QVariant>
-#include <QModelIndex>
-#include <QLabel>
-#include <QPushButton>
-#include <QComboBox>
-#include <QList>
-#include <QChar>
-#include <QSqlQuery>
+#include <QWidget>
 
 #ifndef LESSONSQLMODEL_H
 #define LESSONSQLMODEL_H
 
-
 //! The LessonSqlModel class provides a table model to format cells.
 /*!
-	@author Tom Thielicke, s712715
-	@version 0.0.7
-	@date 21.06.2006
+        @author Tom Thielicke, s712715
+        @version 0.0.7
+        @date 21.06.2006
 */
 
 class LessonSqlModel : public QSqlQueryModel {
-	Q_OBJECT
+    Q_OBJECT
 
-	public:
-		LessonSqlModel(int row, int type, QWidget *parent = 0);
-		int lastIdInserted;
+public:
+    LessonSqlModel(int row, int type, QWidget* parent = 0);
+    int lastIdInserted;
 
-	private:
-		int lastTypeInserted;
-		QVariant data(const QModelIndex &item, int role) const;
-		QWidget *parentWidget;
-		QString language;
+private:
+    int lastTypeInserted;
+    QVariant data(const QModelIndex& item, int role) const;
+    QWidget* parentWidget;
+    QString language;
 };
 
 #endif // LESSONSQLMODEL_H
-
 
 #ifndef LESSONTABLESQL_H
 #define LESSONTABLESQL_H
 
 //! The LessonTableSql class provides a table widget with lessons.
 /*!
-	@author Tom Thielicke, s712715
-	@version 0.0.2
-	@date 16.06.2006
+        @author Tom Thielicke, s712715
+        @version 0.0.2
+        @date 16.06.2006
 */
 class LessonTableSql : public QWidget {
-	Q_OBJECT
+    Q_OBJECT
 
-	public:
-		LessonTableSql(int row, int type, QList<QChar> charlist,
-			QList<int> mistakelist, QWidget *parent = 0);
+public:
+    LessonTableSql(int row, int type, QList<QChar> charlist,
+        QList<int> mistakelist, QWidget* parent = 0);
 
-	private slots:
-		void sortColumn(int i);
-		void changeFilter(int rowindex);
+private slots:
+    void sortColumn(int i);
+    void changeFilter(int rowindex);
 
-	private:
-        void setModelHeader();
-		QLabel *labelFilter;
-		QComboBox *comboFilter;
-		LessonSqlModel *model;
-		QTableView *view;
-		QHeaderView *headerview;
-		QVariant data(const QModelIndex &item, int role) const;
-		void setQueryOrder(QString columnname, int isdesc);
-		int previousColumnIndex;
-		QString columnName;
-		QString whereClausel;
-		int isDesc;
-		bool printVisible;
-		QList<QChar> charList;
-		QList<int> mistakeList;
-		int lessonRow;
-
+private:
+    void setModelHeader();
+    QLabel* labelFilter;
+    QComboBox* comboFilter;
+    LessonSqlModel* model;
+    QTableView* view;
+    QHeaderView* headerview;
+    QVariant data(const QModelIndex& item, int role) const;
+    void setQueryOrder(QString columnname, int isdesc);
+    int previousColumnIndex;
+    QString columnName;
+    QString whereClausel;
+    int isDesc;
+    bool printVisible;
+    QList<QChar> charList;
+    QList<int> mistakeList;
+    int lessonRow;
 };
 
 #endif // LESSONTABLESQL_H

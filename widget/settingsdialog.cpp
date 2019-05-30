@@ -25,33 +25,35 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 ****************************************************************/
 
 #include <QHBoxLayout>
-#include <QVBoxLayout>
 #include <QSettings>
+#include <QVBoxLayout>
 
-#include "settingsdialog.h"
-#include "sql/startsql.h"
-#include "sql/connection.h"
+#include "def/defines.h"
 #include "def/errordefines.h"
 #include "errormessage.h"
-#include "def/defines.h"
+#include "settingsdialog.h"
+#include "sql/connection.h"
+#include "sql/startsql.h"
 
-SettingsDialog::SettingsDialog(QWidget *parent) : QDialog(parent) {
+SettingsDialog::SettingsDialog(QWidget* parent)
+    : QDialog(parent)
+{
 
-	setWindowFlags(windowFlags() ^ Qt::WindowContextHelpButtonHint);
+    setWindowFlags(windowFlags() ^ Qt::WindowContextHelpButtonHint);
 
-	contentsWidget = new QListWidget;
+    contentsWidget = new QListWidget;
     contentsWidget->setViewMode(QListView::IconMode);
     contentsWidget->setIconSize(QSize(96, 49));
     contentsWidget->setMovement(QListView::Static);
     contentsWidget->setMinimumWidth(120);
-    contentsWidget->setMaximumWidth(120); //128
+    contentsWidget->setMaximumWidth(120); // 128
     contentsWidget->setMinimumHeight(308);
     contentsWidget->setSpacing(6);
 
-	trainingPage = new TrainingPage;
-	databasePage = new DatabasePage;
-	otherPage = new OtherPage;
-	languagePage = new LanguagePage;
+    trainingPage = new TrainingPage;
+    databasePage = new DatabasePage;
+    otherPage = new OtherPage;
+    languagePage = new LanguagePage;
 
     pagesWidget = new QStackedWidget;
     pagesWidget->addWidget(trainingPage);
@@ -59,31 +61,31 @@ SettingsDialog::SettingsDialog(QWidget *parent) : QDialog(parent) {
     pagesWidget->addWidget(databasePage);
     pagesWidget->addWidget(otherPage);
 
-	//Buttons
-	buttonCancel = new QPushButton(tr("&Abbrechen"));
-	buttonSave = new QPushButton(tr("&Speichern"));
-	buttonHelp = new QPushButton(tr("&Hilfe"));
-	buttonSave->setDefault(true);
+    // Buttons
+    buttonCancel = new QPushButton(tr("&Abbrechen"));
+    buttonSave = new QPushButton(tr("&Speichern"));
+    buttonHelp = new QPushButton(tr("&Hilfe"));
+    buttonSave->setDefault(true);
 
     createIcons();
     contentsWidget->setCurrentRow(0);
 
     connect(buttonSave, SIGNAL(clicked()), this, SLOT(clickSave()));
-	connect(buttonCancel, SIGNAL(clicked()), this, SLOT(reject()));
+    connect(buttonCancel, SIGNAL(clicked()), this, SLOT(reject()));
     connect(buttonHelp, SIGNAL(clicked()), this, SLOT(showHelp()));
 
-	QHBoxLayout *horizontalLayout = new QHBoxLayout;
+    QHBoxLayout* horizontalLayout = new QHBoxLayout;
     horizontalLayout->addWidget(contentsWidget);
     horizontalLayout->addWidget(pagesWidget, 1);
 
-    QHBoxLayout *buttonsLayout = new QHBoxLayout;
+    QHBoxLayout* buttonsLayout = new QHBoxLayout;
     buttonsLayout->addStretch(1);
     buttonsLayout->addWidget(buttonCancel);
     buttonsLayout->addSpacing(10);
     buttonsLayout->addWidget(buttonHelp);
     buttonsLayout->addWidget(buttonSave);
 
-    QVBoxLayout *mainLayout = new QVBoxLayout;
+    QVBoxLayout* mainLayout = new QVBoxLayout;
     mainLayout->addLayout(horizontalLayout);
     mainLayout->addStretch(1);
     mainLayout->addSpacing(6);
@@ -93,95 +95,103 @@ SettingsDialog::SettingsDialog(QWidget *parent) : QDialog(parent) {
     readSettings();
 
     setWindowTitle(tr("Grundeinstellungen"));
-	setWindowIcon(QIcon(":/img/" + QString(ICON_FILENAME)));
+    setWindowIcon(QIcon(":/img/" + QString(ICON_FILENAME)));
 
     buttonSave->setFocus();
-
 }
 
-void SettingsDialog::createIcons() {
+void SettingsDialog::createIcons()
+{
 
-    QListWidgetItem *buttonTraining = new QListWidgetItem(contentsWidget);
+    QListWidgetItem* buttonTraining = new QListWidgetItem(contentsWidget);
     buttonTraining->setIcon(QIcon(":/img/config_1.png"));
     buttonTraining->setText(tr("Schreibtraining"));
     buttonTraining->setTextAlignment(Qt::AlignHCenter);
     buttonTraining->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 
-    QListWidgetItem *buttonLanguage = new QListWidgetItem(contentsWidget);
+    QListWidgetItem* buttonLanguage = new QListWidgetItem(contentsWidget);
     buttonLanguage->setIcon(QIcon(":/img/config_3.png"));
     buttonLanguage->setText(tr("Sprache"));
     buttonLanguage->setTextAlignment(Qt::AlignHCenter);
     buttonLanguage->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 
-    QListWidgetItem *buttonDatabase = new QListWidgetItem(contentsWidget);
+    QListWidgetItem* buttonDatabase = new QListWidgetItem(contentsWidget);
     buttonDatabase->setIcon(QIcon(":/img/config_2.png"));
     buttonDatabase->setText(tr("Lernstatistik"));
     buttonDatabase->setTextAlignment(Qt::AlignHCenter);
     buttonDatabase->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 
-    QListWidgetItem *buttonOther = new QListWidgetItem(contentsWidget);
+    QListWidgetItem* buttonOther = new QListWidgetItem(contentsWidget);
     buttonOther->setIcon(QIcon(":/img/config_4.png"));
     buttonOther->setText(tr("Sonstiges"));
     buttonOther->setTextAlignment(Qt::AlignHCenter);
     buttonOther->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 
     connect(contentsWidget,
-            SIGNAL(currentItemChanged(QListWidgetItem *, QListWidgetItem *)),
-            this, SLOT(changePage(QListWidgetItem *, QListWidgetItem*)));
+        SIGNAL(currentItemChanged(QListWidgetItem*, QListWidgetItem*)), this,
+        SLOT(changePage(QListWidgetItem*, QListWidgetItem*)));
 }
 
-void SettingsDialog::changePage(QListWidgetItem *current, QListWidgetItem *previous) {
+void SettingsDialog::changePage(
+    QListWidgetItem* current, QListWidgetItem* previous)
+{
     if (!current) {
         current = previous;
-	}
+    }
 
     pagesWidget->setCurrentIndex(contentsWidget->row(current));
 }
 
-void SettingsDialog::clickSave() {
-	buttonSave->setText(tr("Bitte warten"));
+void SettingsDialog::clickSave()
+{
+    buttonSave->setText(tr("Bitte warten"));
     buttonSave->setEnabled(false);
     writeSettings();
-	trainingPage->writeSettings();
-	databasePage->writeSettings();
-	bool requireRestartLanguage = languagePage->writeSettings();
-	bool requireRestartOther = otherPage->writeSettings();
-	if (requireRestartLanguage ||
-		requireRestartOther) {
-		QMessageBox::information(this, APP_NAME,
-			tr("Einige der Einstellungen werden erst nach einem Neustart "
-			"der Software wirksam.\n"));
-	}
-	if (createConnection()) {
-		this->accept();
-	}
+    trainingPage->writeSettings();
+    databasePage->writeSettings();
+    bool requireRestartLanguage = languagePage->writeSettings();
+    bool requireRestartOther = otherPage->writeSettings();
+    if (requireRestartLanguage || requireRestartOther) {
+        QMessageBox::information(this, APP_NAME,
+            tr("Einige der Einstellungen werden erst nach einem Neustart "
+               "der Software wirksam.\n"));
+    }
+    if (createConnection()) {
+        this->accept();
+    }
 }
 
-void SettingsDialog::showHelp() {
-	helpBrowser = new HelpBrowser("settings.html", this);
-	helpBrowser->show();
+void SettingsDialog::showHelp()
+{
+    helpBrowser = new HelpBrowser("settings.html", this);
+    helpBrowser->show();
 }
 
-void SettingsDialog::readSettings() {
-    #if APP_PORTABLE
-    QSettings settings(QCoreApplication::applicationDirPath() +
-        "/portable/settings.ini", QSettings::IniFormat);
-    #else
+void SettingsDialog::readSettings()
+{
+#if APP_PORTABLE
+    QSettings settings(
+        QCoreApplication::applicationDirPath() + "/portable/settings.ini",
+        QSettings::IniFormat);
+#else
     QSettings settings;
-    #endif
+#endif
     settings.beginGroup("settings");
-    contentsWidget->setCurrentRow(settings.value("current_settings_item", 0).toInt());
+    contentsWidget->setCurrentRow(
+        settings.value("current_settings_item", 0).toInt());
     pagesWidget->setCurrentIndex(contentsWidget->currentRow());
     settings.endGroup();
 }
 
-void SettingsDialog::writeSettings() {
-    #if APP_PORTABLE
-    QSettings settings(QCoreApplication::applicationDirPath() +
-        "/portable/settings.ini", QSettings::IniFormat);
-    #else
+void SettingsDialog::writeSettings()
+{
+#if APP_PORTABLE
+    QSettings settings(
+        QCoreApplication::applicationDirPath() + "/portable/settings.ini",
+        QSettings::IniFormat);
+#else
     QSettings settings;
-    #endif
+#endif
     settings.beginGroup("settings");
     settings.setValue("current_settings_item", contentsWidget->currentRow());
     settings.endGroup();

@@ -27,70 +27,68 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 #ifndef HELPBROWSER_H
 #define HELPBROWSER_H
 
-#include <QString>
 #include <QDialog>
-#include <QWidget>
-#include <QPushButton>
-#include <QTextBrowser>
 #include <QLineEdit>
+#include <QPushButton>
+#include <QString>
+#include <QTextBrowser>
+#include <QWidget>
 
 //! The HelpBrowser class provides a program settings widget.
 /*!
-	The HelpBrowser class shows three program settings. Setting the
-	layout of the virtual keyboard, setting the ticker speed and font
-	and doing a reset of the user tables.
+        The HelpBrowser class shows three program settings. Setting the
+        layout of the virtual keyboard, setting the ticker speed and font
+        and doing a reset of the user tables.
 
-	@author Tom Thielicke, s712715
-	@version 0.0.3
-	@date 18.06.2006
+        @author Tom Thielicke, s712715
+        @version 0.0.3
+        @date 18.06.2006
 */
 class HelpBrowser : public QDialog {
-	Q_OBJECT
+    Q_OBJECT
 
-	public:
+public:
+    //! Constructor, creates two table objects and provide it in two tabs.
+    /*!
+            In this contructor three groups are created over functions
+            createGroupKeyboardLayout(), createGroupUserReset() and
+            createGroupTickerFont(). In addition, standard settings are read,
+            standard font is set and connections are set.
 
-		//! Constructor, creates two table objects and provide it in two tabs.
-		/*!
-			In this contructor three groups are created over functions
-			createGroupKeyboardLayout(), createGroupUserReset() and
-			createGroupTickerFont(). In addition, standard settings are read,
-			standard font is set and connections are set.
+            @param parent The parent QWidget
+            @see createGroupKeyboardLayout(), createGroupUserReset(),
+                    createGroupTickerFont(), readSettings(),
+                    tickerFont
+    */
+    HelpBrowser(QString link, QWidget* parent = 0);
 
-			@param parent The parent QWidget
-			@see createGroupKeyboardLayout(), createGroupUserReset(),
-				createGroupTickerFont(), readSettings(),
-				tickerFont
-		*/
-		HelpBrowser(QString link, QWidget *parent = 0);
+public slots:
 
-	public slots:
+private slots:
 
-	private slots:
+    //! Start button pressed
+    void clickClose();
 
-		//! Start button pressed
-		void clickClose();
+    void clickPrint();
 
-        void clickPrint();
+    void changePage(QUrl url);
 
-		void changePage(QUrl url);
+private:
+    //! Creates a cancel and a save button.
+    void createButtons();
 
-	private:
+    //! Creates the layout of the complete class.
+    void createLayout();
 
-		//! Creates a cancel and a save button.
-		void createButtons();
+    //! Reads all user settings.
+    void readSettings();
 
-		//! Creates the layout of the complete class.
-		void createLayout();
-
-		//! Reads all user settings.
-		void readSettings();
-
-		QPushButton *buttonClose;
-		QPushButton *buttonBack;
-		QPushButton *buttonHome;
-		QTextBrowser *textBrowser;
-        QPushButton *buttonPrint;
-		QString language;
+    QPushButton* buttonClose;
+    QPushButton* buttonBack;
+    QPushButton* buttonHome;
+    QTextBrowser* textBrowser;
+    QPushButton* buttonPrint;
+    QString language;
 };
 
-#endif //HELPBROWSER_H
+#endif // HELPBROWSER_H

@@ -28,51 +28,49 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 #define LESSONPRINTDIALOG_H
 
 #include <QDialog>
-#include <QWidget>
-#include <QPushButton>
 #include <QLabel>
 #include <QLineEdit>
+#include <QPushButton>
 #include <QString>
+#include <QWidget>
 
 //! The LessonPrintDialog class provides a user input widget.
 /*!
-	The LessonPrintDialog class shows a user name input for printing.
+        The LessonPrintDialog class shows a user name input for printing.
 
-	@author Tom Thielicke, s712715
-	@version 0.0.1
-	@date 09.09.2008
+        @author Tom Thielicke, s712715
+        @version 0.0.1
+        @date 09.09.2008
 */
 class LessonPrintDialog : public QDialog {
-	Q_OBJECT
+    Q_OBJECT
 
-	public:
+public:
+    //! Constructor, creates two table objects and provide it in two tabs.
+    LessonPrintDialog(QString* enteredName, QWidget* parent = 0);
 
-		//! Constructor, creates two table objects and provide it in two tabs.
-		LessonPrintDialog(QString *enteredName, QWidget *parent = 0);
+public slots:
 
-	public slots:
+private slots:
 
-	private slots:
+    //! Start button pressed
+    void clickOk();
 
-		//! Start button pressed
-		void clickOk();
+private:
+    //! Creates a cancel and a ok button.
+    void createButtons();
 
-	private:
+    //! Creates a textbox.
+    void createLineEdit();
 
-		//! Creates a cancel and a ok button.
-		void createButtons();
+    //! Creates the layout of the complete class.
+    void createLayout();
 
-		//! Creates a textbox.
-		void createLineEdit();
-
-		//! Creates the layout of the complete class.
-		void createLayout();
-
-		QPushButton *buttonOk;
-		QPushButton *buttonCancel;
-		QLabel *labelName;
-		QLineEdit *lineName;
-		QString *userName;
+    QPushButton* buttonOk;
+    QPushButton* buttonCancel;
+    QLabel* labelName;
+    QLineEdit* lineName;
+    QString* userName;
 };
 
-#endif //LESSONPRINTDIALOG_H
+#endif // LESSONPRINTDIALOG_H

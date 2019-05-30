@@ -27,306 +27,302 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 #ifndef TICKERBOARD_H
 #define TICKERBOARD_H
 
-#include <QWidget>
 #include <QChar>
-#include <QString>
-#include <QShowEvent>
-#include <QHideEvent>
-#include <QPaintEvent>
-#include <QTimer>
-#include <QFont>
 #include <QColor>
-#include <QPixmap>
+#include <QFont>
+#include <QHideEvent>
 #include <QImage>
-#include <QStringList>
 #include <QKeyEvent>
+#include <QPaintEvent>
+#include <QPixmap>
+#include <QShowEvent>
+#include <QString>
+#include <QStringList>
+#include <QTimer>
+#include <QWidget>
 
 //! The TickerBoard class provides a text ticker widget.
 /*!
-	The TickerBoard class provides a text ticker widget. The text can be set
-	and update. It counts the tokens a requests new text if nessesary.
+        The TickerBoard class provides a text ticker widget. The text can be set
+        and update. It counts the tokens a requests new text if nessesary.
 
-	@author Tom Thielicke, s712715
-	@version 0.2.4
-	@date 01.07.2006
+        @author Tom Thielicke, s712715
+        @version 0.2.4
+        @date 01.07.2006
 */
 class TickerBoard : public QWidget {
     Q_OBJECT
 
-	public:
+public:
+    //! Constructor, creates a status bar with three text parts.
+    /*!
+            In this contructor the following variables are initialized:
+                    - txtCurrentLesson = "";
+                    - txtCompleteLesson = "";
+                    - counterCurrentLesson = 0;
+                    - counterCompleteLesson = 0;
+                    - counterRow = 0;
+                    - lengthCurrentLesson = 0;
+                    - lengthCompleteLesson = 0;
+                    - txtPause = "";
+                    - lessonOffset = 0;
+                    - scrollOffset = 0;
+                    - widthSelection = 0;
+                    - widthCurrentLesson = 0;
+                    - startFlag = false;
 
-		//! Constructor, creates a status bar with three text parts.
-		/*!
-			In this contructor the following variables are initialized:
-				- txtCurrentLesson = "";
-				- txtCompleteLesson = "";
-				- counterCurrentLesson = 0;
-				- counterCompleteLesson = 0;
-				- counterRow = 0;
-				- lengthCurrentLesson = 0;
-				- lengthCompleteLesson = 0;
-				- txtPause = "";
-				- lessonOffset = 0;
-				- scrollOffset = 0;
-				- widthSelection = 0;
-				- widthCurrentLesson = 0;
-				- startFlag = false;
+            In addition, the image "tickerbg.png" is loaded to variable
+            background, settings are read and a timer signal is connected
+            to the slot progress()
 
-			In addition, the image "tickerbg.png" is loaded to variable
-			background, settings are read and a timer signal is connected
-			to the slot progress()
+            @param parent The parent QWidget
+            @see readSettings(), txtCurrentLesson, txtCompleteLesson,
+                    counterCurrentLesson, counterCompleteLesson, counterRow,
+                    lengthCurrentLesson, lengthCompleteLesson, txtPause,
+                    lessonOffset, scrollOffset, widthSelection,
+       widthCurrentLesson, startFlag, colorSelection, tickerFont, background
+    */
+    TickerBoard(QWidget* parent = 0);
 
-			@param parent The parent QWidget
-			@see readSettings(), txtCurrentLesson, txtCompleteLesson,
-				counterCurrentLesson, counterCompleteLesson, counterRow,
-				lengthCurrentLesson, lengthCompleteLesson, txtPause,
-				lessonOffset, scrollOffset, widthSelection, widthCurrentLesson,
-				startFlag, colorSelection, tickerFont, background
-		*/
-		TickerBoard(QWidget *parent = 0);
+    //! Sets the ticker speed (timer intervall).
+    /*!
+            @param speed The ticker speed
+            @see tickerSpeed, timer
+    */
+    void setSpeed(int speed);
 
-		//! Sets the ticker speed (timer intervall).
-		/*!
-			@param speed The ticker speed
-			@see tickerSpeed, timer
-		*/
-		void setSpeed(int speed);
+signals:
 
-	signals:
+    //! Signal, emits a signal if current char has changed.
+    /*!
+            @param newChar The new char
+            @see getNewChar()
+    */
+    void charChanged(QChar newChar);
 
-		//! Signal, emits a signal if current char has changed.
-		/*!
-			@param newChar The new char
-			@see getNewChar()
-		*/
-		void charChanged(QChar newChar);
+    //! Signal, emits a signal if new text is necessary.
+    void updateRequired();
 
-		//! Signal, emits a signal if new text is necessary.
-		void updateRequired();
+    //! Signal, emits a signal if lesson is ready.
+    void isReady();
 
-		//! Signal, emits a signal if lesson is ready.
-		void isReady();
+    //! Signal, emits the char of the current pressed key
+    /*!
+            After a key was pressed, this signal is emitted with the unicode
+            char of the pressed key. The signal is used in the function
+            keyPressEvent()
+    */
+    void keyPressed(QChar key);
 
-		//! Signal, emits the char of the current pressed key
-		/*!
-			After a key was pressed, this signal is emitted with the unicode
-			char of the pressed key. The signal is used in the function
-			keyPressEvent()
-		*/
-		void keyPressed(QChar key);
+public slots:
 
-	public slots:
+    //! Slot, refreshes the variables and starts the ticker.
+    /*!
+            @see charChanged(), lengthCompleteLesson, txtCompleteLesson,
+                    tickerFont, widthSelection, txtCurrentLesson,
+                    counterCurrentLesson, widthCurrentLesson, newChar,
+                    startFlag
+    */
+    void startTicker(bool wasPaused = false);
 
-		//! Slot, refreshes the variables and starts the ticker.
-		/*!
-			@see charChanged(), lengthCompleteLesson, txtCompleteLesson,
-				tickerFont, widthSelection, txtCurrentLesson,
-				counterCurrentLesson, widthCurrentLesson, newChar,
-				startFlag
-		*/
-        void startTicker(bool wasPaused = false);
+    //! Slot, pauses the ticker and shows an pause test.
+    /*!
+            @param txt Pause text
+            @see startFlag, txtPause
+    */
+    void pauseTicker(QString txt = tr("Leertaste setzt das "
+                                      "Diktat fort"));
 
-		//! Slot, pauses the ticker and shows an pause test.
-		/*!
-			@param txt Pause text
-			@see startFlag, txtPause
-		*/
-		void pauseTicker(QString txt = tr("Leertaste setzt das "
-			"Diktat fort"));
+    //! Slot, sets the text of the ticker.
+    /*!
+            @param txt Ticker text
+            @see splitLesson(), checkUpdateRequired(), txtCompleteLesson
+    */
+    void setTicker(QString txt = "");
 
-		//! Slot, sets the text of the ticker.
-		/*!
-			@param txt Ticker text
-			@see splitLesson(), checkUpdateRequired(), txtCompleteLesson
-		*/
-		void setTicker(QString txt = "");
+    //! Slot, extends the text of the ticker.
+    /*!
+            @param txt Ticker extend text
+            @param seperator Text seperator
+            @see splitLesson(), checkUpdateRequired(), txtCompleteLesson
+    */
+    void extendTicker(QString txt = "", QString seperator = "");
 
-		//! Slot, extends the text of the ticker.
-		/*!
-			@param txt Ticker extend text
-			@param seperator Text seperator
-			@see splitLesson(), checkUpdateRequired(), txtCompleteLesson
-		*/
-		void extendTicker(QString txt = "", QString seperator = "");
+    //! Slot, changes the current char of the text.
+    /*!
+            @see changeChar(), startFlag, colorSelection
+    */
+    void getNewChar();
 
-		//! Slot, changes the current char of the text.
-		/*!
-			@see changeChar(), startFlag, colorSelection
-		*/
-		void getNewChar();
+    //! Slot, changes the color of the selection (type error).
+    /*!
+            @see colorSelection
+    */
+    void setErrorSelection();
 
-		//! Slot, changes the color of the selection (type error).
-		/*!
-			@see colorSelection
-		*/
-		void setErrorSelection();
+    //! Slot, removes the error selection.
+    /*!
+            @see colorSelection
+    */
+    void clearErrorSelection();
 
-		//! Slot, removes the error selection.
-		/*!
-			@see colorSelection
-		*/
-		void clearErrorSelection();
+private slots:
 
-	private slots:
+    //! Slot, moves the ticker.
+    /*!
+            This slot moves the ticker 1 pix to the left. If difference
+            of lessonOffset and scrollOffset is bigger 160 pixel the
+            ticker scrolls faster.
 
-		//! Slot, moves the ticker.
-		/*!
-			This slot moves the ticker 1 pix to the left. If difference
-			of lessonOffset and scrollOffset is bigger 160 pixel the
-			ticker scrolls faster.
+            @see scrollOffset, lessonOffset
+    */
+    void progress();
 
-			@see scrollOffset, lessonOffset
-		*/
-		void progress();
+protected:
+    //! Starts the timer.
+    /*!
+            This function is called at the beginning and starts the timer
+            with a timer intervall tickerSpeed.
 
-	protected:
+            @see tickerSpeed
+    */
+    void showEvent(QShowEvent*) { timer.start(40); }
 
-		//! Starts the timer.
-		/*!
-			This function is called at the beginning and starts the timer
-			with a timer intervall tickerSpeed.
+    //! Stops the timer.
+    /*!
+            This function is called in the end and stops the timer.
+    */
+    void hideEvent(QHideEvent*) { timer.stop(); }
 
-			@see tickerSpeed
-		*/
-		void showEvent(QShowEvent*) { timer.start(40); }
+    //! Draws the ticker and the current text with a char selection.
+    /*!
+            This function is called in the end and stops the timer.
 
-		//! Stops the timer.
-		/*!
-			This function is called in the end and stops the timer.
-		*/
-		void hideEvent(QHideEvent*) { timer.stop(); }
+            @param event The paint event
+            @see startFlag, tickerFont, colorSelection, scrollOffset,
+                    lessonOffset, widthCurrentLesson, txtCurrentLesson,
+                    txtPause, background
+    */
+    void paintEvent(QPaintEvent* event);
 
-		//! Draws the ticker and the current text with a char selection.
-		/*!
-			This function is called in the end and stops the timer.
+    //! Keyevent, reacts on every key press and emits the unicode char.
+    /*!
+            The keyevent detect a pressed key, the function then reads the full
+            QString of the pressed key. It represents exactly the value which
+            the user type in, thus inclusive the possibly pressed modifier.
+            To know if there was only pressed a modifier we have to check if
+            the QString is empty.
+            After that only a QChar (the first index of the QString) is emitted
+            over the function keyPressed().
+            It is necessary to do that not only if the keyboard is started
+            because we must also register a pressed space key to start the
+            keyboard i.e. over a pressed space key.
 
-			@param event The paint event
-			@see startFlag, tickerFont, colorSelection, scrollOffset,
-				lessonOffset, widthCurrentLesson, txtCurrentLesson,
-				txtPause, background
-		*/
-		void paintEvent(QPaintEvent *event);
+            @param event Event of keyboard
+            @see keyPressed()
+    */
+    void keyPressEvent(QKeyEvent* event);
 
-		//! Keyevent, reacts on every key press and emits the unicode char.
-		/*!
-			The keyevent detect a pressed key, the function then reads the full
-			QString of the pressed key. It represents exactly the value which
-			the user type in, thus inclusive the possibly pressed modifier.
-			To know if there was only pressed a modifier we have to check if
-			the QString is empty.
-			After that only a QChar (the first index of the QString) is emitted
-			over the function keyPressed().
-			It is necessary to do that not only if the keyboard is started
-			because we must also register a pressed space key to start the
-			keyboard i.e. over a pressed space key.
+private:
+    //! Chances the current char selection to the next char.
+    /*!
+            This function changes the current char selection and
+            emits the slot charChanged. After that it checks
+            whether a new text is required.
 
-			@param event Event of keyboard
-			@see keyPressed()
-		*/
-		void keyPressEvent(QKeyEvent *event);
+            @see isReady(), charChanged(), checkUpdateRequired(),
+                    counterCurrentLesson, counterCompleteLesson, txtPause,
+                    startFlag, lengthCompleteLesson, lengthCurrentLesson,
+                    lessonOffset, widthSelection, newChar
+    */
+    void changeChar();
 
-	private:
+    //! Splits the text into rows over a fix token.
+    /*!
+            @see counterCurrentLesson, counterCompleteLesson,
+                    lengthCompleteLesson, lengthCurrentLesson
+    */
+    void splitLesson();
 
-		//! Chances the current char selection to the next char.
-		/*!
-			This function changes the current char selection and
-			emits the slot charChanged. After that it checks
-			whether a new text is required.
+    //! Checks whether a new text is required.
+    /*!
+            @see isReady(), charChanged(), checkUpdateRequired(),
+                    counterCurrentLesson, counterCompleteLesson, txtPause,
+                    startFlag, lengthCompleteLesson, lengthCurrentLesson,
+                    lessonOffset, widthSelection, newChar
+    */
+    void checkUpdateRequired();
 
-			@see isReady(), charChanged(), checkUpdateRequired(),
-				counterCurrentLesson, counterCompleteLesson, txtPause,
-				startFlag, lengthCompleteLesson, lengthCurrentLesson,
-				lessonOffset, widthSelection, newChar
-		*/
-		void changeChar();
+    //! Reads all user settings.
+    void readSettings();
 
-		//! Splits the text into rows over a fix token.
-		/*!
-			@see counterCurrentLesson, counterCompleteLesson,
-				lengthCompleteLesson, lengthCurrentLesson
-		*/
-		void splitLesson();
+    //! Flag ticker board is started
+    bool startFlag;
 
-		//! Checks whether a new text is required.
-		/*!
-			@see isReady(), charChanged(), checkUpdateRequired(),
-				counterCurrentLesson, counterCompleteLesson, txtPause,
-				startFlag, lengthCompleteLesson, lengthCurrentLesson,
-				lessonOffset, widthSelection, newChar
-		*/
-		void checkUpdateRequired();
+    //! Text of the current row of the ticker
+    QString txtCurrentLesson;
 
-		//! Reads all user settings.
-		void readSettings();
+    //! Complete Text of the ticker
+    QString txtCompleteLesson;
 
-		//! Flag ticker board is started
-		bool startFlag;
+    //! Counter of chars of the current text
+    int counterCurrentLesson;
 
-		//! Text of the current row of the ticker
-		QString txtCurrentLesson;
+    //! Counter of chars of the complete text
+    int counterCompleteLesson;
 
-		//! Complete Text of the ticker
-		QString txtCompleteLesson;
+    //! Number of chars of the current text
+    int lengthCurrentLesson;
 
-		//! Counter of chars of the current text
-		int counterCurrentLesson;
+    //! Number of chars of the complete text
+    int lengthCompleteLesson;
 
-		//! Counter of chars of the complete text
-		int counterCompleteLesson;
+    //! Counter of the rows
+    int counterRow;
 
-		//! Number of chars of the current text
-		int lengthCurrentLesson;
+    //! Width of until the current char in pix
+    int widthCurrentLesson;
 
-		//! Number of chars of the complete text
-		int lengthCompleteLesson;
+    //! Width of current char selection in pix
+    int widthSelection;
 
-		//! Counter of the rows
-		int counterRow;
+    //! Offset of the lesson in pix
+    int lessonOffset;
 
-		//! Width of until the current char in pix
-		int widthCurrentLesson;
+    //! Offset of the scroll in pix
+    int scrollOffset;
 
-		//! Width of current char selection in pix
-		int widthSelection;
+    int scrollCounter;
 
-		//! Offset of the lesson in pix
-		int lessonOffset;
+    //! List of all text rows
+    QStringList txtLessonSplited;
 
-		//! Offset of the scroll in pix
-		int scrollOffset;
+    //! Pause text
+    QString txtPause;
 
-		int scrollCounter;
+    //! Speed of the ticker
+    int tickerSpeed;
 
-		//! List of all text rows
-		QStringList txtLessonSplited;
+    //! Current speed of the ticker
+    int tickerCurrentSpeed;
 
-		//! Pause text
-		QString txtPause;
+    //! Current char (with char selection)
+    QChar newChar;
 
-		//! Speed of the ticker
-		int tickerSpeed;
+    //! Timer for the ticker move
+    QTimer timer;
 
-		//! Current speed of the ticker
-		int tickerCurrentSpeed;
+    //! Ticker font
+    QFont tickerFont;
 
-		//! Current char (with char selection)
-		QChar newChar;
+    //! Color of the char selection
+    QColor colorFont;
+    QColor colorBg;
+    QColor colorCursor;
+    QColor colorSelection;
 
-		//! Timer for the ticker move
-		QTimer timer;
-
-		//! Ticker font
-		QFont tickerFont;
-
-        //! Color of the char selection
-        QColor colorFont;
-        QColor colorBg;
-        QColor colorCursor;
-        QColor colorSelection;
-
-		//! Background image
-        QPixmap background;
-
+    //! Background image
+    QPixmap background;
 };
 
 #endif // TICKERBOARD_H

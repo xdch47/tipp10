@@ -27,68 +27,66 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 #ifndef TXTMESSAGEDIALOG_H
 #define TXTMESSAGEDIALOG_H
 
-#include <QDialog>
-#include <QWidget>
-#include <QPushButton>
 #include <QCheckBox>
-#include <QString>
+#include <QDialog>
 #include <QLabel>
+#include <QPushButton>
+#include <QString>
+#include <QWidget>
 
 #include "txtmessagedialog.h"
 
 //! The TxtMessageDialog class provides a program settings widget.
 /*!
-	The TxtMessageDialog class shows three program settings. Setting the
-	layout of the virtual keyboard, setting the ticker speed and font
-	and doing a reset of the user tables.
+        The TxtMessageDialog class shows three program settings. Setting the
+        layout of the virtual keyboard, setting the ticker speed and font
+        and doing a reset of the user tables.
 
-	@author Tom Thielicke, s712715
-	@version 0.0.3
-	@date 18.06.2006
+        @author Tom Thielicke, s712715
+        @version 0.0.3
+        @date 18.06.2006
 */
 class TxtMessageDialog : public QDialog {
-	Q_OBJECT
+    Q_OBJECT
 
-	public:
+public:
+    //! Constructor, creates two table objects and provide it in two tabs.
+    /*!
+            In this contructor three groups are created over functions
+            createGroupKeyboardLayout(), createGroupUserReset() and
+            createGroupTickerFont(). In addition, standard settings are read,
+            standard font is set and connections are set.
 
-		//! Constructor, creates two table objects and provide it in two tabs.
-		/*!
-			In this contructor three groups are created over functions
-			createGroupKeyboardLayout(), createGroupUserReset() and
-			createGroupTickerFont(). In addition, standard settings are read,
-			standard font is set and connections are set.
+            @param parent The parent QWidget
+            @see createGroupKeyboardLayout(), createGroupUserReset(),
+                    createGroupTickerFont(), readSettings(),
+                    tickerFont
+    */
+    TxtMessageDialog(QString message, QString title, QString setting = "",
+        QWidget* parent = 0);
 
-			@param parent The parent QWidget
-			@see createGroupKeyboardLayout(), createGroupUserReset(),
-				createGroupTickerFont(), readSettings(),
-				tickerFont
-		*/
-		TxtMessageDialog(QString message, QString title, QString setting = "",
-			QWidget *parent = 0);
+public slots:
 
-	public slots:
+private slots:
 
-	private slots:
+    //! Ok button pressed
+    void clickOk();
 
-		//! Ok button pressed
-		void clickOk();
+private:
+    //! Creates a cancel and a save button.
+    void createButtons();
 
-	private:
+    //! Creates the layout of the complete class.
+    void createLayout();
 
-		//! Creates a cancel and a save button.
-		void createButtons();
+    //! Writes user settings
+    void writeSettings();
 
-		//! Creates the layout of the complete class.
-		void createLayout();
+    QPushButton* buttonOk;
+    QCheckBox* showDialogCheck;
+    QLabel* messageLabel;
 
-		//! Writes user settings
-		void writeSettings();
-
-		QPushButton *buttonOk;
-		QCheckBox *showDialogCheck;
-		QLabel *messageLabel;
-
-		QString settingName;
+    QString settingName;
 };
 
-#endif //TXTMESSAGEDIALOG_H
+#endif // TXTMESSAGEDIALOG_H

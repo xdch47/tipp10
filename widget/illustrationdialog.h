@@ -27,12 +27,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 #ifndef ILLUSTRATIONDIALOG_H
 #define ILLUSTRATIONDIALOG_H
 
-#include <QDialog>
-#include <QWidget>
-#include <QPushButton>
 #include <QCheckBox>
+#include <QDialog>
+#include <QPushButton>
 #include <QString>
 #include <QTextBrowser>
+#include <QWidget>
 
 //! The IllustrationDialog class provides a program settings widget.
 /*!
@@ -47,45 +47,43 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 class IllustrationDialog : public QDialog {
     Q_OBJECT
 
-    public:
+public:
+    //! Constructor, creates an illustration widget.
+    /*!
 
-        //! Constructor, creates an illustration widget.
-        /*!
+        @param parent The parent QWidget
+    */
+    IllustrationDialog(QWidget* parent = 0);
 
-            @param parent The parent QWidget
-        */
-        IllustrationDialog(QWidget *parent = 0);
+public slots:
 
-    public slots:
+private slots:
 
-    private slots:
+    //! Start button pressed
+    void clickStart();
 
-        //! Start button pressed
-        void clickStart();
+private:
+    //! Creates a cancel and a save button.
+    void createButtons();
 
-    private:
+    //! Creates content widget
+    void createContent();
 
-        //! Creates a cancel and a save button.
-        void createButtons();
+    //! Creates the layout of the complete class.
+    void createLayout();
 
-        //! Creates content widget
-        void createContent();
+    //! Writes user settings
+    void writeSettings();
 
-        //! Creates the layout of the complete class.
-        void createLayout();
+    //! Reads user settings
+    void readSettings();
 
-        //! Writes user settings
-        void writeSettings();
+    QString languageGui;
 
-        //! Reads user settings
-        void readSettings();
+    QPushButton* buttonStart;
+    QCheckBox* showDialogCheck;
 
-        QString languageGui;
-
-        QPushButton *buttonStart;
-        QCheckBox *showDialogCheck;
-
-        QTextBrowser *illustrationContent;
+    QTextBrowser* illustrationContent;
 };
 
-#endif //ILLUSTRATIONDIALOG_H
+#endif // ILLUSTRATIONDIALOG_H

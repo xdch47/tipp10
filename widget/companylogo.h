@@ -27,66 +27,63 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 #ifndef COMPANYLOGO_H
 #define COMPANYLOGO_H
 
-#include <QWidget>
 #include <QImage>
 #include <QPaintEvent>
+#include <QWidget>
 
 //! The CompanyLogo class provides a company logo widget.
 /*!
-	The CompanyLogo class loads a company image and provide it in a widget.
-	By default a orange logo is load. If parameter white in contructor is true
-	the logo is white (used not be an eye catcher while practice a lesson).
+        The CompanyLogo class loads a company image and provide it in a widget.
+        By default a orange logo is load. If parameter white in contructor is
+   true the logo is white (used not be an eye catcher while practice a lesson).
 
-	@author Tom Thielicke, s712715
-	@version 0.0.4
-	@date 02.06.2006
+        @author Tom Thielicke, s712715
+        @version 0.0.4
+        @date 02.06.2006
 */
 class CompanyLogo : public QWidget {
 
-	public:
+public:
+    //! Constructor: loads the company logo and resizes the widget.
+    /*!
+            In this contructor the function loadLogo is called. If parameter
+            white is set true a white logo will be loaded.
+            At the end the widget size is set to the fixed size of the image.
 
-		//! Constructor: loads the company logo and resizes the widget.
-		/*!
-			In this contructor the function loadLogo is called. If parameter
-			white is set true a white logo will be loaded.
-			At the end the widget size is set to the fixed size of the image.
+            @param parent The parent QWidget
+            @param white Flag to load a white or orange image
+            @see loadLogo
+    */
+    CompanyLogo(QWidget* parent = 0, bool white = false);
 
-			@param parent The parent QWidget
-			@param white Flag to load a white or orange image
-			@see loadLogo
-		*/
-		CompanyLogo(QWidget *parent = 0, bool white = false);
+protected:
+    //! Paintevent, draws the company logo.
+    /*!
+            The paintevent is called every time when the window changes.
+            It draws the logo (that was loaded in variable logo) in the left
+            top corner of the widget.
 
-	protected:
+            @param event Event of the paint function
+            @see logo
+    */
+    void paintEvent(QPaintEvent* event);
 
-		//! Paintevent, draws the company logo.
-		/*!
-			The paintevent is called every time when the window changes.
-			It draws the logo (that was loaded in variable logo) in the left
-			top corner of the widget.
+private:
+    //! Loads the company image in a QImage object logo.
+    /*!
+            This function defines the file name of the logo and load it in the
+            QImage object logo. If white is true the file name is
+       "logo_white.png", if white is false the file name is "logo_orange.png".
+       The files are located in the directory "img/".
 
-			@param event Event of the paint function
-			@see logo
-		*/
-		void paintEvent(QPaintEvent *event);
+            @param white Flag to load a white or orange image
+            @return Bool value
+            @see logo
+    */
+    void loadLogo(bool white);
 
-	private:
-
-		//! Loads the company image in a QImage object logo.
-		/*!
-			This function defines the file name of the logo and load it in the
-			QImage object logo. If white is true the file name is "logo_white.png",
-			if white is false the file name is "logo_orange.png". The files are
-			located in the directory "img/".
-
-			@param white Flag to load a white or orange image
-			@return Bool value
-			@see logo
-		*/
-		void loadLogo(bool white);
-
-		//! Object of the company logo.
-		QImage logo;
+    //! Object of the company logo.
+    QImage logo;
 };
 
 #endif // COMPANYLOGO_H

@@ -28,73 +28,71 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 #define REGEXPDIALOG_H
 
 #include <QDialog>
-#include <QWidget>
 #include <QLabel>
-#include <QPushButton>
 #include <QLineEdit>
+#include <QPushButton>
+#include <QWidget>
 
 #include "helpbrowser.h"
 
 //! The RegExpDialog class provides a keyboard layout regular expression dialog.
 
 class RegExpDialog : public QDialog {
-	Q_OBJECT
+    Q_OBJECT
 
-    public:
+public:
+    RegExpDialog(QString layout, QWidget* parent = 0);
 
-        RegExpDialog(QString layout, QWidget *parent = 0);
+public slots:
 
-	public slots:
+private slots:
 
-	private slots:
+    //! Slot, saves the setting data.
+    /*!
+            After the user clicked the save button, this function saves the
+            settings over function writeSettings() and closes the current
+            dialog.
 
-		//! Slot, saves the setting data.
-		/*!
-			After the user clicked the save button, this function saves the
-			settings over function writeSettings() and closes the current
-			dialog.
+            @see writeSettings()
+    */
+    void clickSave();
 
-			@see writeSettings()
-		*/
-		void clickSave();
+    //! Slot, shows the help dialog.
+    /*!
+            This slot shows the help dialog. It creates an object of
+            the QDialog class with an QTextbrowser.
+    */
+    void getDefault();
 
-		//! Slot, shows the help dialog.
-		/*!
-			This slot shows the help dialog. It creates an object of
-			the QDialog class with an QTextbrowser.
-		*/
-        void getDefault();
+private:
+    //! Reads all user settings.
+    void readSettings();
 
-	private:
+    void writeSettings();
 
-        //! Reads all user settings.
-        void readSettings();
+    //! Creates a cancel and a save button.
+    void createButtons();
 
-        void writeSettings();
+    //! Creates the layout of the complete class.
+    void createLayout();
 
-		//! Creates a cancel and a save button.
-		void createButtons();
+    //! Creates the controls.
+    void createControls();
 
-		//! Creates the layout of the complete class.
-		void createLayout();
+    QLabel* labelRegExp;
+    QLabel* labelReplace;
+    QLabel* labelRegExpHelp;
+    QLabel* labelReplaceHelp;
+    QLineEdit* lineRegExp;
+    QLineEdit* lineReplace;
+    QPushButton* buttonSave;
+    QPushButton* buttonCancel;
+    QPushButton* buttonDefault;
 
-		//! Creates the controls.
-		void createControls();
+    QString currentLayout;
 
-        QLabel *labelRegExp;
-        QLabel *labelReplace;
-        QLabel *labelRegExpHelp;
-        QLabel *labelReplaceHelp;
-        QLineEdit *lineRegExp;
-        QLineEdit *lineReplace;
-		QPushButton *buttonSave;
-		QPushButton *buttonCancel;
-        QPushButton *buttonDefault;
-
-        QString currentLayout;
-
-		//! Object of the help browser dialog
-        HelpBrowser *helpBrowser;
+    //! Object of the help browser dialog
+    HelpBrowser* helpBrowser;
 };
 
-#endif //REGEXPDIALOG_H
+#endif // REGEXPDIALOG_H

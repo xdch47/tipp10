@@ -24,40 +24,43 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 **
 ****************************************************************/
 
-#include <QString>
 #include <QPainter>
+#include <QString>
 
 #include "companylogo.h"
-#include "def/errordefines.h"
 #include "def/defines.h"
+#include "def/errordefines.h"
 #include "errormessage.h"
 
-CompanyLogo::CompanyLogo(QWidget *parent, bool white) : QWidget(parent) {
-	// Load the company logo
-	loadLogo(white);
-	// Set widget size to image size (fixed)
+CompanyLogo::CompanyLogo(QWidget* parent, bool white)
+    : QWidget(parent)
+{
+    // Load the company logo
+    loadLogo(white);
+    // Set widget size to image size (fixed)
     setFixedSize(logo.width(), logo.height());
 }
 
-void CompanyLogo::paintEvent(QPaintEvent *revent) {
-	QPainter painter(this);
-	// Draw the image in the left top corner of the widget
-	painter.drawImage(0, 0, logo);
+void CompanyLogo::paintEvent(QPaintEvent* revent)
+{
+    QPainter painter(this);
+    // Draw the image in the left top corner of the widget
+    painter.drawImage(0, 0, logo);
 }
 
-void CompanyLogo::loadLogo(bool white) {
-	QString logoColor;
-	// Set the color as part of the file name
-	if (white) {
-		logoColor = "white";
-	} else {
-		logoColor = "orange";
-	}
-	// Load the image
-	if (!logo.load(":/img/logo_" + logoColor + ".png")) {
-		// Error message
-		ErrorMessage *errorMessage = new ErrorMessage(this);
-		errorMessage->showMessage(ERR_LOGO_PIC, TYPE_WARNING,
-			CANCEL_OPERATION);
-	}
+void CompanyLogo::loadLogo(bool white)
+{
+    QString logoColor;
+    // Set the color as part of the file name
+    if (white) {
+        logoColor = "white";
+    } else {
+        logoColor = "orange";
+    }
+    // Load the image
+    if (!logo.load(":/img/logo_" + logoColor + ".png")) {
+        // Error message
+        ErrorMessage* errorMessage = new ErrorMessage(this);
+        errorMessage->showMessage(ERR_LOGO_PIC, TYPE_WARNING, CANCEL_OPERATION);
+    }
 }

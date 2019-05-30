@@ -1,18 +1,17 @@
 #ifndef CHARBALL_H
 #define CHARBALL_H
 
+#include <QColor>
 #include <QGraphicsItem>
 #include <QObject>
-#include <QPainterPath>
 #include <QPainter>
-#include <QStyleOptionGraphicsItem>
-#include <QWidget>
-#include <QTimerEvent>
-#include <QColor>
+#include <QPainterPath>
 #include <QRectF>
+#include <QStyleOptionGraphicsItem>
+#include <QTimerEvent>
+#include <QWidget>
 
-class CharBall : public QObject, public QGraphicsItem
-{
+class CharBall : public QObject, public QGraphicsItem {
     Q_OBJECT
     Q_INTERFACES(QGraphicsItem)
 
@@ -21,24 +20,23 @@ public:
 
     QRectF boundingRect() const;
     QPainterPath shape() const;
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
-               QWidget *widget);
-	void destroy();
-	QChar character();
-	double wind;
-	double rad;
-
+    void paint(QPainter* painter, const QStyleOptionGraphicsItem* option,
+        QWidget* widget);
+    void destroy();
+    QChar character();
+    double wind;
+    double rad;
 
 private:
-	void destroying();
+    void destroying();
 
     int currentSpeed;
-	int currentX;
-	int currentY;
-	int currentRadius;
-	int destroyed;
+    int currentX;
+    int currentY;
+    int currentRadius;
+    int destroyed;
     QColor color;
-	QChar currentCharacter;
+    QChar currentCharacter;
 };
 
 #endif // CHARBALL_H

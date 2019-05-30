@@ -24,85 +24,95 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 **
 ****************************************************************/
 
-#include <QPainter>
-#include <QFont>
 #include <QColor>
+#include <QFont>
+#include <QPainter>
 
-#include "statusbar.h"
+#include "def/defines.h"
 #include "def/errordefines.h"
 #include "errormessage.h"
-#include "def/defines.h"
+#include "statusbar.h"
 
-StatusBar::StatusBar(QWidget *parent) : QWidget(parent) {
-	// Init values
-	txtLeftLeft = "";
-	txtLeft = "";
-	txtCenter = "";
-	txtRightRight = "";
-	txtRight = "";
+StatusBar::StatusBar(QWidget* parent)
+    : QWidget(parent)
+{
+    // Init values
+    txtLeftLeft = "";
+    txtLeft = "";
+    txtCenter = "";
+    txtRightRight = "";
+    txtRight = "";
 
-	// Load background image
+    // Load background image
     if (!background.load(":/img/statusbg.png")) {
-		// Error message
-		ErrorMessage *errorMessage = new ErrorMessage(this);
-		errorMessage->showMessage(ERR_STATUS_PIC, TYPE_WARNING,
-			CANCEL_OPERATION);
-	}
+        // Error message
+        ErrorMessage* errorMessage = new ErrorMessage(this);
+        errorMessage->showMessage(
+            ERR_STATUS_PIC, TYPE_WARNING, CANCEL_OPERATION);
+    }
 
     setFixedSize(610, 30);
 
     setAttribute(Qt::WA_NoSystemBackground);
 }
 
-void StatusBar::setText(QString leftleft, QString left, QString center, QString right, QString rightright) {
-	txtLeftLeft = leftleft;
-	txtLeft = left;
-	txtCenter = center;
-	txtRight = right;
-	txtRightRight = rightright;
-	repaint();
+void StatusBar::setText(QString leftleft, QString left, QString center,
+    QString right, QString rightright)
+{
+    txtLeftLeft = leftleft;
+    txtLeft = left;
+    txtCenter = center;
+    txtRight = right;
+    txtRightRight = rightright;
+    repaint();
 }
 
-void StatusBar::setLeftLeftText(QString txt) {
-	txtLeftLeft = txt;
-	repaint();
+void StatusBar::setLeftLeftText(QString txt)
+{
+    txtLeftLeft = txt;
+    repaint();
 }
 
-void StatusBar::setLeftText(QString txt) {
-	txtLeft = txt;
-	repaint();
+void StatusBar::setLeftText(QString txt)
+{
+    txtLeft = txt;
+    repaint();
 }
 
-void StatusBar::setCenterText(QString txt) {
-	txtCenter = txt;
-	repaint();
+void StatusBar::setCenterText(QString txt)
+{
+    txtCenter = txt;
+    repaint();
 }
 
-void StatusBar::setRightText(QString txt) {
-	txtRight = txt;
-	repaint();
+void StatusBar::setRightText(QString txt)
+{
+    txtRight = txt;
+    repaint();
 }
 
-void StatusBar::setRightRightText(QString txt) {
-	txtRightRight = txt;
-	repaint();
+void StatusBar::setRightRightText(QString txt)
+{
+    txtRightRight = txt;
+    repaint();
 }
 
-void StatusBar::paintEvent(QPaintEvent *pevent) {
-	QPainter painter(this);
-	// Draw backgorund image
-	painter.drawPixmap(0, 0, background);
-	painter.setFont(QFont(FONT_STANDARD, FONT_SIZE_STATUS));
-	painter.setPen(QColor(40, 40, 40));
-	painter.drawText(190, 7, 230, 14, Qt::AlignCenter | Qt::AlignVCenter,
-		txtCenter);
-	painter.setPen(QColor(120, 120, 120));
-	painter.drawText(10, 7, 80, 14, Qt::AlignCenter | Qt::AlignVCenter,
-		txtLeftLeft);
-	painter.drawText(100, 7, 80, 14, Qt::AlignCenter | Qt::AlignVCenter,
-		txtLeft);
-	painter.drawText(430, 7, 80, 14, Qt::AlignCenter | Qt::AlignVCenter,
-		txtRight);
-	painter.drawText(520, 7, 80, 14, Qt::AlignCenter | Qt::AlignVCenter,
-		txtRightRight);
+void StatusBar::paintEvent(QPaintEvent* pevent)
+{
+    QPainter painter(this);
+    // Draw backgorund image
+    painter.drawPixmap(0, 0, background);
+    painter.setFont(QFont(FONT_STANDARD, FONT_SIZE_STATUS));
+    painter.setPen(QColor(40, 40, 40));
+    painter.drawText(
+        190, 7, 230, 14, Qt::AlignCenter | Qt::AlignVCenter, txtCenter);
+    painter.setPen(QColor(120, 120, 120));
+    painter.drawText(
+        10, 7, 80, 14, Qt::AlignCenter | Qt::AlignVCenter, txtLeftLeft);
+    painter.drawText(
+        100, 7, 80, 14, Qt::AlignCenter | Qt::AlignVCenter, txtLeft);
+    painter.drawText(
+        430, 7, 80, 14, Qt::AlignCenter | Qt::AlignVCenter, txtRight);
+    painter.drawText(
+        520, 7, 80, 14, Qt::AlignCenter | Qt::AlignVCenter, txtRightRight);
 }

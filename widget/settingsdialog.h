@@ -28,88 +28,87 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 #define SETTINGSDIALOG_H
 
 #include <QDialog>
-#include <QWidget>
-#include <QLabel>
-#include <QSpinBox>
-#include <QPushButton>
-#include <QStackedWidget>
-#include <QListWidgetItem>
-#include <QListWidget>
 #include <QFont>
+#include <QLabel>
+#include <QListWidget>
+#include <QListWidgetItem>
+#include <QPushButton>
+#include <QSpinBox>
+#include <QStackedWidget>
 #include <QString>
+#include <QWidget>
 
-#include "settingspages.h"
 #include "helpbrowser.h"
+#include "settingspages.h"
 
 //! The SettingsDialog class provides a program settings widget.
 /*!
-	The SettingsDialog class shows three program settings. Setting the
-	layout of the virtual keyboard, setting the ticker speed and font
-	and doing a reset of the user tables.
+        The SettingsDialog class shows three program settings. Setting the
+        layout of the virtual keyboard, setting the ticker speed and font
+        and doing a reset of the user tables.
 
-	@author Tom Thielicke, s712715
-	@version 0.0.3
-	@date 18.06.2006
+        @author Tom Thielicke, s712715
+        @version 0.0.3
+        @date 18.06.2006
 */
 class SettingsDialog : public QDialog {
-	Q_OBJECT
+    Q_OBJECT
 
-	public:
+public:
+    //! Constructor, creates two table objects and provide it in two tabs.
+    /*!
+            In this contructor three groups are created over functions
+            createGroupKeyboardLayout(), createGroupUserReset() and
+            createGroupTickerFont(). In addition, standard settings are read,
+            standard font is set and connections are set.
 
-		//! Constructor, creates two table objects and provide it in two tabs.
-		/*!
-			In this contructor three groups are created over functions
-			createGroupKeyboardLayout(), createGroupUserReset() and
-			createGroupTickerFont(). In addition, standard settings are read,
-			standard font is set and connections are set.
+            @param parent The parent QWidget
+            @see createGroupKeyboardLayout(), createGroupUserReset(),
+                    createGroupTickerFont(), readSettings(),
+                    tickerFont
+    */
+    SettingsDialog(QWidget* parent = 0);
 
-			@param parent The parent QWidget
-			@see createGroupKeyboardLayout(), createGroupUserReset(),
-				createGroupTickerFont(), readSettings(),
-				tickerFont
-		*/
-		SettingsDialog(QWidget *parent = 0);
+private slots:
 
-	private slots:
+    //! Slot, saves the setting data.
+    /*!
+            After the user clicked the save button, this function saves the
+            settings over function writeSettings() and closes the current
+            dialog.
 
-		//! Slot, saves the setting data.
-		/*!
-			After the user clicked the save button, this function saves the
-			settings over function writeSettings() and closes the current
-			dialog.
+            @see writeSettings()
+    */
+    void clickSave();
 
-			@see writeSettings()
-		*/
-		void clickSave();
+    //! Slot, shows the help dialog.
+    /*!
+            This slot shows the help dialog. It creates an object of
+            the QDialog class with an QTextbrowser.
+    */
+    void showHelp();
 
-		//! Slot, shows the help dialog.
-		/*!
-			This slot shows the help dialog. It creates an object of
-			the QDialog class with an QTextbrowser.
-		*/
-		void showHelp();
+public slots:
+    void changePage(QListWidgetItem* current, QListWidgetItem* previous);
 
-	public slots:
-		void changePage(QListWidgetItem *current, QListWidgetItem *previous);
+private:
+    void createIcons();
+    void readSettings();
+    void writeSettings();
 
-	private:
-		void createIcons();
-        void readSettings();
-        void writeSettings();
+    //! Object of the help browser dialog
+    HelpBrowser* helpBrowser;
 
-		//! Object of the help browser dialog
-		HelpBrowser *helpBrowser;
-
-		QPushButton *buttonSave;
-		QPushButton *buttonCancel;
-		QPushButton *buttonHelp;
-		QListWidget *contentsWidget;
-		QStackedWidget *pagesWidget;
-		TrainingPage *trainingPage;
-		DatabasePage *databasePage;
-		LanguagePage *languagePage;
-		OtherPage *otherPage;
-		QFont tickerFont;
+    QPushButton* buttonSave;
+    QPushButton* buttonCancel;
+    QPushButton* buttonHelp;
+    QListWidget* contentsWidget;
+    QStackedWidget* pagesWidget;
+    TrainingPage* trainingPage;
+    DatabasePage* databasePage;
+    LanguagePage* languagePage;
+    OtherPage* otherPage;
+    QFont tickerFont;
 };
 
 #endif

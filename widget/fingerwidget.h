@@ -27,55 +27,54 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 #ifndef FINGERWIDGET_H
 #define FINGERWIDGET_H
 
-#include <QWidget>
+#include <QGraphicsSceneMouseEvent>
+#include <QList>
 #include <QPaintEvent>
 #include <QString>
 #include <QStringList>
-#include <QList>
-#include <QGraphicsSceneMouseEvent>
+#include <QWidget>
 
 #include "def/defines.h"
 
 //! The FingerWidget class provides a finger error rate chart.
 /*!
-	@author Tom Thielicke, s712715
+        @author Tom Thielicke, s712715
     @version 0.0.2
     @date 16.12.2010
 */
 class FingerWidget : public QWidget {
-	// Necessary to create own signals, slots and connections
+    // Necessary to create own signals, slots and connections
     Q_OBJECT
 
-	public:
-        FingerWidget(QWidget *parent = 0);
+public:
+    FingerWidget(QWidget* parent = 0);
 
-	protected:
+protected:
+    //! Paintevent, draws current view of the chart.
+    void paintEvent(QPaintEvent* event);
+    void mouseMoveEvent(QMouseEvent* event);
 
-		//! Paintevent, draws current view of the chart.
-		void paintEvent(QPaintEvent *event);
-        void mouseMoveEvent(QMouseEvent *event);
+private:
+    void getChartValues();
+    void drawHeadline();
+    void drawFingers();
+    void drawFinger(int currentFinger, double currentPos, double widgetLeft,
+        double widgetTop, double currentTop, double currentWidth,
+        double widgetHeight, double xUnit);
+    void drawTooltip(QPainter* painter, double x, double y, QString message);
 
-	private:
-		void getChartValues();
-        void drawHeadline();
-        void drawFingers();
-        void drawFinger(int currentFinger, double currentPos, double widgetLeft,
-                        double widgetTop, double currentTop, double currentWidth,
-                        double widgetHeight, double xUnit);
-        void drawTooltip(QPainter *painter, double x, double y, QString message);
-
-        QList<int> fingerOccurs;
-        QList<int> fingerErrors;
-        QList<int> fingerRanks;
-        QList<int> fingerRates;
-        QList<double> fingerX1;
-        QList<double> fingerX2;
-        QList<double> fingerY1;
-        QList<double> fingerY2;
-        QString languageGui;
-        QString languageLayout;
-        int fingerSelected;
-        QStringList fingerNames;
+    QList<int> fingerOccurs;
+    QList<int> fingerErrors;
+    QList<int> fingerRanks;
+    QList<int> fingerRates;
+    QList<double> fingerX1;
+    QList<double> fingerX2;
+    QList<double> fingerY1;
+    QList<double> fingerY2;
+    QString languageGui;
+    QString languageLayout;
+    int fingerSelected;
+    QStringList fingerNames;
 };
 
 #endif // FINGERWIDGET_H
