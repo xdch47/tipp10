@@ -132,7 +132,6 @@
         <file>img/logo_white.png</file>
         <file>img/logo_orange.png</file>
         <file>img/icon.png</file>
-        <file>img/menu_donate.png</file>
         <file>update/sql.tipp10v210.utf</file>
     </qresource>
 </RCC>

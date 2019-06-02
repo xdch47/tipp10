@@ -105,7 +105,6 @@ void MainWindow::createMenu()
     helpMenu->addAction(helpAction);
     helpMenu->addSeparator();
     helpMenu->addAction(websiteAction);
-    helpMenu->addAction(donateAction);
 #else
     // Win/X11-Version:
     // ---------------
@@ -125,7 +124,6 @@ void MainWindow::createMenu()
     helpMenu = menuBar()->addMenu(tr("&Hilfe"));
     helpMenu->addAction(helpAction);
     helpMenu->addAction(websiteAction);
-    helpMenu->addAction(donateAction);
     helpMenu->addSeparator();
     helpMenu->addAction(aboutAction);
 #endif
@@ -157,8 +155,6 @@ void MainWindow::createActions()
 #else
     aboutAction = new QAction(tr("&Ueber ") + APP_NAME_INTERN, this);
 #endif
-    donateAction
-        = new QAction(QIcon(":/img/menu_donate.png"), tr("Spenden"), this);
     gameAction
         = new QAction(QIcon(":/img/menu_game.png"), tr("ABC-Spiel"), this);
 
@@ -172,7 +168,6 @@ void MainWindow::createActions()
     connect(
         evalAction, SIGNAL(triggered()), this, SLOT(toggleStartToEvaluation()));
     connect(websiteAction, SIGNAL(triggered()), this, SLOT(openWebsite()));
-    connect(donateAction, SIGNAL(triggered()), this, SLOT(openDonate()));
     connect(helpAction, SIGNAL(triggered()), this, SLOT(showHelp()));
 }
 
@@ -192,11 +187,6 @@ void MainWindow::showHelp()
 }
 
 void MainWindow::openWebsite() { QDesktopServices::openUrl(QString(APP_URL)); }
-
-void MainWindow::openDonate()
-{
-    QDesktopServices::openUrl(QString(APP_URL) + "/donate/");
-}
 
 void MainWindow::about()
 {

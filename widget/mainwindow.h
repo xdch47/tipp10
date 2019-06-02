@@ -174,8 +174,6 @@ private slots:
 */
     void openWebsite();
 
-    void openDonate();
-
     //! Slot, shows the about dialog.
     /*!
             This slot shows the about dialog. It creates a QMessageBox with
@@ -351,9 +349,6 @@ private:
 
     //! Menu item for game.
     QAction* gameAction;
-
-    //! Menu item for donate.
-    QAction* donateAction;
 
     int selectedLesson;
 
