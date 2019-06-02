@@ -60,13 +60,13 @@ void ErrorMessage::showMessage(
     // Choose a message style
     switch (errorType) {
     case Type::Info:
-        QMessageBox::information(0, APP_NAME, message);
+        QMessageBox::information(nullptr, APP_NAME, message);
         break;
     case Type::Warning:
-        QMessageBox::warning(0, APP_NAME, message);
+        QMessageBox::warning(nullptr, APP_NAME, message);
         break;
     case Type::Critical:
-        QMessageBox::critical(0, APP_NAME, message);
+        QMessageBox::critical(nullptr, APP_NAME, message);
         break;
     }
 }
