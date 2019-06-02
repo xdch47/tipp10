@@ -53,14 +53,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 #include "lessonprintdialog.h"
 #include "lessonresult.h"
 
-LessonResult::LessonResult(int row, int type, QList<QChar> charlist,
-    QList<int> mistakelist, QWidget* parent)
+LessonResult::LessonResult(
+    int row, QList<QChar> charlist, QList<int> mistakelist, QWidget* parent)
     : QWidget(parent)
 {
-
     mistakeList = mistakelist;
     charList = charlist;
     lessonRow = row;
+
+    // Create print push button
+    buttonPrintLesson = new QPushButton(tr("Drucken"));
+    buttonPrintLesson->setFixedHeight(20);
+
+    readData();
+
+    createOutput();
+}
+
+void LessonResult::readData()
+{
+    // Read settings
 
 #if APP_PORTABLE
     QSettings settings(
@@ -71,32 +83,10 @@ LessonResult::LessonResult(int row, int type, QList<QChar> charlist,
 #endif
     settings.beginGroup("general");
     // Language
-    language = settings.value("language_gui", "en").toString();
+    QString language = settings.value("language_gui", "en").toString();
     settings.endGroup();
 
-    // Create print push button
-    buttonPrintLesson = new QPushButton(tr("Drucken"));
-    buttonPrintLesson->setFixedHeight(20);
-
-    createOutput();
-}
-
-void LessonResult::createOutput()
-{
-
-    QString userName = "";
-
-    // Read settings
-
-#if APP_PORTABLE
-    QSettings settings(
-        QCoreApplication::applicationDirPath() + "/portable/settings.ini",
-        QSettings::IniFormat);
-#else
-    QSettings settings;
-#endif
     settings.beginGroup("duration");
-    QString settingsDuration;
     if (settings.value("radio_time", true).toBool()) {
         // Time limit selected
         settingsDuration
@@ -116,7 +106,7 @@ void LessonResult::createOutput()
     }
     settings.endGroup();
     settings.beginGroup("error");
-    QString settingsError;
+
     if (settings.value("check_correct", true).toBool()) {
         settingsError = tr("Fehler korrigieren");
     } else {
@@ -127,7 +117,7 @@ void LessonResult::createOutput()
         }
     }
     settings.endGroup();
-    QString settingsHelp;
+
     settings.beginGroup("support");
     if (!settings.value("check_helpers", true).toBool()) {
 
@@ -176,30 +166,17 @@ void LessonResult::createOutput()
         }
     }
     settings.endGroup();
-    settings.beginGroup("general");
-    languageGui
-        = settings.value("language_gui", APP_STD_LANGUAGE_GUI).toString();
-    settings.endGroup();
-    // Read lesson results
 
-    QString lessonName;
-    QString lessonTimestamp;
-    QString lessonTimeLen;
-    QString lessonTokenLen;
-    QString lessonErrorNum;
-    QString lessonCpm;
-    QString lessonGrade;
-    QString lessonGradeSimple;
-    QString lessonRate;
+    // Read lesson results
 
     QSqlQuery query;
     if (!query.exec(
             "SELECT user_lesson_name, user_lesson_timestamp, "
             "user_lesson_timelen, user_lesson_tokenlen, "
-            "user_lesson_errornum, (user_lesson_strokesnum / "
-            "(user_lesson_timelen / 60.0)) AS user_lesson_cpm, "
-            "(((user_lesson_strokesnum - (20.0 * user_lesson_errornum)) / "
-            "(user_lesson_timelen / 60.0)) * 0.4) AS user_lesson_grade, "
+            "user_lesson_errornum, ROUND(user_lesson_strokesnum / "
+            "(user_lesson_timelen / 60.0), 0) AS user_lesson_cpm, "
+            "ROUND(((user_lesson_strokesnum - (20 * user_lesson_errornum)) / "
+            "(user_lesson_timelen / 60.0)) * 0.4, 0) AS user_lesson_grade, "
             "user_lesson_id, "
             "((user_lesson_errornum * 100.0) / "
             "user_lesson_strokesnum) AS user_lesson_rate "
@@ -236,10 +213,12 @@ void LessonResult::createOutput()
             lessonGradeTemp = 0;
         }
         lessonGrade.sprintf("%.0f", lessonGradeTemp);
-        lessonGradeSimple.sprintf("%.0f", lessonGradeTemp);
         lessonGrade.append(lessonGradeTemp == 1 ? tr(" Punkt") : tr(" Punkte"));
     }
+}
 
+void LessonResult::createOutput()
+{
     // Output the results
 
     QTextEdit* editor = new QTextEdit;
@@ -435,161 +414,11 @@ void LessonResult::createOutput()
 
 void LessonResult::createPrintOutput()
 {
-
     QString userName = "";
 
     LessonPrintDialog lessonPrintDialog(&userName, this);
     if (lessonPrintDialog.exec() == 0) {
         return;
-    }
-
-    // Read settings
-
-#if APP_PORTABLE
-    QSettings settings(
-        QCoreApplication::applicationDirPath() + "/portable/settings.ini",
-        QSettings::IniFormat);
-#else
-    QSettings settings;
-#endif
-    settings.beginGroup("duration");
-    QString settingsDuration;
-    if (settings.value("radio_time", true).toBool()) {
-        // Time limit selected
-        settingsDuration
-            = settings.value("spin_time", LESSON_TIMELEN_STANDARD).toString()
-            + tr(" Minuten");
-    } else {
-        if (settings.value("radio_token", true).toBool()) {
-            // Token limit selected
-            settingsDuration
-                = settings.value("spin_token", LESSON_TOKENLEN_STANDARD)
-                      .toString()
-                + tr(" Zeichen");
-        } else {
-            // Lesson limit selected
-            settingsDuration = tr("Gesamte Lektion");
-        }
-    }
-    settings.endGroup();
-    settings.beginGroup("error");
-    QString settingsError;
-    if (settings.value("check_correct", true).toBool()) {
-        settingsError = tr("Fehler korrigieren");
-    } else {
-        if (settings.value("check_stop", true).toBool()) {
-            settingsError = tr("Diktat blockieren");
-        } else {
-            settingsError = tr("Tippfehler uebergehen");
-        }
-    }
-    settings.endGroup();
-    QString settingsHelp;
-    settings.beginGroup("support");
-    if (!settings.value("check_helpers", true).toBool()) {
-
-        settingsHelp = tr("Keine");
-    } else {
-        if (settings.value("check_selection", true).toBool()
-            && settings.value("check_selection_start", true).toBool()
-            && settings.value("check_border", true).toBool()
-            && settings.value("check_path", true).toBool()
-            && settings.value("check_status", true).toBool()) {
-
-            settingsHelp = tr("Alle");
-        } else {
-
-            settingsHelp = "";
-            if (settings.value("check_selection", true).toBool()) {
-                if (settingsHelp != "") {
-                    settingsHelp.append("\n");
-                }
-                settingsHelp.append(tr("- Farbige Tasten"));
-            }
-            if (settings.value("check_selection_start", true).toBool()) {
-                if (settingsHelp != "") {
-                    settingsHelp.append("\n");
-                }
-                settingsHelp.append(tr("- Grundstellung"));
-            }
-            if (settings.value("check_path", true).toBool()) {
-                if (settingsHelp != "") {
-                    settingsHelp.append("\n");
-                }
-                settingsHelp.append(tr("- Tastpfade"));
-            }
-            if (settings.value("check_border", true).toBool()) {
-                if (settingsHelp != "") {
-                    settingsHelp.append("\n");
-                }
-                settingsHelp.append(tr("- Trennlinie"));
-            }
-            if (settings.value("check_status", true).toBool()) {
-                if (settingsHelp != "") {
-                    settingsHelp.append("\n");
-                }
-                settingsHelp.append(tr("- Hilfetext"));
-            }
-        }
-    }
-    settings.endGroup();
-
-    // Read lesson results
-
-    QString lessonName;
-    QString lessonTimestamp;
-    QString lessonTimeLen;
-    QString lessonTokenLen;
-    QString lessonErrorNum;
-    QString lessonCpm;
-    QString lessonGrade;
-    QString lessonRate;
-
-    QSqlQuery query;
-    if (!query.exec(
-            "SELECT user_lesson_name, user_lesson_timestamp, "
-            "user_lesson_timelen, user_lesson_tokenlen, "
-            "user_lesson_errornum, ROUND(user_lesson_strokesnum / "
-            "(user_lesson_timelen / 60.0), 0) AS user_lesson_cpm, "
-            "ROUND(((user_lesson_strokesnum - (20 * user_lesson_errornum)) / "
-            "(user_lesson_timelen / 60.0)) * 0.4, 0) AS user_lesson_grade, "
-            "user_lesson_id, "
-            "((user_lesson_errornum * 100.0) / "
-            "user_lesson_strokesnum) AS user_lesson_rate "
-            "FROM user_lesson_list WHERE "
-            "user_lesson_id = "
-            + QString::number(lessonRow) + ";")) {
-        return;
-    }
-    if (query.first()) {
-        lessonName = query.value(0).toString();
-        QDateTime timeStampTemp = QDateTime::fromString(
-            query.value(1).toString(), "yyyyMMddhhmmss");
-        lessonTimestamp = timeStampTemp.toString(
-                              (language == "de" ? "dd.MM.yyyy hh:mm"
-                                                : "MMM d, yyyy hh:mm ap"))
-            + (language == "de" ? tr(" Uhr") : "");
-        int timeSecTemp;
-        double timeMinTemp;
-        if ((timeSecTemp = query.value(2).toInt()) < 60) {
-            lessonTimeLen = QString::number(timeSecTemp) + tr(" sek.");
-        } else {
-            timeMinTemp = floor((timeSecTemp / 60.0) / 0.1 + 0.5) * 0.1;
-            lessonTimeLen = QString::number(timeMinTemp) + tr(" min.");
-        }
-        lessonTokenLen = query.value(3).toString();
-        lessonErrorNum = query.value(4).toString();
-        double lessonRateTemp = query.value(8).toDouble();
-        lessonRate.sprintf("%.0f", lessonRateTemp);
-        lessonRate.append(" %");
-        double lessonCpmTemp = query.value(5).toDouble();
-        lessonCpm.sprintf("%.0f", lessonCpmTemp);
-        double lessonGradeTemp;
-        if ((lessonGradeTemp = query.value(6).toDouble()) < 0) {
-            lessonGradeTemp = 0;
-        }
-        lessonGrade.sprintf("%.0f", lessonGradeTemp);
-        lessonGrade.append(lessonGradeTemp == 1 ? tr(" Punkt") : tr(" Punkte"));
     }
 
     // Output the results

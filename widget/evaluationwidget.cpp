@@ -58,7 +58,7 @@ EvaluationWidget::EvaluationWidget(int row, int type, QList<QChar> charList,
     createComparisonTable();
 
     if (row > 0) {
-        lessonResult = new LessonResult(row, type, charList, mistakeList, this);
+        lessonResult = new LessonResult(row, charList, mistakeList, this);
         tabEvaluation->addTab(lessonResult, tr("Bericht"));
     }
 

@@ -43,20 +43,32 @@ class LessonResult : public QWidget {
     Q_OBJECT
 
 public:
-    LessonResult(int row, int type, QList<QChar> charlist,
-        QList<int> mistakelist, QWidget* parent = 0);
+    LessonResult(int row, QList<QChar> charlist, QList<int> mistakelist,
+        QWidget* parent = nullptr);
 
 private slots:
     void createPrintOutput();
 
 private:
+    void readData();
     void createOutput();
     QPushButton* buttonPrintLesson;
     QList<QChar> charList;
     QList<int> mistakeList;
     int lessonRow;
-    QString language;
-    QString languageGui;
+
+    QString settingsDuration;
+    QString settingsError;
+    QString settingsHelp;
+
+    QString lessonName;
+    QString lessonTimestamp;
+    QString lessonTimeLen;
+    QString lessonTokenLen;
+    QString lessonErrorNum;
+    QString lessonCpm;
+    QString lessonGrade;
+    QString lessonRate;
 };
 
 #endif // LESSONRESULT_H
