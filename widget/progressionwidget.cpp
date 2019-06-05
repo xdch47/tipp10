@@ -412,7 +412,7 @@ void ProgressionWidget::drawGraph()
 
     // Legend
     if (whereClausel == "") {
-#if APP_MAC
+#ifdef APP_MAC
         // Mac Version:
         //-----------
         painter.setPen(penBlack);

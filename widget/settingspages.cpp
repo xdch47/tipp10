@@ -293,7 +293,7 @@ void TrainingPage::readSettings()
         settings.value("ticker_speed", TICKERSPEED_STANDARD).toInt());
     settings.endGroup();
     settings.beginGroup("sound");
-#if APP_X11
+#ifdef APP_X11
     bool beepDefaultSoundcard = false;
     bool beepDefaultSpeaker = true;
 #else
@@ -422,7 +422,7 @@ void DatabasePage::createGroupDatabase()
         buttonDatabasePath->setEnabled(false);
     }
     QFont h2;
-#if APP_MAC
+#ifdef APP_MAC
     h2.setPointSize(11);
 #else
     h2.setPointSize(7);
@@ -779,7 +779,7 @@ void LanguagePage::createGroupLanguage()
 
     labelLessonNotice = new QLabel();
     QFont h2;
-#if APP_MAC
+#ifdef APP_MAC
     h2.setPointSize(11);
 #else
     h2.setPointSize(7);

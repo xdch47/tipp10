@@ -94,7 +94,7 @@ void MainWindow::createMenu()
 {
 // Mac-Version:
 //-----------
-#if APP_MAC
+#ifdef APP_MAC
     evaluationMenu = menuBar()->addMenu(tr("&Gehe zu"));
     evaluationMenu->addAction(exitAction);
     evaluationMenu->addAction(settingsAction);
@@ -109,7 +109,7 @@ void MainWindow::createMenu()
     // Win/X11-Version:
     // ---------------
     // Menu bar items
-#if APP_MAC
+#ifdef APP_MAC
     fileMenu = menuBar()->addMenu(APP_NAME_INTERN);
 #else
     fileMenu = menuBar()->addMenu(tr("&Datei"));
@@ -133,7 +133,7 @@ void MainWindow::createActions()
 {
 // Mac-Version:
 // -----------
-#if APP_MAC
+#ifdef APP_MAC
     settingsAction = new QAction(
         QIcon(":/img/menu_settings.png"), tr("&Einstellungen"), this);
 #else
@@ -150,7 +150,7 @@ void MainWindow::createActions()
         QIcon(":/img/menu_help.png"), tr("&Bedienungsanleitung"), this);
     websiteAction = new QAction(QIcon(":/img/menu_website.png"),
         APP_NAME_INTERN + tr(" im Internet"), this);
-#if APP_MAC
+#ifdef APP_MAC
     aboutAction = new QAction(tr("Info"), this);
 #else
     aboutAction = new QAction(tr("&Ueber ") + APP_NAME_INTERN, this);
@@ -441,7 +441,7 @@ void MainWindow::readSettings()
 #endif
 
     settings.beginGroup("mainwindow");
-#if APP_WIN
+#ifdef APP_WIN
     QByteArray storedGeometry;
     storedGeometry = settings.value("geometry").toByteArray();
     if (storedGeometry.isEmpty() || storedGeometry.isNull()) {
@@ -470,7 +470,7 @@ void MainWindow::writeSettings()
 #endif
 
     settings.beginGroup("mainwindow");
-#if APP_WIN
+#ifdef APP_WIN
     settings.setValue("geometry", saveGeometry());
 #else
     settings.setValue("size", size());

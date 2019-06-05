@@ -59,7 +59,7 @@ TrainingWidget::TrainingWidget(
     oneErrorFlag = false;
 
 // Init sound file
-#if APP_MAC
+#ifdef APP_MAC
     // Mac-Version
     // -----------
     bells = new QSound(QCoreApplication::applicationDirPath() + "/error.aif");
@@ -129,13 +129,13 @@ void TrainingWidget::createButtons()
     buttonPause = new QPushButton(tr("&Pause"));
     buttonPause->setEnabled(false);
     buttonPause->setFocusPolicy(Qt::NoFocus);
-#if APP_MAC
+#ifdef APP_MAC
     buttonPause->setShortcut(Qt::ALT + Qt::Key_P);
 #endif
     // Cancel button
     buttonCancel = new QPushButton(tr("A&bbrechen"));
     buttonCancel->setFocusPolicy(Qt::NoFocus);
-#if APP_MAC
+#ifdef APP_MAC
     buttonCancel->setShortcut(Qt::ALT + Qt::Key_B);
 #endif
     // Help button
@@ -679,7 +679,7 @@ void TrainingWidget::readSettings()
     showStatusInformation = settings.value("check_status", true).toBool();
     settings.endGroup();
     settings.beginGroup("sound");
-#if APP_X11
+#ifdef APP_X11
     bool beepDefault = false;
 #else
     bool beepDefault = true;

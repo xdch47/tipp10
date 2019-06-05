@@ -295,7 +295,7 @@ void StartWidget::createGroupError()
            "zur Taste entsprechende Sinnbild angezeigt"));
 
     QFont h2;
-#if APP_MAC
+#ifdef APP_MAC
     h2.setPointSize(11);
     labelIntelligence = new QLabel(
         tr("*Die Texte der Lektion "

@@ -55,15 +55,13 @@ void IllustrationImage::paintEvent(QPaintEvent* revent)
     // Draw the image in the left top corner of the widget
     painter.drawImage(0, 0, image);
     if (imageName.left(5) == "about" && versionLabel != "") {
-#if APP_WIN
+#ifdef APP_WIN
         painter.drawText(360, 10, 150, 100,
             Qt::AlignLeft | Qt::AlignTop | Qt::TextWordWrap, versionLabel);
-#endif
-#if APP_MAC
+#elif defined APP_MAC
         painter.drawText(340, 10, 150, 100,
             Qt::AlignLeft | Qt::AlignTop | Qt::TextWordWrap, versionLabel);
-#endif
-#if APP_X11
+#elif defined APP_X11
         painter.drawText(300, 10, 170, 100,
             Qt::AlignLeft | Qt::AlignTop | Qt::TextWordWrap, versionLabel);
 #endif

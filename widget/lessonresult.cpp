@@ -243,7 +243,7 @@ void LessonResult::createOutput()
     QTextCharFormat p_mistake;
     QTextCharFormat p_no_mistake;
 
-#if APP_MAC || APP_X11
+#if defined APP_MAC || defined APP_X11
     h1.setFontPointSize(22);
     h2.setFontPointSize(19);
     h3.setFontPointSize(13);

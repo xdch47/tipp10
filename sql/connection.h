@@ -229,14 +229,14 @@ static bool createConnection()
             if (!QFile::exists(
                     QDir::homePath() + "/" + dbFolderTemp + "/" + dbNameUser)) {
                 dbFolderTemp = "TIPP10";
-#if APP_WIN
+#ifdef APP_WIN
                 QSettings homeAppPath("HKEY_CURRENT_"
                                       "USER\\Software\\Microsoft\\Windows\\Curr"
                                       "entVersion\\Explorer\\Shell Folders",
                     QSettings::NativeFormat);
                 dbHomeTemp = homeAppPath.value("AppData").toString();
 #endif
-#if APP_MAC
+#ifdef APP_MAC
                 dbHomeTemp.append("/Library/Application Support");
 #endif
             }

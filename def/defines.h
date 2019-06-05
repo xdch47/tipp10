@@ -26,11 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 #ifndef DEFINES_H
 #define DEFINES_H
 
-// OS constants
-#define APP_WIN						true
-#define APP_MAC						false
-#define APP_X11						false
-#define APP_PORTABLE				false //at least one of the 3 OS must be true too!
+#define APP_PORTABLE false
 
 // Languages
 #define APP_EXISTING_LANGUAGES_GUI	"de;en"

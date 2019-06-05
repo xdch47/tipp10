@@ -90,6 +90,16 @@ target_link_libraries(tipp10 Qt5::Core Qt5::Multimedia Qt5::PrintSupport
                              Qt5::Sql Qt5::Widgets
 )
 
+if(WIN32)
+    target_compile_definitions(tipp10 PRIVATE APP_WIN)
+elseif(UNIX)
+    if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+        target_compile_definitions(tipp10 PRIVATE APP_MAC)
+    else()
+        target_compile_definitions(tipp10 PRIVATE APP_X11)
+    endif()
+endif()
+
 install(TARGETS tipp10
     RUNTIME DESTINATION bin
 )

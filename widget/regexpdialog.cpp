@@ -82,7 +82,7 @@ void RegExpDialog::createButtons()
 void RegExpDialog::createControls()
 {
     QFont h2;
-#if APP_MAC
+#ifdef APP_MAC
     h2.setPointSize(11);
 #else
     h2.setPointSize(7);

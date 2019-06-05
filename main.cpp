@@ -108,11 +108,11 @@ settings.setPath(QSettings::IniFormat, QSettings::UserScope,
         if (languageGui != "de") {
 
             languageLayout = "us_qwerty";
-            if (APP_MAC) {
-                languageLayout.append("_mac");
-            } else {
-                languageLayout.append("_win");
-            }
+#ifdef APP_MAC
+            languageLayout.append("_mac");
+#else
+            languageLayout.append("_win");
+#endif
             // Enable when English lessons available!!!!!!!!
             languageLesson = "en_us_qwerty";
 

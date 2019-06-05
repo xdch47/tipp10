@@ -27,7 +27,7 @@ static const int GroundX = 0;
 static const int GroundY = AreaHeight - GroundHeight;
 static const int BallWidth = 30;
 
-#if APP_MAC
+#ifdef APP_MAC
 static const int FontSizeH1 = 12;
 static const int FontSizeH2 = 14;
 static const int FontSizeH3 = 26;
