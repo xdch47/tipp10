@@ -71,7 +71,6 @@ private:
     QList<double> fingerX2;
     QList<double> fingerY1;
     QList<double> fingerY2;
-    QString languageGui;
     QString languageLayout;
     int fingerSelected;
     QStringList fingerNames;

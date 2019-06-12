@@ -45,8 +45,6 @@ IllustrationDialog::IllustrationDialog(QWidget* parent)
     setWindowTitle(tr("Einfuehrung"));
     setWindowIcon(QIcon(":/img/" + QString(ICON_FILENAME)));
 
-    readSettings();
-
     createContent();
 
     createButtons();
@@ -103,7 +101,7 @@ void IllustrationDialog::createContent()
         + "</div>"
           "<div style=\"margin-top:16px;\">"
           "<img src=\":/img/"
-        + languageGui
+        + tr("en")
         + "_illustration.png\">"
           "</div>"
           "<div style=\"margin-top:16px;\">"
@@ -216,20 +214,5 @@ void IllustrationDialog::writeSettings()
 #endif
     settings.beginGroup("general");
     settings.setValue("check_illustration", !showDialogCheck->isChecked());
-    settings.endGroup();
-}
-
-void IllustrationDialog::readSettings()
-{
-#if APP_PORTABLE
-    QSettings settings(
-        QCoreApplication::applicationDirPath() + "/portable/settings.ini",
-        QSettings::IniFormat);
-#else
-    QSettings settings;
-#endif
-    settings.beginGroup("general");
-    languageGui
-        = settings.value("language_gui", APP_STD_LANGUAGE_GUI).toString();
     settings.endGroup();
 }

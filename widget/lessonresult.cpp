@@ -81,11 +81,6 @@ void LessonResult::readData()
 #else
     QSettings settings;
 #endif
-    settings.beginGroup("general");
-    // Language
-    QString language = settings.value("language_gui", "en").toString();
-    settings.endGroup();
-
     settings.beginGroup("duration");
     if (settings.value("radio_time", true).toBool()) {
         // Time limit selected
@@ -190,9 +185,9 @@ void LessonResult::readData()
         QDateTime timeStampTemp = QDateTime::fromString(
             query.value(1).toString(), "yyyyMMddhhmmss");
         lessonTimestamp = timeStampTemp.toString(
-                              (language == "de" ? "dd.MM.yyyy hh:mm"
+                              (tr("en") == "de" ? "dd.MM.yyyy hh:mm"
                                                 : "MMM d, yyyy hh:mm ap"))
-            + (language == "de" ? tr(" Uhr") : "");
+            + (tr("en") == "de" ? tr(" Uhr") : "");
         int timeSecTemp;
         double timeMinTemp;
         if ((timeSecTemp = query.value(2).toInt()) < 60) {

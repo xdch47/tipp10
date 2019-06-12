@@ -80,15 +80,11 @@ private:
     //! Creates the layout of the complete class.
     void createLayout();
 
-    //! Reads all user settings.
-    void readSettings();
-
     QPushButton* buttonClose;
     QPushButton* buttonBack;
     QPushButton* buttonHome;
     QTextBrowser* textBrowser;
     QPushButton* buttonPrint;
-    QString language;
 };
 
 #endif // HELPBROWSER_H

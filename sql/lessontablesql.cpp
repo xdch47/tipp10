@@ -37,7 +37,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 #include <QPen>
 #include <QPrintDialog>
 #include <QPrinter>
-#include <QSettings>
 #include <QString>
 #include <QTextCharFormat>
 #include <QTextCursor>
@@ -59,16 +58,6 @@ LessonSqlModel::LessonSqlModel(int row, int type, QWidget* parent)
     parentWidget = parent;
     lastIdInserted = row;
     lastTypeInserted = type;
-#if APP_PORTABLE
-    QSettings settings(
-        QCoreApplication::applicationDirPath() + "/portable/settings.ini",
-        QSettings::IniFormat);
-#else
-    QSettings settings;
-#endif
-    settings.beginGroup("general");
-    language = settings.value("language_gui", "en").toString();
-    settings.endGroup();
 }
 
 QVariant LessonSqlModel::data(const QModelIndex& index, int role) const
@@ -96,9 +85,9 @@ QVariant LessonSqlModel::data(const QModelIndex& index, int role) const
             timeStamp
                 = QDateTime::fromString(value.toString(), "yyyyMMddhhmmss");
             return timeStamp.toString(
-                       (language == "de" ? "dd.MM.yyyy hh:mm"
+                       (tr("en") == "de" ? "dd.MM.yyyy hh:mm"
                                          : "MMM d, yyyy hh:mm ap"))
-                + (language == "de" ? tr(" Uhr") : "");
+                + (tr("en") == "de" ? tr(" Uhr") : "");
         }
         if (index.column() == 2) {
             // Show time length in seconds or minutes
@@ -172,13 +161,6 @@ LessonTableSql::LessonTableSql(int row, int type, QList<QChar> charlist,
     previousColumnIndex = -1;
     whereClausel = "";
 
-#if APP_PORTABLE
-    QSettings settings(
-        QCoreApplication::applicationDirPath() + "/portable/settings.ini",
-        QSettings::IniFormat);
-#else
-    QSettings settings;
-#endif
     printVisible = false;
 
     // Create filter headline

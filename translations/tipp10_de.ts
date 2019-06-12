@@ -832,32 +832,32 @@ neue, leere Datenbank angelegt werden). Den Pfad zur Datenbank
 <context>
     <name>FingerWidget</name>
     <message>
-        <location filename="../widget/fingerwidget.cpp" line="277"/>
+        <location filename="../widget/fingerwidget.cpp" line="275"/>
         <source> %</source>
         <translation> %</translation>
     </message>
     <message>
-        <location filename="../widget/fingerwidget.cpp" line="278"/>
+        <location filename="../widget/fingerwidget.cpp" line="276"/>
         <source>Vorkommen:</source>
         <translation>Vorkommen:</translation>
     </message>
     <message>
-        <location filename="../widget/fingerwidget.cpp" line="258"/>
+        <location filename="../widget/fingerwidget.cpp" line="256"/>
         <source>Fehlerquoten der Finger</source>
         <translation>Fehlerquoten der Finger</translation>
     </message>
     <message>
-        <location filename="../widget/fingerwidget.cpp" line="280"/>
+        <location filename="../widget/fingerwidget.cpp" line="278"/>
         <source>Fehler:</source>
         <translation>Fehler:</translation>
     </message>
     <message>
-        <location filename="../widget/fingerwidget.cpp" line="276"/>
+        <location filename="../widget/fingerwidget.cpp" line="274"/>
         <source>Fehlerquote:</source>
         <translation>Fehlerquote:</translation>
     </message>
     <message>
-        <location filename="../widget/fingerwidget.cpp" line="265"/>
+        <location filename="../widget/fingerwidget.cpp" line="263"/>
         <source>Die Fehlerquoten werden aus den Schriftzeichen und dem aktuell gewaehlten Tastaturlayout berechnet.</source>
         <translation>Die Fehlerquoten werden aus den Schriftzeichen und dem aktuell gewählten Tastaturlayout berechnet.</translation>
     </message>
@@ -865,91 +865,97 @@ neue, leere Datenbank angelegt werden). Den Pfad zur Datenbank
 <context>
     <name>HelpBrowser</name>
     <message>
-        <location filename="../widget/helpbrowser.cpp" line="43"/>
-        <location filename="../widget/helpbrowser.cpp" line="80"/>
+        <location filename="../widget/helpbrowser.cpp" line="42"/>
+        <location filename="../widget/helpbrowser.cpp" line="77"/>
         <source>Hilfe</source>
         <translation>Hilfe</translation>
     </message>
     <message>
-        <location filename="../widget/helpbrowser.cpp" line="92"/>
+        <location filename="../widget/helpbrowser.cpp" line="89"/>
         <source> Zurueck</source>
         <translation> Zurück</translation>
     </message>
     <message>
-        <location filename="../widget/helpbrowser.cpp" line="139"/>
+        <location filename="../widget/helpbrowser.cpp" line="136"/>
         <source>Seite drucken</source>
         <translation>Print page</translation>
     </message>
     <message>
-        <location filename="../widget/helpbrowser.cpp" line="96"/>
+        <location filename="../widget/helpbrowser.cpp" line="93"/>
         <source>&amp;Schliessen</source>
         <translation>&amp;Schließen</translation>
     </message>
     <message>
-        <location filename="../widget/helpbrowser.cpp" line="95"/>
+        <location filename="../widget/helpbrowser.cpp" line="92"/>
         <source> Inhaltsverzeichnis</source>
         <translation> Inhaltsverzeichnis</translation>
     </message>
     <message>
-        <location filename="../widget/helpbrowser.cpp" line="99"/>
+        <location filename="../widget/helpbrowser.cpp" line="96"/>
         <source> Seite &amp;drucken</source>
         <translation> Seite &amp;drucken</translation>
+    </message>
+    <message>
+        <location filename="../widget/helpbrowser.cpp" line="54"/>
+        <location filename="../widget/helpbrowser.cpp" line="61"/>
+        <source>en</source>
+        <translation>de</translation>
     </message>
 </context>
 <context>
     <name>IllustrationDialog</name>
     <message>
-        <location filename="../widget/illustrationdialog.cpp" line="124"/>
+        <location filename="../widget/illustrationdialog.cpp" line="122"/>
         <source>4. Bleiben Sie waehrend des Schreibtrainings entspannt.</source>
         <translation>4. Bleiben Sie während des Schreibtrainings entspannt.</translation>
     </message>
     <message>
-        <location filename="../widget/illustrationdialog.cpp" line="154"/>
+        <location filename="../widget/illustrationdialog.cpp" line="152"/>
         <source>Alle Rechte vorbehalten.</source>
         <translation>Alle Rechte vorbehalten.</translation>
     </message>
     <message>
-        <location filename="../widget/illustrationdialog.cpp" line="110"/>
+        <location filename="../widget/illustrationdialog.cpp" line="108"/>
         <source>2. Nehmen Sie eine aufrechte Haltung ein und vermeiden Sie es in jedem Fall auf die Tastatur zu sehen. Ihr Blick sollte stets auf den Bildschirm gerichtet sein.</source>
         <translation>2. Nehmen Sie eine aufrechte Haltung ein und vermeiden Sie es in jedem Fall auf die Tastatur zu sehen. Ihr Blick sollte stets auf den Bildschirm gerichtet sein.</translation>
     </message>
     <message>
-        <location filename="../widget/illustrationdialog.cpp" line="127"/>
+        <location filename="../widget/illustrationdialog.cpp" line="125"/>
         <source>5. Versuchen Sie moeglichst fehlerfrei zu tippen. Es ist deutlich ineffizienter schnell zu tippen, wenn Sie dabei viele Fehler machen.</source>
         <translation>5. Versuchen Sie möglichst fehlerfrei zu tippen. Es ist deutlich ineffizienter schnell zu tippen, wenn Sie dabei viele Fehler machen.</translation>
     </message>
     <message>
-        <location filename="../widget/illustrationdialog.cpp" line="84"/>
+        <location filename="../widget/illustrationdialog.cpp" line="82"/>
         <source>TIPP10 ist ein kostenloser 10-Finger-Schreibtrainer fuer Windows, Mac OS und Linux. Die Software arbeitet intelligent - Schriftzeichen, die haeufig falsch getippt werden, werden auch sofort haeufiger diktiert. So laesst sich das Zehnfingersystem schnell und effizient erlernen.</source>
         <translation>TIPP10 ist ein kostenloser 10-Finger-Schreibtrainer für Windows, Mac OS und Linux. Die Software arbeitet intelligent - Schriftzeichen, die häufig falsch getippt werden, werden auch sofort häufiger diktiert. So lässt sich das Zehnfingersystem schnell und effizient erlernen.</translation>
     </message>
     <message>
-        <location filename="../widget/illustrationdialog.cpp" line="79"/>
+        <location filename="../widget/illustrationdialog.cpp" line="77"/>
         <source>Willkommen zu TIPP10</source>
         <translation>Willkommen zu TIPP10</translation>
     </message>
     <message>
-        <location filename="../widget/illustrationdialog.cpp" line="116"/>
+        <location filename="../widget/illustrationdialog.cpp" line="114"/>
         <source>3. Legen Sie die Oberarme am Koerper an und lassen Sie die Schultern haengen. Die Unterarme bilden einen rechten Winkel zu den Oberarmen. Legen Sie die Handgelenke nicht ab und lassen Sie sie nicht durchhaengen.</source>
         <translation>3. Legen Sie die Oberarme am Körper an und lassen Sie die Schultern hängen. Die Unterarme bilden einen rechten Winkel zu den Oberarmen. Legen Sie die Handgelenke nicht ab und lassen Sie sie nicht durchhängen.</translation>
     </message>
     <message>
-        <location filename="../widget/illustrationdialog.cpp" line="139"/>
+        <location filename="../widget/illustrationdialog.cpp" line="137"/>
         <source>Bei Fragen rund um die Bedienung der Software rufen Sie bitte die Hilfe auf oder besuchen Sie die Internetseite</source>
         <translation>Bei Fragen rund um die Bedienung der Software rufen Sie bitte die Hilfe auf oder besuchen Sie die Internetseite</translation>
     </message>
     <message>
-        <location filename="../widget/illustrationdialog.cpp" line="94"/>
+        <location filename="../widget/illustrationdialog.cpp" line="92"/>
         <source>Tipps zur Anwendung des Zehnfingersystems</source>
         <translation>Tipps zur Anwendung des Zehnfingersystems</translation>
     </message>
     <message>
-        <location filename="../widget/illustrationdialog.cpp" line="132"/>
+        <location filename="../widget/illustrationdialog.cpp" line="130"/>
         <source>6. Einmal mit dem Zehnfingersystem angefangen, sollten Sie es tunlichst vermeiden wieder zu Ihrem &quot;alten System&quot; zurueck zu wechseln (auch wenn es mal schnell gehen muss).</source>
         <translation>6. Einmal mit dem Zehnfingersystem angefangen, sollten Sie es tunlichst vermeiden wieder zu Ihrem &quot;alten System&quot; zurück zu wechseln (auch wenn es mal schnell gehen muss).</translation>
     </message>
     <message>
-        <location filename="../widget/illustrationdialog.cpp" line="143"/>
+        <location filename="../widget/illustrationdialog.cpp" line="141"/>
         <source>Dort finden Sie auch praktische Tipps und Hintergrundinformationen.</source>
         <translation>Dort finden Sie auch praktische Tipps und Hintergrundinformationen.</translation>
     </message>
@@ -959,32 +965,32 @@ neue, leere Datenbank angelegt werden). Den Pfad zur Datenbank
         <translation>Einführung</translation>
     </message>
     <message>
-        <location filename="../widget/illustrationdialog.cpp" line="172"/>
+        <location filename="../widget/illustrationdialog.cpp" line="170"/>
         <source>Dieses &amp;Fenster nicht mehr anzeigen</source>
         <translation>Dieses &amp;Fenster nicht mehr anzeigen</translation>
     </message>
     <message>
-        <location filename="../widget/illustrationdialog.cpp" line="168"/>
+        <location filename="../widget/illustrationdialog.cpp" line="166"/>
         <source>TIPP10 &amp;starten</source>
         <translation>TIPP10 &amp;starten</translation>
     </message>
     <message>
-        <location filename="../widget/illustrationdialog.cpp" line="98"/>
+        <location filename="../widget/illustrationdialog.cpp" line="96"/>
         <source>1. Die Finger nehmen zunaechst die Grundstellung ein (sie wird auch zu Beginn jeder Lektion angezeigt). Nach jedem Tippen einer Taste kehren die Finger in die Grundstellung zurueck.</source>
         <translation>1. Die Finger nehmen zunächst die Grundstellung ein (sie wird auch zu Beginn jeder Lektion angezeigt). Nach jedem Tippen einer Taste kehren die Finger in die Grundstellung zurück.</translation>
+    </message>
+    <message>
+        <location filename="../widget/illustrationdialog.cpp" line="104"/>
+        <source>en</source>
+        <translation>de</translation>
     </message>
 </context>
 <context>
     <name>LanguagePage</name>
     <message>
-        <location filename="../widget/settingspages.cpp" line="765"/>
+        <location filename="../widget/settingspages.cpp" line="759"/>
         <source>Tastaturlayout:</source>
         <translation>Tastaturlayout:</translation>
-    </message>
-    <message>
-        <location filename="../widget/settingspages.cpp" line="759"/>
-        <source>Programmoberflaeche:</source>
-        <translation>Programmoberfläche:</translation>
     </message>
     <message>
         <location filename="../widget/settingspages.cpp" line="757"/>
@@ -992,17 +998,17 @@ neue, leere Datenbank angelegt werden). Den Pfad zur Datenbank
         <translation>Sprache</translation>
     </message>
     <message>
-        <location filename="../widget/settingspages.cpp" line="771"/>
+        <location filename="../widget/settingspages.cpp" line="765"/>
         <source>Erweitert</source>
         <translation>Erweitert</translation>
     </message>
     <message>
-        <location filename="../widget/settingspages.cpp" line="774"/>
+        <location filename="../widget/settingspages.cpp" line="768"/>
         <source>Uebungslektionen:</source>
         <translation>Übungslektionen:</translation>
     </message>
     <message>
-        <location filename="../widget/settingspages.cpp" line="790"/>
+        <location filename="../widget/settingspages.cpp" line="784"/>
         <source>Die gewaehlten Uebungslektionen sind nicht auf das Tastaturlayout abgestimmt. Sie koennen diese trotzdem trainieren, muessen aber unter Umstaenden von Beginn an Tastwege zuruecklegen.
 </source>
         <translation>Die gewählten Übungslektionen sind nicht auf das Tastaturlayout abgestimmt. Sie können diese trotzdem trainieren, müssen aber unter Umständen von Beginn an Tastwege zurücklegen.
@@ -1171,176 +1177,176 @@ einem Zeilenumbruch am Ende diktiert</translation>
 <context>
     <name>LessonResult</name>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="286"/>
-        <location filename="../widget/lessonresult.cpp" line="481"/>
+        <location filename="../widget/lessonresult.cpp" line="281"/>
+        <location filename="../widget/lessonresult.cpp" line="476"/>
         <source>.</source>
         <translation>.</translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="195"/>
+        <location filename="../widget/lessonresult.cpp" line="190"/>
         <source> Uhr</source>
         <translation> Uhr</translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="132"/>
+        <location filename="../widget/lessonresult.cpp" line="127"/>
         <source>Alle</source>
         <translation>Alle</translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="284"/>
-        <location filename="../widget/lessonresult.cpp" line="479"/>
+        <location filename="../widget/lessonresult.cpp" line="279"/>
+        <location filename="../widget/lessonresult.cpp" line="474"/>
         <source> A/min und </source>
         <translation> A/min und </translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="202"/>
+        <location filename="../widget/lessonresult.cpp" line="197"/>
         <source> min.</source>
         <translation> min.</translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="199"/>
+        <location filename="../widget/lessonresult.cpp" line="194"/>
         <source> sek.</source>
         <translation> sek.</translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="474"/>
+        <location filename="../widget/lessonresult.cpp" line="469"/>
         <source> von </source>
         <translation> von </translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="124"/>
+        <location filename="../widget/lessonresult.cpp" line="119"/>
         <source>Keine</source>
         <translation>Keine</translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="101"/>
+        <location filename="../widget/lessonresult.cpp" line="96"/>
         <source> Zeichen</source>
         <translation> Zeichen</translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="114"/>
+        <location filename="../widget/lessonresult.cpp" line="109"/>
         <source>Diktat blockieren</source>
         <translation>Diktat blockieren</translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="216"/>
+        <location filename="../widget/lessonresult.cpp" line="211"/>
         <source> Punkt</source>
         <translation> Punkt</translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="350"/>
-        <location filename="../widget/lessonresult.cpp" line="545"/>
+        <location filename="../widget/lessonresult.cpp" line="345"/>
+        <location filename="../widget/lessonresult.cpp" line="540"/>
         <source>Lektion: </source>
         <translation>Lektion: </translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="164"/>
+        <location filename="../widget/lessonresult.cpp" line="159"/>
         <source>- Hilfetext</source>
         <translation>- Hilfetext</translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="599"/>
+        <location filename="../widget/lessonresult.cpp" line="594"/>
         <source>Bericht drucken</source>
         <translation>Bericht drucken</translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="94"/>
+        <location filename="../widget/lessonresult.cpp" line="89"/>
         <source> Minuten</source>
         <translation> Minuten</translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="370"/>
-        <location filename="../widget/lessonresult.cpp" line="565"/>
+        <location filename="../widget/lessonresult.cpp" line="365"/>
+        <location filename="../widget/lessonresult.cpp" line="560"/>
         <source>Fehlerquote: </source>
         <translation>Fehlerquote: </translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="146"/>
+        <location filename="../widget/lessonresult.cpp" line="141"/>
         <source>- Grundstellung</source>
         <translation>- Grundstellung</translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="374"/>
-        <location filename="../widget/lessonresult.cpp" line="569"/>
+        <location filename="../widget/lessonresult.cpp" line="369"/>
+        <location filename="../widget/lessonresult.cpp" line="564"/>
         <source>A/min: </source>
         <translation>A/min: </translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="388"/>
-        <location filename="../widget/lessonresult.cpp" line="582"/>
+        <location filename="../widget/lessonresult.cpp" line="383"/>
+        <location filename="../widget/lessonresult.cpp" line="577"/>
         <source>Diktat</source>
         <translation>Diktat</translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="216"/>
+        <location filename="../widget/lessonresult.cpp" line="211"/>
         <source> Punkte</source>
         <translation> Punkte</translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="283"/>
-        <location filename="../widget/lessonresult.cpp" line="478"/>
+        <location filename="../widget/lessonresult.cpp" line="278"/>
+        <location filename="../widget/lessonresult.cpp" line="473"/>
         <source> erreicht, bei einer Schreibgeschwindigkeit von </source>
         <translation> erreicht, bei einer Schreibgeschwindigkeit von </translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="282"/>
-        <location filename="../widget/lessonresult.cpp" line="477"/>
+        <location filename="../widget/lessonresult.cpp" line="277"/>
+        <location filename="../widget/lessonresult.cpp" line="472"/>
         <source>Sie haben </source>
         <translation>Sie haben </translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="285"/>
-        <location filename="../widget/lessonresult.cpp" line="480"/>
+        <location filename="../widget/lessonresult.cpp" line="280"/>
+        <location filename="../widget/lessonresult.cpp" line="475"/>
         <source> Tippfehler</source>
         <translation> Tippfehler</translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="116"/>
+        <location filename="../widget/lessonresult.cpp" line="111"/>
         <source>Tippfehler uebergehen</source>
         <translation>Tippfehler übergehen</translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="158"/>
+        <location filename="../widget/lessonresult.cpp" line="153"/>
         <source>- Trennlinie</source>
         <translation>- Trennlinie</translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="354"/>
-        <location filename="../widget/lessonresult.cpp" line="549"/>
+        <location filename="../widget/lessonresult.cpp" line="349"/>
+        <location filename="../widget/lessonresult.cpp" line="544"/>
         <source>Zeitpunkt: </source>
         <translation>Zeitpunkt: </translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="319"/>
-        <location filename="../widget/lessonresult.cpp" line="515"/>
+        <location filename="../widget/lessonresult.cpp" line="314"/>
+        <location filename="../widget/lessonresult.cpp" line="510"/>
         <source>Hilfestellungen: </source>
         <translation>Hilfestellungen: </translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="474"/>
+        <location filename="../widget/lessonresult.cpp" line="469"/>
         <source>Bericht</source>
         <translation>Bericht</translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="311"/>
-        <location filename="../widget/lessonresult.cpp" line="358"/>
-        <location filename="../widget/lessonresult.cpp" line="507"/>
-        <location filename="../widget/lessonresult.cpp" line="553"/>
+        <location filename="../widget/lessonresult.cpp" line="306"/>
+        <location filename="../widget/lessonresult.cpp" line="353"/>
+        <location filename="../widget/lessonresult.cpp" line="502"/>
+        <location filename="../widget/lessonresult.cpp" line="548"/>
         <source>Dauer: </source>
         <translation>Dauer: </translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="152"/>
+        <location filename="../widget/lessonresult.cpp" line="147"/>
         <source>- Tastpfade</source>
         <translation>- Tastpfade</translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="104"/>
+        <location filename="../widget/lessonresult.cpp" line="99"/>
         <source>Gesamte Lektion</source>
         <translation>Gesamte Lektion</translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="471"/>
+        <location filename="../widget/lessonresult.cpp" line="466"/>
         <source>10-Finger-Schreibtrainer TIPP10</source>
         <translation>10-Finger-Schreibtrainer TIPP10</translation>
     </message>
@@ -1350,124 +1356,136 @@ einem Zeilenumbruch am Ende diktiert</translation>
         <translation>Drucken</translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="366"/>
-        <location filename="../widget/lessonresult.cpp" line="561"/>
+        <location filename="../widget/lessonresult.cpp" line="361"/>
+        <location filename="../widget/lessonresult.cpp" line="556"/>
         <source>Fehler: </source>
         <translation>Fehler: </translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="140"/>
+        <location filename="../widget/lessonresult.cpp" line="135"/>
         <source>- Farbige Tasten</source>
         <translation>- Farbige Tasten</translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="333"/>
-        <location filename="../widget/lessonresult.cpp" line="528"/>
+        <location filename="../widget/lessonresult.cpp" line="328"/>
+        <location filename="../widget/lessonresult.cpp" line="523"/>
         <source>Auswertung</source>
         <translation>Auswertung</translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="315"/>
-        <location filename="../widget/lessonresult.cpp" line="511"/>
+        <location filename="../widget/lessonresult.cpp" line="310"/>
+        <location filename="../widget/lessonresult.cpp" line="506"/>
         <source>Tippfehler: </source>
         <translation>Tippfehler: </translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="285"/>
-        <location filename="../widget/lessonresult.cpp" line="480"/>
+        <location filename="../widget/lessonresult.cpp" line="280"/>
+        <location filename="../widget/lessonresult.cpp" line="475"/>
         <source> Tippfehlern</source>
         <translation> Tippfehlern</translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="300"/>
-        <location filename="../widget/lessonresult.cpp" line="495"/>
+        <location filename="../widget/lessonresult.cpp" line="295"/>
+        <location filename="../widget/lessonresult.cpp" line="490"/>
         <source>Einstellungen</source>
         <translation>Einstellungen</translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="111"/>
+        <location filename="../widget/lessonresult.cpp" line="106"/>
         <source>Fehler korrigieren</source>
         <translation>Fehler korrigieren</translation>
     </message>
     <message>
-        <location filename="../widget/lessonresult.cpp" line="362"/>
-        <location filename="../widget/lessonresult.cpp" line="557"/>
+        <location filename="../widget/lessonresult.cpp" line="357"/>
+        <location filename="../widget/lessonresult.cpp" line="552"/>
         <source>Zeichen: </source>
         <translation>Zeichen: </translation>
+    </message>
+    <message>
+        <location filename="../widget/lessonresult.cpp" line="188"/>
+        <location filename="../widget/lessonresult.cpp" line="190"/>
+        <source>en</source>
+        <translation>de</translation>
     </message>
 </context>
 <context>
     <name>LessonSqlModel</name>
     <message>
-        <location filename="../sql/lessontablesql.cpp" line="101"/>
+        <location filename="../sql/lessontablesql.cpp" line="90"/>
         <source> Uhr</source>
         <translation> Uhr</translation>
     </message>
     <message>
-        <location filename="../sql/lessontablesql.cpp" line="109"/>
+        <location filename="../sql/lessontablesql.cpp" line="98"/>
         <source> min.</source>
         <translation> min.</translation>
     </message>
     <message>
-        <location filename="../sql/lessontablesql.cpp" line="106"/>
+        <location filename="../sql/lessontablesql.cpp" line="95"/>
         <source> sek.</source>
         <translation> sek.</translation>
     </message>
     <message>
-        <location filename="../sql/lessontablesql.cpp" line="134"/>
+        <location filename="../sql/lessontablesql.cpp" line="123"/>
         <source> Punkt</source>
         <translation> Punkt</translation>
     </message>
     <message>
-        <location filename="../sql/lessontablesql.cpp" line="134"/>
+        <location filename="../sql/lessontablesql.cpp" line="123"/>
         <source> Punkte</source>
         <translation> Punkte</translation>
+    </message>
+    <message>
+        <location filename="../sql/lessontablesql.cpp" line="88"/>
+        <location filename="../sql/lessontablesql.cpp" line="90"/>
+        <source>en</source>
+        <translation>de</translation>
     </message>
 </context>
 <context>
     <name>LessonTableSql</name>
     <message>
-        <location filename="../sql/lessontablesql.cpp" line="346"/>
+        <location filename="../sql/lessontablesql.cpp" line="328"/>
         <source>A/min</source>
         <translation>A/min</translation>
     </message>
     <message>
-        <location filename="../sql/lessontablesql.cpp" line="342"/>
+        <location filename="../sql/lessontablesql.cpp" line="324"/>
         <source>Dauer</source>
         <translation>Dauer</translation>
     </message>
     <message>
-        <location filename="../sql/lessontablesql.cpp" line="345"/>
+        <location filename="../sql/lessontablesql.cpp" line="327"/>
         <source>Quote</source>
         <translation>Quote</translation>
     </message>
     <message>
-        <location filename="../sql/lessontablesql.cpp" line="341"/>
+        <location filename="../sql/lessontablesql.cpp" line="323"/>
         <source>Zeitpunkt</source>
         <translation>Zeitpunkt</translation>
     </message>
     <message>
-        <location filename="../sql/lessontablesql.cpp" line="343"/>
+        <location filename="../sql/lessontablesql.cpp" line="325"/>
         <source>Zeichen</source>
         <translation>Zeichen</translation>
     </message>
     <message>
-        <location filename="../sql/lessontablesql.cpp" line="185"/>
+        <location filename="../sql/lessontablesql.cpp" line="167"/>
         <source>Zeige: </source>
         <translation>Zeige: </translation>
     </message>
     <message>
-        <location filename="../sql/lessontablesql.cpp" line="187"/>
+        <location filename="../sql/lessontablesql.cpp" line="169"/>
         <source>Alle Lektionen</source>
         <translation>Alle Lektionen</translation>
     </message>
     <message>
-        <location filename="../sql/lessontablesql.cpp" line="340"/>
+        <location filename="../sql/lessontablesql.cpp" line="322"/>
         <source>Lektion</source>
         <translation>Lektion</translation>
     </message>
     <message>
-        <location filename="../sql/lessontablesql.cpp" line="375"/>
+        <location filename="../sql/lessontablesql.cpp" line="357"/>
         <source>Die Bewertung der Leistung errechnet sich wie folgt:
 ((Zeichen - (20 x Fehler)) / Dauer in Minuten) x 0.4
  
@@ -1482,24 +1500,24 @@ eine bessere Bewertung hervorruft, als schnelles
 Tippen mit vielen Fehlern!</translation>
     </message>
     <message>
-        <location filename="../sql/lessontablesql.cpp" line="358"/>
+        <location filename="../sql/lessontablesql.cpp" line="340"/>
         <source>Anzahl der Schriftzeichen, die
 ingesamt diktiert wurden</source>
         <translation>Anzahl der Schriftzeichen, die
 ingesamt diktiert wurden</translation>
     </message>
     <message>
-        <location filename="../sql/lessontablesql.cpp" line="344"/>
+        <location filename="../sql/lessontablesql.cpp" line="326"/>
         <source>Fehler</source>
         <translation>Fehler</translation>
     </message>
     <message>
-        <location filename="../sql/lessontablesql.cpp" line="356"/>
+        <location filename="../sql/lessontablesql.cpp" line="338"/>
         <source>Dauer der Lektion insgesamt</source>
         <translation>Dauer der Lektion insgesamt</translation>
     </message>
     <message>
-        <location filename="../sql/lessontablesql.cpp" line="366"/>
+        <location filename="../sql/lessontablesql.cpp" line="348"/>
         <source>Tippfehler in Abhaengigkeit von der
 Diktatlaenge (Tippfehler / Zeichen)
 Umso geringer die Fehlerquote, desto besser!</source>
@@ -1508,46 +1526,46 @@ Diktatlänge (Tippfehler / Zeichen)
 Umso geringer die Fehlerquote, desto besser!</translation>
     </message>
     <message>
-        <location filename="../sql/lessontablesql.cpp" line="189"/>
+        <location filename="../sql/lessontablesql.cpp" line="171"/>
         <source>Freie Lektionen</source>
         <translation>Freie Lektionen</translation>
     </message>
     <message>
-        <location filename="../sql/lessontablesql.cpp" line="362"/>
+        <location filename="../sql/lessontablesql.cpp" line="344"/>
         <source>Anzahl der Tippfehler, die in
 der Lektion gemacht wurden</source>
         <translation>Anzahl der Tippfehler, die in
 der Lektion gemacht wurden</translation>
     </message>
     <message>
-        <location filename="../sql/lessontablesql.cpp" line="350"/>
+        <location filename="../sql/lessontablesql.cpp" line="332"/>
         <source>Diese Spalte zeigt die Namen
 der absolvierten Lektionen</source>
         <translation>Diese Spalte zeigt die Namen
 der absolvierten Lektionen</translation>
     </message>
     <message>
-        <location filename="../sql/lessontablesql.cpp" line="347"/>
+        <location filename="../sql/lessontablesql.cpp" line="329"/>
         <source>Bewertung</source>
         <translation>Bewertung</translation>
     </message>
     <message>
-        <location filename="../sql/lessontablesql.cpp" line="188"/>
+        <location filename="../sql/lessontablesql.cpp" line="170"/>
         <source>Uebungslektionen</source>
         <translation>Übungslektionen</translation>
     </message>
     <message>
-        <location filename="../sql/lessontablesql.cpp" line="190"/>
+        <location filename="../sql/lessontablesql.cpp" line="172"/>
         <source>Eigene Lektionen</source>
         <translation>Eigene Lektionen</translation>
     </message>
     <message>
-        <location filename="../sql/lessontablesql.cpp" line="354"/>
+        <location filename="../sql/lessontablesql.cpp" line="336"/>
         <source>Startzeitpunkt der Lektion</source>
         <translation>Startzeitpunkt der Lektion</translation>
     </message>
     <message>
-        <location filename="../sql/lessontablesql.cpp" line="371"/>
+        <location filename="../sql/lessontablesql.cpp" line="353"/>
         <source>&quot;A/min&quot; besagt, wie viele Schriftzeichen (Anschlaege)
 durchschnittlich pro Minute eingegeben wurden</source>
         <translation>&quot;A/min&quot; besagt, wie viele Schriftzeichen (Anschläge)
@@ -1799,105 +1817,112 @@ umstellen, wenn die Intelligenz deaktiviert wird</translation>
 <context>
     <name>ProgressionWidget</name>
     <message>
-        <location filename="../widget/progressionwidget.cpp" line="147"/>
+        <location filename="../widget/progressionwidget.cpp" line="134"/>
         <source> Uhr</source>
         <translation> Uhr</translation>
     </message>
     <message>
-        <location filename="../widget/progressionwidget.cpp" line="584"/>
+        <location filename="../widget/progressionwidget.cpp" line="571"/>
         <source>A/min</source>
         <translation>A/min</translation>
     </message>
     <message>
-        <location filename="../widget/progressionwidget.cpp" line="63"/>
-        <location filename="../widget/progressionwidget.cpp" line="77"/>
-        <location filename="../widget/progressionwidget.cpp" line="573"/>
+        <location filename="../widget/progressionwidget.cpp" line="50"/>
+        <location filename="../widget/progressionwidget.cpp" line="64"/>
+        <location filename="../widget/progressionwidget.cpp" line="560"/>
         <source>Zeitpunkt</source>
         <translation>Zeitpunkt</translation>
     </message>
     <message>
-        <location filename="../widget/progressionwidget.cpp" line="69"/>
+        <location filename="../widget/progressionwidget.cpp" line="56"/>
         <source>Zeige: </source>
         <translation>Zeige: </translation>
     </message>
     <message>
-        <location filename="../widget/progressionwidget.cpp" line="75"/>
+        <location filename="../widget/progressionwidget.cpp" line="62"/>
         <source>X-Achse sortieren nach: </source>
         <translation>X-Achse sortieren nach: </translation>
     </message>
     <message>
-        <location filename="../widget/progressionwidget.cpp" line="71"/>
+        <location filename="../widget/progressionwidget.cpp" line="58"/>
         <source>Alle Lektionen</source>
         <translation>Alle Lektionen</translation>
     </message>
     <message>
-        <location filename="../widget/progressionwidget.cpp" line="525"/>
+        <location filename="../widget/progressionwidget.cpp" line="512"/>
         <source> A/min</source>
         <translation> A/min</translation>
     </message>
     <message>
-        <location filename="../widget/progressionwidget.cpp" line="522"/>
+        <location filename="../widget/progressionwidget.cpp" line="509"/>
         <source> Punkt</source>
         <translation> Punkt</translation>
     </message>
     <message>
-        <location filename="../widget/progressionwidget.cpp" line="78"/>
-        <location filename="../widget/progressionwidget.cpp" line="579"/>
+        <location filename="../widget/progressionwidget.cpp" line="65"/>
+        <location filename="../widget/progressionwidget.cpp" line="566"/>
         <source>Lektion</source>
         <translation>Lektion</translation>
     </message>
     <message>
-        <location filename="../widget/progressionwidget.cpp" line="541"/>
+        <location filename="../widget/progressionwidget.cpp" line="528"/>
         <source>Der Verlauf wird erst nach der zweiten absolvierten Lektion sichtbar.</source>
         <translation>Der Verlauf wird erst nach der zweiten absolvierten Lektion sichtbar.</translation>
     </message>
     <message>
-        <location filename="../widget/progressionwidget.cpp" line="523"/>
+        <location filename="../widget/progressionwidget.cpp" line="510"/>
         <source> Punkte</source>
         <translation> Punkte</translation>
     </message>
     <message>
-        <location filename="../widget/progressionwidget.cpp" line="273"/>
+        <location filename="../widget/progressionwidget.cpp" line="260"/>
         <source>Punkte</source>
         <translation>Punkte</translation>
     </message>
     <message>
-        <location filename="../widget/progressionwidget.cpp" line="424"/>
-        <location filename="../widget/progressionwidget.cpp" line="448"/>
+        <location filename="../widget/progressionwidget.cpp" line="411"/>
+        <location filename="../widget/progressionwidget.cpp" line="435"/>
         <source>Uebungslektion</source>
         <translation>Übungslektion</translation>
     </message>
     <message>
-        <location filename="../widget/progressionwidget.cpp" line="73"/>
+        <location filename="../widget/progressionwidget.cpp" line="60"/>
         <source>Freie Lektionen</source>
         <translation>Freie Lektionen</translation>
     </message>
     <message>
-        <location filename="../widget/progressionwidget.cpp" line="438"/>
-        <location filename="../widget/progressionwidget.cpp" line="462"/>
+        <location filename="../widget/progressionwidget.cpp" line="425"/>
+        <location filename="../widget/progressionwidget.cpp" line="449"/>
         <source>Eigene Lektion</source>
         <translation>Eigene Lektion</translation>
     </message>
     <message>
-        <location filename="../widget/progressionwidget.cpp" line="589"/>
+        <location filename="../widget/progressionwidget.cpp" line="576"/>
         <source>Bewertung</source>
         <translation>Bewertung</translation>
     </message>
     <message>
-        <location filename="../widget/progressionwidget.cpp" line="72"/>
+        <location filename="../widget/progressionwidget.cpp" line="59"/>
         <source>Uebungslektionen</source>
         <translation>Übungslektionen</translation>
     </message>
     <message>
-        <location filename="../widget/progressionwidget.cpp" line="74"/>
+        <location filename="../widget/progressionwidget.cpp" line="61"/>
         <source>Eigene Lektionen</source>
         <translation>Eigene Lektionen</translation>
     </message>
     <message>
-        <location filename="../widget/progressionwidget.cpp" line="431"/>
-        <location filename="../widget/progressionwidget.cpp" line="455"/>
+        <location filename="../widget/progressionwidget.cpp" line="418"/>
+        <location filename="../widget/progressionwidget.cpp" line="442"/>
         <source>Freie Lektion</source>
         <translation>Freie Lektion</translation>
+    </message>
+    <message>
+        <location filename="../widget/progressionwidget.cpp" line="130"/>
+        <location filename="../widget/progressionwidget.cpp" line="132"/>
+        <location filename="../widget/progressionwidget.cpp" line="134"/>
+        <source>en</source>
+        <translation>de</translation>
     </message>
 </context>
 <context>
@@ -1913,13 +1938,13 @@ umstellen, wenn die Intelligenz deaktiviert wird</translation>
         <translation>&amp;Nein</translation>
     </message>
     <message>
-        <location filename="../widget/fingerwidget.cpp" line="144"/>
+        <location filename="../widget/fingerwidget.cpp" line="142"/>
         <location filename="../sql/keyboardsql.cpp" line="49"/>
         <source>Kleiner Finger links</source>
         <translation>Kleiner Finger links</translation>
     </message>
     <message>
-        <location filename="../widget/fingerwidget.cpp" line="146"/>
+        <location filename="../widget/fingerwidget.cpp" line="144"/>
         <location filename="../sql/keyboardsql.cpp" line="51"/>
         <source>Mittelfinger links</source>
         <translation>Mittelfinger links</translation>
@@ -1933,7 +1958,7 @@ umstellen, wenn die Intelligenz deaktiviert wird</translation>
 </translation>
     </message>
     <message>
-        <location filename="../widget/fingerwidget.cpp" line="152"/>
+        <location filename="../widget/fingerwidget.cpp" line="150"/>
         <location filename="../sql/keyboardsql.cpp" line="56"/>
         <source>Daumen</source>
         <translation>Daumen</translation>
@@ -1948,7 +1973,7 @@ neue Datenbank übertragen!
 </translation>
     </message>
     <message>
-        <location filename="../widget/fingerwidget.cpp" line="151"/>
+        <location filename="../widget/fingerwidget.cpp" line="149"/>
         <location filename="../sql/keyboardsql.cpp" line="56"/>
         <source>Kleiner Finger rechts</source>
         <translation>Kleiner Finger rechts</translation>
@@ -1959,7 +1984,7 @@ neue Datenbank übertragen!
         <translation>Übungslektion</translation>
     </message>
     <message>
-        <location filename="../widget/fingerwidget.cpp" line="145"/>
+        <location filename="../widget/fingerwidget.cpp" line="143"/>
         <location filename="../sql/keyboardsql.cpp" line="50"/>
         <source>Ringfinger links</source>
         <translation>Ringfinger links</translation>
@@ -1980,13 +2005,13 @@ in die neue Datenbank dieser Version übernehmen?
 </translation>
     </message>
     <message>
-        <location filename="../widget/fingerwidget.cpp" line="150"/>
+        <location filename="../widget/fingerwidget.cpp" line="148"/>
         <location filename="../sql/keyboardsql.cpp" line="55"/>
         <source>Ringfinger rechts</source>
         <translation>Ringfinger rechts</translation>
     </message>
     <message>
-        <location filename="../widget/fingerwidget.cpp" line="148"/>
+        <location filename="../widget/fingerwidget.cpp" line="146"/>
         <location filename="../sql/keyboardsql.cpp" line="53"/>
         <source>Zeigefinger rechts</source>
         <translation>Zeigefinger rechts</translation>
@@ -2001,16 +2026,21 @@ in die neue Datenbank dieser Version übernehmen?
 </translation>
     </message>
     <message>
-        <location filename="../widget/fingerwidget.cpp" line="149"/>
+        <location filename="../widget/fingerwidget.cpp" line="147"/>
         <location filename="../sql/keyboardsql.cpp" line="54"/>
         <source>Mittelfinger rechts</source>
         <translation>Mittelfinger rechts</translation>
     </message>
     <message>
-        <location filename="../widget/fingerwidget.cpp" line="147"/>
+        <location filename="../widget/fingerwidget.cpp" line="145"/>
         <location filename="../sql/keyboardsql.cpp" line="52"/>
         <source>Zeigefinger links</source>
         <translation>Zeigefinger links</translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="93"/>
+        <source>en</source>
+        <translation>de</translation>
     </message>
 </context>
 <context>

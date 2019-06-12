@@ -31,7 +31,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 #include <QPainter>
 #include <QPen>
 #include <QRectF>
-#include <QSettings>
 #include <QSqlDatabase>
 #include <QSqlDriver>
 #include <QSqlQuery>
@@ -43,18 +42,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 ProgressionWidget::ProgressionWidget(QWidget* parent)
     : QWidget(parent)
 {
-// Get language
-#if APP_PORTABLE
-    QSettings settings(
-        QCoreApplication::applicationDirPath() + "/portable/settings.ini",
-        QSettings::IniFormat);
-#else
-    QSettings settings;
-#endif
-    settings.beginGroup("general");
-    language = settings.value("language_gui", APP_STD_LANGUAGE_GUI).toString();
-    settings.endGroup();
-
     // Fix the size of this class because of using fix sized images
     // setFixedSize(600, 310);
     whereClausel = "";
@@ -140,11 +127,11 @@ void ProgressionWidget::getChartValues()
         timeStampShort
             = QDateTime::fromString(
                 query.value(xAxisColumn).toString(), "yyyyMMddhhmmss")
-                  .toString((language == "de" ? "dd.MM.yyyy" : "MMM d, yyyy"));
+                  .toString((tr("en") == "de" ? "dd.MM.yyyy" : "MMM d, yyyy"));
         timeStampLong
-            = timeStamp.toString((language == "de" ? "dd.MM.yyyy hh:mm"
+            = timeStamp.toString((tr("en") == "de" ? "dd.MM.yyyy hh:mm"
                                                    : "MMM d, yyyy hh:mm ap"))
-            + (language == "de" ? tr(" Uhr") : "");
+            + (tr("en") == "de" ? tr(" Uhr") : "");
 
         lessonsTimestamps.append(timeStampLong);
 

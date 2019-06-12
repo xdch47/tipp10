@@ -28,7 +28,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 #include <QHBoxLayout>
 #include <QPrintDialog>
 #include <QPrinter>
-#include <QSettings>
 #include <QVBoxLayout>
 
 #include "def/defines.h"
@@ -44,8 +43,6 @@ HelpBrowser::HelpBrowser(QString link, QWidget* parent)
     setWindowIcon(QIcon(":/img/" + QString(ICON_FILENAME)));
     // setModal(false);
 
-    readSettings();
-
     // Create buttons
     createButtons();
 
@@ -54,14 +51,14 @@ HelpBrowser::HelpBrowser(QString link, QWidget* parent)
     textBrowser->setOpenExternalLinks(true);
 
     textBrowser->setSource(QString("file:///")
-        + QCoreApplication::applicationDirPath() + QString("/help/") + language
+        + QCoreApplication::applicationDirPath() + QString("/help/") + tr("en")
         + QString("/index.html"));
 
     if (link != "") {
 
         textBrowser->setSource(QString("file:///")
             + QCoreApplication::applicationDirPath() + QString("/help/")
-            + language + QString("/content/") + link);
+            + tr("en") + QString("/content/") + link);
     }
 
     // Set the layout of all widgets created above
@@ -147,18 +144,4 @@ void HelpBrowser::clickPrint()
 void HelpBrowser::changePage(QUrl url)
 {
     // this->setWindowTitle(url.toString());
-}
-
-void HelpBrowser::readSettings()
-{
-#if APP_PORTABLE
-    QSettings settings(
-        QCoreApplication::applicationDirPath() + "/portable/settings.ini",
-        QSettings::IniFormat);
-#else
-    QSettings settings;
-#endif
-    settings.beginGroup("general");
-    language = settings.value("language_gui", APP_STD_LANGUAGE_GUI).toString();
-    settings.endGroup();
 }

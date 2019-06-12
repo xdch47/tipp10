@@ -29,8 +29,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 #define APP_PORTABLE false
 
 // Languages
-#define APP_EXISTING_LANGUAGES_GUI	"de;en"
-#define APP_STD_LANGUAGE_GUI		"de"
 #define APP_STD_LANGUAGE_LAYOUT		"de_qwertz_win"
 #define APP_STD_LANGUAGE_LESSON		"de_de_qwertz"
 

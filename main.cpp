@@ -51,6 +51,20 @@ int main(int argc, char* argv[])
     app.setOrganizationDomain(APP_URL);
     app.setApplicationName(APP_NAME_INTERN);
 
+    // Translation
+    // Common qt widgets
+    QTranslator translatorQt;
+    translatorQt.load("qt_" + QLocale::system().name(),
+        QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+    app.installTranslator(&translatorQt);
+
+    // Content (own translation files)
+    QString trFile = "tipp10_" + QLocale::system().name();
+    QString trPath = INSTALLPREFIX "/share/tipp10/translations";
+    QTranslator translatorContent;
+    translatorContent.load(trFile, trPath);
+    app.installTranslator(&translatorContent);
+
 // Settings to get and set general settings
 #if APP_PORTABLE
     /*QSettings settings(QSettings::IniFormat, QSettings::UserScope,
@@ -66,40 +80,6 @@ settings.setPath(QSettings::IniFormat, QSettings::UserScope,
 
     // Read/write language, license key and show illustration flag
     settings.beginGroup("general");
-    QString languageGui
-        = settings.value("language_gui", QLocale::system().name()).toString();
-
-    QStringList languagesGui = QString(APP_EXISTING_LANGUAGES_GUI)
-                                   .split(";", QString::SkipEmptyParts);
-
-    QString checkDelims = "_";
-    bool checkSuccessful = true;
-
-    for (;;) {
-
-        if (languagesGui.contains(languageGui)) {
-            break;
-        }
-
-        int rightmost = 0;
-        for (int i = 0; i < (int)checkDelims.length(); i++) {
-            int k = languageGui.lastIndexOf(checkDelims[i]);
-            if (k > rightmost)
-                rightmost = k;
-        }
-
-        // no truncations? fail
-        if (rightmost == 0) {
-            checkSuccessful = false;
-            break;
-        }
-
-        languageGui.truncate(rightmost);
-    }
-    if (!checkSuccessful) {
-        languageGui = APP_STD_LANGUAGE_GUI;
-    }
-
     QString languageLayout = settings.value("language_layout", "").toString();
 
     QString languageLesson = settings.value("language_lesson", "").toString();
@@ -110,7 +90,7 @@ settings.setPath(QSettings::IniFormat, QSettings::UserScope,
 
     // Convert old keyboard layout settings to new (since v2.1.0)
     if (languageLayout == "") {
-        if (languageGui != "de") {
+        if (QObject::tr("en") != "de") {
 
             languageLayout = "us_qwerty";
 #ifdef APP_MAC
@@ -207,7 +187,6 @@ settings.setPath(QSettings::IniFormat, QSettings::UserScope,
     }
 
     settings.beginGroup("general");
-    settings.setValue("language_gui", languageGui);
     settings.setValue("language_layout", languageLayout);
     settings.setValue("language_lesson", languageLesson);
     settings.endGroup();
@@ -216,20 +195,6 @@ settings.setPath(QSettings::IniFormat, QSettings::UserScope,
     if (!useNativeStyle) {
         app.setStyle("plastique");
     }
-
-    // Translation
-    // Common qt widgets
-    QTranslator translatorQt;
-    translatorQt.load("qt_" + QLocale::system().name(),
-        QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-    app.installTranslator(&translatorQt);
-
-    // Content (own translation files)
-    QString trFile = "tipp10_" + QLocale::system().name();
-    QString trPath = INSTALLPREFIX "/share/tipp10/translations";
-    QTranslator translatorContent;
-    translatorContent.load(trFile, trPath);
-    app.installTranslator(&translatorContent);
 
     // Set path to the db if arg parameter is set
     if (argc > 1) {

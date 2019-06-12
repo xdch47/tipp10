@@ -89,7 +89,6 @@ private:
     QString orderClausel;
     QString xAxis;
     int xAxisColumn;
-    QString language;
     int lessonSelected;
 };
 

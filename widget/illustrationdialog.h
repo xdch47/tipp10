@@ -75,11 +75,6 @@ private:
     //! Writes user settings
     void writeSettings();
 
-    //! Reads user settings
-    void readSettings();
-
-    QString languageGui;
-
     QPushButton* buttonStart;
     QCheckBox* showDialogCheck;
 

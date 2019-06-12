@@ -756,12 +756,6 @@ void LanguagePage::createGroupLanguage()
 
     groupLanguage = new QGroupBox(tr("Sprache"));
 
-    labelLanguage = new QLabel(tr("Programmoberflaeche:"));
-
-    comboLanguages = new QComboBox();
-
-    startSql->fillLanguage(comboLanguages, "language_interfaces", "interface");
-
     labelLayout = new QLabel(tr("Tastaturlayout:"));
 
     comboLayouts = new QComboBox();
@@ -797,9 +791,6 @@ void LanguagePage::createGroupLanguage()
     layoutRegexp->addWidget(buttonLayoutRegEx);
     // Layout of group box
     QVBoxLayout* layout = new QVBoxLayout;
-    layout->addWidget(labelLanguage);
-    layout->addWidget(comboLanguages);
-    layout->addSpacing(12);
     layout->addWidget(labelLayout);
     layout->addLayout(layoutRegexp);
     layout->addSpacing(12);
@@ -872,12 +863,6 @@ void LanguagePage::readSettings()
     QSettings settings;
 #endif
     settings.beginGroup("general");
-    tempIndex = comboLanguages->findData(
-        settings.value("language_gui", APP_STD_LANGUAGE_GUI).toString());
-    if (!tempIndex) {
-        tempIndex = 0;
-    }
-    comboLanguages->setCurrentIndex(tempIndex);
     tempIndex = comboLayouts->findData(
         settings.value("language_layout", APP_STD_LANGUAGE_LAYOUT).toString());
     if (!tempIndex) {
@@ -906,19 +891,12 @@ bool LanguagePage::writeSettings()
     QSettings settings;
 #endif
     settings.beginGroup("general");
-    if (comboLanguages->itemData(comboLanguages->currentIndex())
-        != settings.value("language_gui", APP_STD_LANGUAGE_GUI).toString()) {
-
-        requireRestart = true;
-    }
     /*if (comboLessons->itemData(comboLessons->currentIndex()) !=
                 settings.value("language_lesson",
     APP_STD_LANGUAGE_LESSON).toString()) {
 
                 requireRestart = true;
     }*/
-    settings.setValue("language_gui",
-        comboLanguages->itemData(comboLanguages->currentIndex()));
     settings.setValue("language_layout",
         comboLayouts->itemData(comboLayouts->currentIndex()));
     settings.setValue("language_lesson",
