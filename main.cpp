@@ -23,8 +23,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 **
 ****************************************************************/
 
+#ifndef INSTALLPREFIX
+#define INSTALLPREFIX "/usr/local"
+#endif
+
 #include <QApplication>
 #include <QCoreApplication>
+#include <QLibraryInfo>
 #include <QSettings>
 #include <QString>
 #include <QTranslator>
@@ -215,12 +220,15 @@ settings.setPath(QSettings::IniFormat, QSettings::UserScope,
     // Translation
     // Common qt widgets
     QTranslator translatorQt;
-    translatorQt.load("qt_" + languageGui, ":/languages/");
+    translatorQt.load("qt_" + QLocale::system().name(),
+        QLibraryInfo::location(QLibraryInfo::TranslationsPath));
     app.installTranslator(&translatorQt);
 
     // Content (own translation files)
+    QString trFile = "tipp10_" + QLocale::system().name();
+    QString trPath = INSTALLPREFIX "/share/tipp10/translations";
     QTranslator translatorContent;
-    translatorContent.load("tipp10_" + languageGui, ":/languages/");
+    translatorContent.load(trFile, trPath);
     app.installTranslator(&translatorContent);
 
     // Set path to the db if arg parameter is set
