@@ -79,7 +79,7 @@ AbcRainWidget::AbcRainWidget(QWidget* parent)
     ground = scene->addRect(GroundX, GroundY, GroundWidth, GroundHeight,
         QPen(QColor(200, 0, 0)), QBrush(QColor(200, 0, 0)));
 
-    levelText = new QGraphicsTextItem(tr("Leertaste startet das Spiel"));
+    levelText = new QGraphicsTextItem(tr("Press space bar to start"));
     levelText->setFont(QFont("Arial", FontSizeH3, 100));
     levelText->setDefaultTextColor(QColor(0, 0, 0, 250));
     levelText->setPos((AreaWidth / 2) - (levelText->boundingRect().width() / 2),
@@ -103,12 +103,12 @@ AbcRainWidget::AbcRainWidget(QWidget* parent)
     // view->setSceneRect(AreaX, AreaY, AreaWidth + 200, AreaHeight + 200);
     // view->resize(AreaWidth + 200, AreaHeight + 200);
 
-    buttonHelp = new QPushButton(tr("&Hilfe"));
+    buttonHelp = new QPushButton(tr("&Help"));
     buttonHelp->setFocusPolicy(Qt::NoFocus);
     buttonPause = new QPushButton(tr("&Pause"));
     buttonPause->setEnabled(false);
     buttonPause->setFocusPolicy(Qt::NoFocus);
-    buttonReady = new QPushButton(tr("Spiel &beenden"));
+    buttonReady = new QPushButton(tr("E&xit Game"));
     buttonReady->setFocusPolicy(Qt::NoFocus);
 
     // Button layout horizontal
@@ -359,7 +359,7 @@ void AbcRainWidget::setGameOver()
         (AreaHeight / 2) - (gameOverText->boundingRect().height() / 2));
 
     QGraphicsTextItem* gameOverTextSub = new QGraphicsTextItem(
-        tr("Erreichte Punktzahl: ") + QString::number(shotPoints));
+        tr("Number of points:") + " " + QString::number(shotPoints));
     gameOverTextSub->setFont(QFont("Arial", FontSizeH3, 100));
     gameOverTextSub->setPos(
         (AreaWidth / 2) - (gameOverTextSub->boundingRect().width() / 2),
@@ -422,8 +422,8 @@ void AbcRainWidget::destroyBall(QChar character, int keep)
 void AbcRainWidget::refreshStatus()
 {
 
-    points->setPlainText(tr("Level ") + QString::number(level) + "    "
-        + tr("Punkte: ") + QString::number(shotPoints));
+    points->setPlainText(tr("Level") + " " + QString::number(level) + "    "
+        + tr("Points:") + " " + QString::number(shotPoints));
     scene->update();
 }
 
@@ -434,7 +434,7 @@ void AbcRainWidget::pauseGame()
         buttonPause->setEnabled(false);
         levelText->setFont(QFont("Arial", FontSizeH3, 100));
         levelText->setDefaultTextColor(QColor(0, 0, 0, 250));
-        levelText->setPlainText(tr("Leertaste setzt das Spiel fort"));
+        levelText->setPlainText(tr("Press space bar to proceed"));
         levelText->setPos(
             (AreaWidth / 2) - (levelText->boundingRect().width() / 2),
             (AreaHeight / 2) - (levelText->boundingRect().height() / 2) - 10);

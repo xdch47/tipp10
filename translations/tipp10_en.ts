@@ -4,8 +4,13 @@
 <context>
     <name>AbcRainWidget</name>
     <message>
+        <location filename="../games/abcrainwidget.cpp" line="82"/>
+        <source>Press space bar to start</source>
+        <translation>Press space bar to start</translation>
+    </message>
+    <message>
         <location filename="../games/abcrainwidget.cpp" line="106"/>
-        <source>&amp;Hilfe</source>
+        <source>&amp;Help</source>
         <translation>&amp;Help</translation>
     </message>
     <message>
@@ -14,34 +19,29 @@
         <translation>&amp;Pause</translation>
     </message>
     <message>
-        <location filename="../games/abcrainwidget.cpp" line="437"/>
-        <source>Leertaste setzt das Spiel fort</source>
-        <translation>Press space bar to proceed</translation>
-    </message>
-    <message>
-        <location filename="../games/abcrainwidget.cpp" line="82"/>
-        <source>Leertaste startet das Spiel</source>
-        <translation>Press space bar to start</translation>
-    </message>
-    <message>
-        <location filename="../games/abcrainwidget.cpp" line="425"/>
-        <source>Level </source>
-        <translation>Level </translation>
+        <location filename="../games/abcrainwidget.cpp" line="111"/>
+        <source>E&amp;xit Game</source>
+        <translation>E&amp;xit Game</translation>
     </message>
     <message>
         <location filename="../games/abcrainwidget.cpp" line="362"/>
-        <source>Erreichte Punktzahl: </source>
-        <translation>Number of points: </translation>
+        <source>Number of points:</source>
+        <translation>Number of points:</translation>
     </message>
     <message>
         <location filename="../games/abcrainwidget.cpp" line="426"/>
-        <source>Punkte: </source>
-        <translation>Points: </translation>
+        <source>Points:</source>
+        <translation>Points:</translation>
     </message>
     <message>
-        <location filename="../games/abcrainwidget.cpp" line="111"/>
-        <source>Spiel &amp;beenden</source>
-        <translation>E&amp;xit Game</translation>
+        <location filename="../games/abcrainwidget.cpp" line="425"/>
+        <source>Level</source>
+        <translation>Level</translation>
+    </message>
+    <message>
+        <location filename="../games/abcrainwidget.cpp" line="437"/>
+        <source>Press space bar to proceed</source>
+        <translation>Press space bar to proceed</translation>
     </message>
 </context>
 <context>
