@@ -55,27 +55,63 @@
 <context>
     <name>CharTableSql</name>
     <message>
-        <location filename="../sql/chartablesql.cpp" line="249"/>
-        <source>&amp;Ja</source>
-        <translation>&amp;Ja</translation>
+        <location filename="../sql/chartablesql.cpp" line="108"/>
+        <source>Characters</source>
+        <translation>Schriftzeichen</translation>
     </message>
     <message>
         <location filename="../sql/chartablesql.cpp" line="109"/>
-        <source>Soll-Fehler</source>
+        <source>Target Errors</source>
         <translation>Soll-Fehler</translation>
     </message>
     <message>
         <location filename="../sql/chartablesql.cpp" line="110"/>
-        <source>Ist-Fehler</source>
+        <source>Actual Errors</source>
         <translation>Ist-Fehler</translation>
     </message>
     <message>
-        <location filename="../sql/chartablesql.cpp" line="132"/>
-        <source>Die Fehlerquote zeigt, welche Schriftzeichen
-Ihnen am meisten Probleme bereiten.
-Die Fehlerquote errechnet sich aus dem
-Wert &quot;Soll-Fehler&quot; und dem Wert
-&quot;Vorkommen&quot;.</source>
+        <location filename="../sql/chartablesql.cpp" line="111"/>
+        <source>Frequency</source>
+        <translation>Vorkommen</translation>
+    </message>
+    <message>
+        <location filename="../sql/chartablesql.cpp" line="112"/>
+        <source>Error Rate</source>
+        <translation>Fehlerquote</translation>
+    </message>
+    <message>
+        <location filename="../sql/chartablesql.cpp" line="115"/>
+        <source>This column shows all of the
+characters typed</source>
+        <translation>Diese Spalte zeigt alle bislang
+eingegebenen Schriftzeichen</translation>
+    </message>
+    <message>
+        <location filename="../sql/chartablesql.cpp" line="119"/>
+        <source>The character was supposed to be typed, but wasn&apos;t</source>
+        <translation>Ein &quot;Soll-Fehler&quot; entsteht, wenn ein anderes
+Schriftzeichen eingegeben wurde als das hier
+vorgegebene</translation>
+    </message>
+    <message>
+        <location filename="../sql/chartablesql.cpp" line="122"/>
+        <source>Character was mistyped</source>
+        <translation>Ein &quot;Ist-Fehler&quot; entsteht, wenn das Schriftzeichen
+trotz anderer Vorgabe eingegeben wurde</translation>
+    </message>
+    <message>
+        <location filename="../sql/chartablesql.cpp" line="124"/>
+        <source>This column indicates the total frequency of each
+character shown</source>
+        <translation>Diese Spalte gibt an, wie oft das Schriftzeichen
+ingesamt diktiert wurde</translation>
+    </message>
+    <message>
+        <location filename="../sql/chartablesql.cpp" line="128"/>
+        <source>The error rate shows which characters give
+you the most problems. The error rate is
+calculated from the value &quot;Target Error&quot;
+and the value &quot;Frequency&quot;.</source>
         <translation>Die Fehlerquote zeigt, welche Schriftzeichen
 Ihnen am meisten Probleme bereiten.
 Die Fehlerquote errechnet sich aus dem
@@ -83,73 +119,34 @@ Wert &quot;Soll-Fehler&quot; und dem Wert
 &quot;Vorkommen&quot;.</translation>
     </message>
     <message>
-        <location filename="../sql/chartablesql.cpp" line="157"/>
-        <source>Schriftzeichen zuruecksetzen</source>
+        <location filename="../sql/chartablesql.cpp" line="152"/>
+        <source>Reset characters</source>
         <translation>Schriftzeichen zurücksetzen</translation>
     </message>
     <message>
-        <location filename="../sql/chartablesql.cpp" line="119"/>
-        <source>Ein &quot;Soll-Fehler&quot; entsteht, wenn ein anderes
-Schriftzeichen eingegeben wurde als das hier
-vorgegebene</source>
-        <translation>Ein &quot;Soll-Fehler&quot; entsteht, wenn ein anderes
-Schriftzeichen eingegeben wurde als das hier
-vorgegebene</translation>
-    </message>
-    <message>
-        <location filename="../sql/chartablesql.cpp" line="124"/>
-        <source>Ein &quot;Ist-Fehler&quot; entsteht, wenn das Schriftzeichen
-trotz anderer Vorgabe eingegeben wurde</source>
-        <translation>Ein &quot;Ist-Fehler&quot; entsteht, wenn das Schriftzeichen
-trotz anderer Vorgabe eingegeben wurde</translation>
-    </message>
-    <message>
-        <location filename="../sql/chartablesql.cpp" line="239"/>
-        <source>Die aufgezeichneten Fehlerquoten beeinflussen die Intelligenzfunktion und damit auch die Auswahl der zu diktierenden Texte. Wenn die Fehlerquote eines bestimmten Zeichens uebermaessig hoch ist, kann es unter Umstaenden sinnvoll sein, die Liste zurueckzusetzen.
+        <location filename="../sql/chartablesql.cpp" line="234"/>
+        <source>Recorded error rates affect the intelligence feature and the selection of the text to be dictated. If the error rate for a certain character is excessively high it might be useful to reset the list.
+
+All recorded characters will now be deleted.
+
+Do you still wish to proceed?
+</source>
+        <translation>Die aufgezeichneten Fehlerquoten beeinflussen die Intelligenzfunktion und damit auch die Auswahl der zu diktierenden Texte. Wenn die Fehlerquote eines bestimmten Zeichens uebermaessig hoch ist, kann es unter Umstaenden sinnvoll sein, die Liste zurueckzusetzen.
 
 Es werden nun alle aufgezeichneten Schriftzeichen geloescht.
 
 Wollen Sie den Vorgang wirklich fortsetzen?
-</source>
-        <translation>Die aufgezeichneten Fehlerquoten beeinflussen die Intelligenzfunktion und damit auch die Auswahl der Texte beim Schreibtraining. Wenn die Fehlerquote eines bestimmten Zeichens übermäßig hoch ist, kann es unter Umständen sinnvoll sein, die Liste zurückzusetzen.
-
-Es werden nun alle aufgezeichneten Schriftzeichen gelöscht.
-
-Wollen Sie den Vorgang wirklich fortsetzen?</translation>
+</translation>
     </message>
     <message>
-        <location filename="../sql/chartablesql.cpp" line="115"/>
-        <source>Diese Spalte zeigt alle bislang
-eingegebenen Schriftzeichen</source>
-        <translation>Diese Spalte zeigt alle bislang
-eingegebenen Schriftzeichen</translation>
+        <location filename="../sql/chartablesql.cpp" line="240"/>
+        <source>&amp;Yes</source>
+        <translation>&amp;Ja</translation>
     </message>
     <message>
-        <location filename="../sql/chartablesql.cpp" line="111"/>
-        <source>Vorkommen</source>
-        <translation>Vorkommen</translation>
-    </message>
-    <message>
-        <location filename="../sql/chartablesql.cpp" line="108"/>
-        <source>Schriftzeichen</source>
-        <translation>Schriftzeichen</translation>
-    </message>
-    <message>
-        <location filename="../sql/chartablesql.cpp" line="249"/>
-        <source>&amp;Abbrechen</source>
+        <location filename="../sql/chartablesql.cpp" line="240"/>
+        <source>&amp;Cancel</source>
         <translation>&amp;Abbrechen</translation>
-    </message>
-    <message>
-        <location filename="../sql/chartablesql.cpp" line="128"/>
-        <source>Diese Spalte gibt an, wie oft das Schriftzeichen
-ingesamt diktiert wurde</source>
-        <translation>Diese Spalte gibt an, wie oft das Schriftzeichen
-ingesamt diktiert wurde</translation>
-    </message>
-    <message>
-        <location filename="../sql/chartablesql.cpp" line="112"/>
-        <source>Fehlerquote</source>
-        <translation>Fehlerquote</translation>
     </message>
 </context>
 <context>

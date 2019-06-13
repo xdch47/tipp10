@@ -105,35 +105,30 @@ CharTableSql::CharTableSql(QWidget* parent)
     model = new CharSqlModel(this);
 
     // Column headers (see sql query)
-    model->setHeaderData(0, Qt::Horizontal, tr("Schriftzeichen"));
-    model->setHeaderData(1, Qt::Horizontal, tr("Soll-Fehler"));
-    model->setHeaderData(2, Qt::Horizontal, tr("Ist-Fehler"));
-    model->setHeaderData(3, Qt::Horizontal, tr("Vorkommen"));
-    model->setHeaderData(4, Qt::Horizontal, tr("Fehlerquote"));
+    model->setHeaderData(0, Qt::Horizontal, tr("Characters"));
+    model->setHeaderData(1, Qt::Horizontal, tr("Target Errors"));
+    model->setHeaderData(2, Qt::Horizontal, tr("Actual Errors"));
+    model->setHeaderData(3, Qt::Horizontal, tr("Frequency"));
+    model->setHeaderData(4, Qt::Horizontal, tr("Error Rate"));
 
     model->setHeaderData(0, Qt::Horizontal,
-        tr("Diese Spalte zeigt alle bislang\n"
-           "eingegebenen Schriftzeichen"),
+        tr("This column shows all of the\n"
+           "characters typed"),
         Qt::ToolTipRole);
     model->setHeaderData(1, Qt::Horizontal,
-        tr("Ein \"Soll-Fehler\" entsteht, wenn ein anderes\n"
-           "Schriftzeichen eingegeben wurde als das hier\n"
-           "vorgegebene"),
+        tr("The character was supposed to be typed, but wasn't"),
         Qt::ToolTipRole);
-    model->setHeaderData(2, Qt::Horizontal,
-        tr("Ein \"Ist-Fehler\" entsteht, wenn das Schriftzeichen\n"
-           "trotz anderer Vorgabe eingegeben wurde"),
-        Qt::ToolTipRole);
+    model->setHeaderData(
+        2, Qt::Horizontal, tr("Character was mistyped"), Qt::ToolTipRole);
     model->setHeaderData(3, Qt::Horizontal,
-        tr("Diese Spalte gibt an, wie oft das Schriftzeichen\n"
-           "ingesamt diktiert wurde"),
+        tr("This column indicates the total frequency of each\n"
+           "character shown"),
         Qt::ToolTipRole);
     model->setHeaderData(4, Qt::Horizontal,
-        tr("Die Fehlerquote zeigt, welche Schriftzeichen\n"
-           "Ihnen am meisten Probleme bereiten.\n"
-           "Die Fehlerquote errechnet sich aus dem\n"
-           "Wert \"Soll-Fehler\" und dem Wert\n"
-           "\"Vorkommen\"."),
+        tr("The error rate shows which characters give\n"
+           "you the most problems. The error rate is\n"
+           "calculated from the value \"Target Error\"\n"
+           "and the value \"Frequency\"."),
         Qt::ToolTipRole);
 
     // Create the table view
@@ -154,7 +149,7 @@ CharTableSql::CharTableSql(QWidget* parent)
     // Resize the columns
     view->resizeColumnsToContents();
 
-    buttonReset = new QPushButton(tr("Schriftzeichen zuruecksetzen"));
+    buttonReset = new QPushButton(tr("Reset characters"));
     buttonReset->setFixedHeight(20);
     if (model->rowCount() == 0) {
         buttonReset->setEnabled(false);
@@ -236,17 +231,13 @@ void CharTableSql::setQueryOrder(QString columnname, int isdesc)
 void CharTableSql::deleteUserChars()
 {
     switch (QMessageBox::question(this, APP_NAME,
-        tr("Die aufgezeichneten Fehlerquoten beeinflussen die "
-           "Intelligenzfunktion "
-           "und damit auch die Auswahl der zu diktierenden Texte. "
-           "Wenn die Fehlerquote eines bestimmten Zeichens uebermaessig hoch "
-           "ist, "
-           "kann es unter Umstaenden sinnvoll sein, die Liste "
-           "zurueckzusetzen.\n\n"
-           "Es werden nun alle aufgezeichneten Schriftzeichen geloescht.\n\n"
-           "Wollen Sie den Vorgang wirklich "
-           "fortsetzen?\n"),
-        tr("&Ja"), tr("&Abbrechen"), 0, 1)) {
+        tr("Recorded error rates affect the intelligence feature and the "
+           "selection of the text to be dictated. If the error rate for a "
+           "certain character is excessively high it might be useful to reset "
+           "the list.\n\n"
+           "All recorded characters will now be deleted.\n\n"
+           "Do you still wish to proceed?\n"),
+        tr("&Yes"), tr("&Cancel"), 0, 1)) {
     case 0:
         StartSql* userSql = new StartSql();
         if (!userSql->deleteUserChars()) {
