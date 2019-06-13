@@ -2684,17 +2684,4 @@ Slider on the right: The ticker moves very fast.)</translation>
         <translation>Chars: </translation>
     </message>
 </context>
-<context>
-    <name>TxtMessageDialog</name>
-    <message>
-        <location filename="../widget/txtmessagedialog.cpp" line="69"/>
-        <source>&amp;Ok</source>
-        <translation>&amp;Ok</translation>
-    </message>
-    <message>
-        <location filename="../widget/txtmessagedialog.cpp" line="74"/>
-        <source>Diese &amp;Information nicht mehr anzeigen</source>
-        <translation>Do&amp;n&apos;t show me again</translation>
-    </message>
-</context>
 </TS>

@@ -44,7 +44,6 @@ set(HDRS
     widget/statusbar.h
     widget/tickerboard.h
     widget/trainingwidget.h
-    widget/txtmessagedialog.h
 )
 
 set(SRCS
@@ -77,7 +76,6 @@ set(SRCS
     widget/statusbar.cpp
     widget/tickerboard.cpp
     widget/trainingwidget.cpp
-    widget/txtmessagedialog.cpp
 )
 
 set(QRC_FILES

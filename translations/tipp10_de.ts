@@ -2707,17 +2707,4 @@ Der Regler ganz rechts entspricht einem schnellen Laufband.)</translation>
         <translation>Zeichen: </translation>
     </message>
 </context>
-<context>
-    <name>TxtMessageDialog</name>
-    <message>
-        <location filename="../widget/txtmessagedialog.cpp" line="69"/>
-        <source>&amp;Ok</source>
-        <translation>&amp;Ok</translation>
-    </message>
-    <message>
-        <location filename="../widget/txtmessagedialog.cpp" line="74"/>
-        <source>Diese &amp;Information nicht mehr anzeigen</source>
-        <translation>Diese &amp;Information nicht mehr anzeigen</translation>
-    </message>
-</context>
 </TS>

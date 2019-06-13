@@ -48,7 +48,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 #include "lessondialog.h"
 #include "sql/startsql.h"
 #include "startwidget.h"
-#include "txtmessagedialog.h"
 
 StartWidget::StartWidget(QWidget* parent)
     : QWidget(parent)
