@@ -97,11 +97,20 @@ target_link_libraries(tipp10 Qt5::Core Qt5::Multimedia Qt5::PrintSupport
 )
 target_compile_definitions(tipp10 PRIVATE INSTALLPREFIX="${CMAKE_INSTALL_PREFIX}")
 
+set(SOUND_FILES
+    error.wav
+    metronome.wav
+)
+
 if(WIN32)
     target_compile_definitions(tipp10 PRIVATE APP_WIN)
 elseif(UNIX)
     if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
         target_compile_definitions(tipp10 PRIVATE APP_MAC)
+        set(SOUND_FILES
+            error.aif
+            metronome.aif
+        )
     else()
         target_compile_definitions(tipp10 PRIVATE APP_X11)
     endif()
@@ -111,11 +120,15 @@ install(TARGETS tipp10
     RUNTIME DESTINATION bin
 )
 
-install(FILES release/tipp10v2.template
+install(FILES release/tipp10v2.template ${SOUND_FILES}
     DESTINATION share/tipp10)
 
 install(FILES ${QM_FILES}
     DESTINATION share/tipp10/translations)
+
+install(DIRECTORY release/help
+    DESTINATION share/tipp10)
+
 
 if(UNIX AND NOT APPLE)
     install(FILES tipp10.desktop

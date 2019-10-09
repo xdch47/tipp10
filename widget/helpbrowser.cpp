@@ -50,15 +50,18 @@ HelpBrowser::HelpBrowser(QString link, QWidget* parent)
 
     textBrowser->setOpenExternalLinks(true);
 
-    textBrowser->setSource(QString("file:///")
-        + QCoreApplication::applicationDirPath() + QString("/help/") + tr("en")
+#if APP_PORTABLE
+    QString rooturl(QString("file:///") + QCoreApplication::applicationDirPath() + QString("/"));
+#else
+    QString rooturl(QString("file:///") + INSTALLPREFIX "/share/tipp10/");
+#endif
+
+    textBrowser->setSource(rooturl + QString("help/") + tr("en")
         + QString("/index.html"));
 
     if (link != "") {
-
-        textBrowser->setSource(QString("file:///")
-            + QCoreApplication::applicationDirPath() + QString("/help/")
-            + tr("en") + QString("/content/") + link);
+        textBrowser->setSource(rooturl + QString("help/") + tr("en")
+                + QString("/content/") + link);
     }
 
     // Set the layout of all widgets created above

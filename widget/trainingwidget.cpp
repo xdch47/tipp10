@@ -66,10 +66,8 @@ TrainingWidget::TrainingWidget(
     metronomeSound
         = new QSound(QCoreApplication::applicationDirPath() + "/metronome.aif");
 #else
-    // Win-Version
-    // -----------
-    bells = new QSound("error.wav");
-    metronomeSound = new QSound("metronome.wav");
+    bells = new QSound(INSTALLPREFIX "/share/tipp10/" + QString("error.wav"));
+    metronomeSound = new QSound(INSTALLPREFIX "/share/tipp10/" + QString("metronome.wav"));
 #endif
 
     // Initialise timer
