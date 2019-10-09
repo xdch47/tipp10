@@ -112,7 +112,7 @@ static bool createConnection()
             QString dbTemplatePath = QCoreApplication::applicationDirPath()
                 + dbNameTemplate;
 #else
-            QString dbTemplatePath =  INSTALLPREFIX "/share/tipp10/" + dbNameTemplate;
+            QString dbTemplatePath =  TIPP10_ROOTDIR + dbNameTemplate;
 #endif
 
             if (QFile::exists(dbTemplatePath)) {

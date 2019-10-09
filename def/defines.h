@@ -27,7 +27,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 #define DEFINES_H
 
 #ifndef INSTALLPREFIX
-#define INSTALLPREFIX "/usr/local"
+#define TIPP10_ROOTDIR QApplication::applicationDirPath()
+#else
+#define TIPP10_ROOTDIR QString(INSTALLPREFIX "/share/tipp10")
 #endif
 
 #define APP_PORTABLE false
