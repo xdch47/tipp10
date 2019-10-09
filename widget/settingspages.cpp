@@ -676,7 +676,7 @@ void OtherPage::readSettings()
 #else
     QSettings settings;
 #endif
-    settings.beginGroup("general");
+    settings.beginGroup("main");
     checkIllustration->setChecked(
         settings.value("check_illustration", true).toBool());
     checkIntelligence->setChecked(
@@ -704,7 +704,7 @@ bool OtherPage::writeSettings()
 #else
     QSettings settings;
 #endif
-    settings.beginGroup("general");
+    settings.beginGroup("main");
     if (checkNativeStyle->isChecked()
         != settings.value("check_native_style", false).toBool()) {
 
@@ -838,7 +838,7 @@ void LanguagePage::clearLayoutSetting()
 #else
     QSettings settings;
 #endif
-    settings.beginGroup("general");
+    settings.beginGroup("main");
     settings.setValue("layout_replace", "NULL");
     settings.setValue("layout_regexp", "NULL");
     settings.endGroup();
@@ -862,7 +862,7 @@ void LanguagePage::readSettings()
 #else
     QSettings settings;
 #endif
-    settings.beginGroup("general");
+    settings.beginGroup("main");
     tempIndex = comboLayouts->findData(
         settings.value("language_layout", APP_STD_LANGUAGE_LAYOUT).toString());
     if (!tempIndex) {
@@ -890,7 +890,7 @@ bool LanguagePage::writeSettings()
 #else
     QSettings settings;
 #endif
-    settings.beginGroup("general");
+    settings.beginGroup("main");
     /*if (comboLessons->itemData(comboLessons->currentIndex()) !=
                 settings.value("language_lesson",
     APP_STD_LANGUAGE_LESSON).toString()) {

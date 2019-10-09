@@ -172,7 +172,7 @@ static bool createConnection()
                 }
             }
         }
-        settings.beginGroup("general");
+        settings.beginGroup("main");
         settings.setValue("check_db_update", false);
         settings.endGroup();
     }

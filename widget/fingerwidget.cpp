@@ -48,7 +48,7 @@ FingerWidget::FingerWidget(QWidget* parent)
 #else
     QSettings settings;
 #endif
-    settings.beginGroup("general");
+    settings.beginGroup("main");
     languageLayout
         = settings.value("language_layout", APP_STD_LANGUAGE_LAYOUT).toString();
     settings.endGroup();

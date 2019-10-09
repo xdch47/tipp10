@@ -455,7 +455,7 @@ void KeyBoard::readSettings()
     QSettings settings;
 #endif
 
-    settings.beginGroup("general");
+    settings.beginGroup("main");
     layout
         = settings.value("language_layout", APP_STD_LANGUAGE_LAYOUT).toString();
     settings.endGroup();

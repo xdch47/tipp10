@@ -532,7 +532,7 @@ void StartWidget::fillLessonList(bool themeChanged = false)
 #else
     QSettings settings;
 #endif
-    settings.beginGroup("general");
+    settings.beginGroup("main");
     QString languageLesson
         = settings.value("language_lesson", APP_STD_LANGUAGE_LESSON).toString();
     settings.endGroup();
@@ -735,7 +735,7 @@ void StartWidget::toggleThemes(int index)
 #else
     QSettings settings;
 #endif
-    settings.beginGroup("general");
+    settings.beginGroup("main");
     QString languageLesson
         = settings.value("language_lesson", APP_STD_LANGUAGE_LESSON).toString();
     settings.endGroup();
@@ -804,7 +804,7 @@ void StartWidget::toggleTabs(int index)
                 spinLimitToken->setEnabled(false);
             }
         }
-        settings.beginGroup("general");
+        settings.beginGroup("main");
         if (openLessonWarning
             && settings.value("language_lesson", APP_STD_LANGUAGE_LESSON)
                     .toString()
@@ -1182,7 +1182,7 @@ void StartWidget::readLicenseSettings()
     QSettings settings;
 #endif
 
-    settings.beginGroup("general");
+    settings.beginGroup("main");
 
     lessonExportVisible = false;
     settings.endGroup();
@@ -1253,7 +1253,7 @@ void StartWidget::readSettings()
         labelIntelligence->setEnabled(false);
     }
 
-    settings.beginGroup("general");
+    settings.beginGroup("main");
     openLessonWarning
         = settings.value("check_open_lesson_warning", true).toBool();
     toggleLimitLesson = settings.value("check_limit_lesson", true).toBool();

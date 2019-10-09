@@ -260,7 +260,7 @@ void NumPad::readSettings()
     QSettings settings;
 #endif
     // Check user's keyboard layout
-    settings.beginGroup("general");
+    settings.beginGroup("main");
     layout
         = settings.value("language_layout", APP_STD_LANGUAGE_LAYOUT).toString();
     settings.endGroup();

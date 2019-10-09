@@ -167,7 +167,7 @@ void RegExpDialog::readSettings()
 #else
     QSettings settings;
 #endif
-    settings.beginGroup("general");
+    settings.beginGroup("main");
     QString regexp = settings.value("layout_regexp", "NULL").toString();
     QString replace = settings.value("layout_replace", "NULL").toString();
     settings.endGroup();
@@ -192,7 +192,7 @@ void RegExpDialog::writeSettings()
 #else
     QSettings settings;
 #endif
-    settings.beginGroup("general");
+    settings.beginGroup("main");
     settings.setValue("layout_replace", lineReplace->text());
     settings.setValue("layout_regexp", lineRegExp->text());
     settings.endGroup();

@@ -212,7 +212,7 @@ void IllustrationDialog::writeSettings()
 #else
     QSettings settings;
 #endif
-    settings.beginGroup("general");
+    settings.beginGroup("main");
     settings.setValue("check_illustration", !showDialogCheck->isChecked());
     settings.endGroup();
 }

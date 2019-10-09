@@ -79,7 +79,7 @@ settings.setPath(QSettings::IniFormat, QSettings::UserScope,
 #endif
 
     // Read/write language, license key and show illustration flag
-    settings.beginGroup("general");
+    settings.beginGroup("main");
     QString languageLayout = settings.value("language_layout", "").toString();
 
     QString languageLesson = settings.value("language_lesson", "").toString();
@@ -186,7 +186,7 @@ settings.setPath(QSettings::IniFormat, QSettings::UserScope,
         }
     }
 
-    settings.beginGroup("general");
+    settings.beginGroup("main");
     settings.setValue("language_layout", languageLayout);
     settings.setValue("language_lesson", languageLesson);
     settings.endGroup();

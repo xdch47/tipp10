@@ -606,7 +606,7 @@ void TrainingWidget::readSettings()
 #else
     QSettings settings;
 #endif
-    settings.beginGroup("general");
+    settings.beginGroup("main");
     if (settings.value("language_layout", APP_STD_LANGUAGE_LAYOUT)
             .toString()
             .right(3)
