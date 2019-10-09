@@ -93,90 +93,6 @@ static bool createConnection()
             + dbNameUser;
     }
 
-    // Search for an old database if first programmstart or if user want to
-    bool searchOldDb = false;
-    if (searchOldDb) {
-        searchOldDb = false;
-        if (QFile::exists(
-                QCoreApplication::applicationDirPath() + "/tipp10.db")) {
-            if (QMessageBox::question(0, APP_NAME,
-                    QObject::tr(
-                        ""
-                        "Es wurde eine alte TIPP10-Datenbank der Version 1 im\n"
-                        "Programmverzeichnis gefunden.\n\n"
-                        "Wollen Sie die persoenlichen Daten aus der alten "
-                        "Datenbank\n"
-                        "in die neue Datenbank dieser Version uebernehmen?\n"),
-                    QObject::tr("&Ja"), QObject::tr("&Nein"), 0, 1)
-                == 0) {
-
-                lessonId.clear();
-                lessonLesson.clear();
-                lessonTime.clear();
-                lessonToken.clear();
-                lessonStrokes.clear();
-                lessonErrors.clear();
-                lessonStamp.clear();
-                charUnicode.clear();
-                charTarget.clear();
-                charMistake.clear();
-                charOccur.clear();
-
-                // Transfer old data to new database now
-                // Set database
-                db.setDatabaseName(
-                    QCoreApplication::applicationDirPath() + "/tipp10.db");
-                // Open the database
-                if (!db.open()) {
-                    // Error message
-                    ErrorMessage* errorMessage = new ErrorMessage();
-                    errorMessage->showMessage(ERR_SQL_CONNECTION,
-                        ErrorMessage::Type::Warning, ErrorMessage::Cancel::No);
-                } else {
-                    QSqlQuery query;
-                    // Lessons done by the user
-                    if (query.exec(
-                            "SELECT user_lesson_id, user_lesson_lesson, "
-                            "user_lesson_timelen, user_lesson_tokenlen, "
-                            "user_lesson_strokesnum, user_lesson_errornum, "
-                            "user_lesson_timestamp "
-                            "FROM user_lesson_list;")) {
-                        // Read all datasets to list items
-                        while (query.next()) {
-                            lessonId.append(query.value(0).toString());
-                            lessonLesson.append(query.value(1).toString());
-                            lessonTime.append(query.value(2).toString());
-                            lessonToken.append(query.value(3).toString());
-                            lessonStrokes.append(query.value(4).toString());
-                            lessonErrors.append(query.value(5).toString());
-                            lessonStamp.append(query.value(6).toString());
-                            lessonCounter++;
-                        }
-                        // Char list of the user
-                        if (query.exec("SELECT user_char_unicode, "
-                                       "user_char_target_errornum, "
-                                       "user_char_mistake_errornum, "
-                                       "user_char_occur_num "
-                                       "FROM user_chars;")) {
-                            // Read all datasets to list items
-                            while (query.next()) {
-                                charUnicode.append(query.value(0).toString());
-                                charTarget.append(query.value(1).toString());
-                                charMistake.append(query.value(2).toString());
-                                charOccur.append(query.value(3).toString());
-                                charCounter++;
-                            }
-                            searchOldDb = true;
-                        }
-                    }
-                }
-            }
-        }
-        settings.beginGroup("main");
-        settings.setValue("check_db_update", false);
-        settings.endGroup();
-    }
-
     // User path specified?
     if (dbPath != "") {
         // User path specified
@@ -310,42 +226,6 @@ static bool createConnection()
             ErrorMessage::Type::Critical, ErrorMessage::Cancel::Program,
             QObject::tr("Betroffener Pfad:\n") + dbPath);
         return false;
-    }
-
-    // If necessary, write old data to new database
-    if (searchOldDb) {
-        QSqlQuery queryNew;
-        if (lessonCounter != 0) {
-            for (i = 0; i < lessonCounter; i++) {
-                if (queryNew.exec("INSERT INTO user_lesson_list VALUES(NULL,"
-                        + lessonLesson.first() + "," + lessonTime.takeFirst()
-                        + "," + lessonToken.takeFirst() + ","
-                        + lessonStrokes.takeFirst() + ","
-                        + lessonErrors.takeFirst() + ", '"
-                        + lessonStamp.takeFirst()
-                        + "', "
-                          "0, '"
-                        + QObject::tr("Uebungslektion") + " "
-                        + lessonLesson.first() + "');")) {
-                }
-                lessonLesson.removeFirst();
-            }
-        }
-        if (charCounter != 0) {
-            for (i = 0; i < charCounter; i++) {
-                if (queryNew.exec("INSERT INTO user_chars VALUES("
-                        + charUnicode.takeFirst() + "," + charTarget.takeFirst()
-                        + "," + charMistake.takeFirst() + ","
-                        + charOccur.takeFirst() + ");")) {
-                }
-            }
-        }
-        if (lessonCounter != 0 || charCounter != 0) {
-            QMessageBox::information(0, APP_NAME,
-                QObject::tr("Ihre Daten wurden erfolgreich in die\n"
-                            "neue Datenbank uebertragen!\n"));
-        }
-        searchOldDb = false;
     }
 
     settings.beginGroup("database");
