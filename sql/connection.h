@@ -86,7 +86,7 @@ static bool createConnection()
     dbPath = settings.value("pathpro", "").toString();
     settings.endGroup();
 
-    // Prtable version
+    // Portable version
     if (APP_PORTABLE && dbPath != "") {
 
         dbPath = QCoreApplication::applicationDirPath() + "/portable/"
@@ -108,14 +108,18 @@ static bool createConnection()
             Pfad:\n" + dbPath);*/
             // Try to create new databae in user path
             // Exist a database in the program dir?
-            if (QFile::exists(QCoreApplication::applicationDirPath() + "/"
-                    + dbNameTemplate)) {
-                // if (QFile::exists(":/" + dbNameTemplate)) {
+#if APP_PORTABLE
+            QString dbTemplatePath = QCoreApplication::applicationDirPath()
+                + dbNameTemplate;
+#else
+            QString dbTemplatePath =  INSTALLPREFIX "/share/tipp10/" + dbNameTemplate;
+#endif
+
+            if (QFile::exists(dbTemplatePath)) {
                 // A database exist in the program dir
                 // -> copy database to user home dir
-                QFile file(QCoreApplication::applicationDirPath() + "/"
-                    + dbNameTemplate);
-                // QFile file(":/" + dbNameTemplate);
+                QFile file(dbTemplatePath);
+
                 if (file.copy(dbPath)) {
                     QFile::setPermissions(
                         dbPath, QFile::permissions(dbPath) | QFile::WriteUser);

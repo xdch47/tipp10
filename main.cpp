@@ -23,10 +23,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 **
 ****************************************************************/
 
-#ifndef INSTALLPREFIX
-#define INSTALLPREFIX "/usr/local"
-#endif
-
 #include <QApplication>
 #include <QCoreApplication>
 #include <QLibraryInfo>

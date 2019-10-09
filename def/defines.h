@@ -26,6 +26,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 #ifndef DEFINES_H
 #define DEFINES_H
 
+#ifndef INSTALLPREFIX
+#define INSTALLPREFIX "/usr/local"
+#endif
+
 #define APP_PORTABLE false
 
 // Languages
