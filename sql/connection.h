@@ -112,7 +112,7 @@ static bool createConnection()
             QString dbTemplatePath = QCoreApplication::applicationDirPath()
                 + dbNameTemplate;
 #else
-            QString dbTemplatePath =  INSTALLPREFIX "/share/tipp10/" + dbNameTemplate;
+            QString dbTemplatePath =  TIPP10_ROOTDIR + dbNameTemplate;
 #endif
 
             if (QFile::exists(dbTemplatePath)) {
@@ -172,7 +172,7 @@ static bool createConnection()
         // Exist a database in user's home dir?
         if (!QFile::exists(dbPath)) {
             // Exist a database template in the program dir?
-            dbPath = INSTALLPREFIX "/share/tipp10/" + dbNameTemplate;
+            dbPath = TIPP10_ROOTDIR + dbNameTemplate;
             // dbPath = ":/" + dbNameTemplate;
             if (QFile::exists(dbPath)) {
                 // A database template exist in the program dir

@@ -50,11 +50,7 @@ HelpBrowser::HelpBrowser(QString link, QWidget* parent)
 
     textBrowser->setOpenExternalLinks(true);
 
-#if APP_PORTABLE
-    QString rooturl(QString("file:///") + QCoreApplication::applicationDirPath() + QString("/"));
-#else
-    QString rooturl(QString("file:///") + INSTALLPREFIX "/share/tipp10/");
-#endif
+    QString rooturl(QString("file:///") + TIPP10_ROOTDIR);
 
     textBrowser->setSource(rooturl + QString("help/") + tr("en")
         + QString("/index.html"));

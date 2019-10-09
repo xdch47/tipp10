@@ -56,7 +56,7 @@ int main(int argc, char* argv[])
 
     // Content (own translation files)
     QString trFile = "tipp10_" + QLocale::system().name();
-    QString trPath = INSTALLPREFIX "/share/tipp10/translations";
+    QString trPath = TIPP10_ROOTDIR + "translations";
     QTranslator translatorContent;
     translatorContent.load(trFile, trPath);
     app.installTranslator(&translatorContent);
